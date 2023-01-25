@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{paralist}
+\usepackage{blindtext}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=black
+    }
+
+\title{DBMS Project Proposal - DrugVeda}
+% \author{Anirudh S. Kumar (2021517), Aakarsh Jain (2021507)}
+\author{
+    \\\vspace{0em} Anirudh S. Kumar \\\vspace{-0.5em}
+    \footnotesize{Roll Number - 2021517}\\\vspace{-0.5em}
+    \footnotesize{IIIT - Delhi}\\\vspace{-0.5em}
+    \footnotesize{\href{mailto:anirudh21517@iiitd.ac.in}{\texttt{anirudh21517@iiitd.ac.in}}}
+  \and
+    \\\vspace{0em} Aakarsh Jain \\\vspace{-0.5em}
+    \footnotesize{Roll Number - 2021507}\\\vspace{-0.5em}
+    \footnotesize{IIIT - Delhi}\\\vspace{-0.5em}
+    \footnotesize{\href{mailto:aakarsh21507@iiitd.ac.in}{\texttt{aakarsh21507@iiitd.ac.in}}} 
+    \vspace{1em}
+}
+
+
+
+\date{January 25, 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Project Scope}
+
+The recent boom in the pharmaceutical industry due to an increase in public health awareness and self-hygiene has motivated us to work on an e-commerce pharmacy store \textbf{DrugVeda}, which will allow its users to order their prescriptions and book regular health checks from their fingertips. The goal is to streamline the user experience and improve access to healthcare services for the general populace.
+
+\begin{itemize}
+    \item[--] The Customer can browse the catalogue of products available with us and add products to the cart. The products can then be delivered to their doorstep, or they can physically visit the nearest retail stores to buy them. They will also be able to book lab tests and view their results once ready.
+
+    \item[--] The retail stores can manage their inventories and restock the required products by making orders to appropriate suppliers. They will also be able to see all the pending orders and process them. 
+
+    \item[--] Also, we have partnered with Medical labs to provide our Customers with regular health checkups and lab tests. Customers can book an appointment and then view the results once ready.
+
+\end{itemize}
+
+
+
+
+\subsection{Stakeholders}
+\begin{itemize}
+    \item \textbf{Customers}: People who will buy and avail services from the site.
+    \item \textbf{Brands}: Big-name brands who will put up their products on the website. 
+    \item \textbf{Suppliers}: Merchants who sell products of different brands on the platform. They will be able to restock items of specific products.
+    \item \textbf{Retail Store}: Physical stores where the inventory is stored and Customers can visit to pick up their orders.
+    \item \textbf{Labs}: Medical Labs which will provide various kinds of medical tests.
+\end{itemize}
+
+\subsection{Data stored}
+\begin{itemize}
+    \item \textbf{Authentication}: We will with authentication data fetched from Auth0. This will be used to assign roles to different users.
+    \item \textbf{Customers}: We will store minimal and only necessary information like Name, Contact Details, Address, Order and Payment History.
+    \item \textbf{Retail Stores}: To help the store manage its inventory, we will store information on available products such as Name, Quantity, and Expiry Date. For every product, we also assign tags and categories for Customers. General information related to stores, like Contact details and addresses, will also be stored.
+    \item \textbf{Suppliers}: We will store the products available with each supplier to optimize the procurement of our products, along with general information of the Suppliers like Contact information and Address.
+    \item \textbf{Brands}: Update information about the release of new products and view performance and analytics of their existing products. 
+    \item \textbf{Medical Labs}: Can provide information about available products. We will also store details about booking and final test results. Again, we will store contact information and the address of the store.
+\end{itemize}
+
+
+\section{Functional Requirements}
+
+\begin{itemize}
+\item \textbf{User Authentication}: All our stakeholders can log in to the website and be given permission accordingly. 
+\item \textbf{Online store}: Customers can choose and order from a vast catalogue of medicines, which they can either pick up from their local drug store or get delivered right to their doorstep.
+    \begin{itemize}
+        \item \underline{Cart}: where customers will be able to add/remove items to be purchased at checkout.
+        \item \underline{Item Catalogue}: a catalogue of items from which customers can pick. Brands will be able to add/remove/update items from the catalogue as well.
+    \end{itemize}
+\item \textbf{Retail stores}: Will be responsible for order fulfilment. Customers can either visit the store, or have it delivered to their doorstep. They should be able to restock their inventory by ordering products from the appropriate supplier. They will also be able to view analytics and order history.
+\item \textbf{Item Availability}: As in the real world, items are only available in a finite quantity, and therefore the product catalogue will update accordingly. We will also allow suppliers to restock a product if they want to. 
+\item \textbf{Online Lab Tests}: We have partnered with various labs to facilitate regular health checkups. Customers can schedule lab tests and check results online at their convenience.
+\end{itemize}
+
+\section{Technical Requirements}
+\subsection{Tech Stack}
+\begin{itemize}
+\item The Front-end will use HTML, Svelte, TypeScript and TailwindCSS. 
+\item The Back-end will use FastAPI and Python to connect with the Front-end and Database, respectively.
+\item DBMS used in the project will be MySQL.
+\item Auth0 will be used for user authentication and assignment of roles.
+\end{itemize}
+
+\subsection{Access constraints}
+\begin{itemize}
+    \item \textbf{User} should only be able to add/remove items from their cart and only be able to view their order history. Based on their experience, they can also provide public feedback.
+    \item \textbf{Brands} should only be able to add/remove items from their catalogue of items and view their performance and reviews.
+    \item \textbf{Suppliers} should only be able to view the orders placed to them through retail stores and update with information about their fulfilment.
+    \item \textbf{Retail stores} will be able to add/remove items through their stock and keep track of orders made through their stores. They can request Suppliers to restock their inventory.
+\end{itemize}
+
+\end{document}
