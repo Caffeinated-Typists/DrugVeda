@@ -9,9 +9,9 @@ The recent boom in the pharmaceutical industry due to an increase in public heal
 - **Online Store:** Customers can choose and order from a vast catalogue of medicines, which they can either
 pick up from their local drug store or get delivered right to their doorstep.
 
-  - <u>Cart:</u> where customers will be able to add/remove items to be purchased at checkout.
+  - <ins>Cart:</ins> where customers will be able to add/remove items to be purchased at checkout.
 
-  - <u>Item Catalogue:</u> a catalogue of items from which customers can pick. Brands will be able to add/remove/update items from the catalogue as well.
+  - <ins>Item Catalogue:</ins> a catalogue of items from which customers can pick. Brands will be able to add/remove/update items from the catalogue as well.
 
 - **Retail stores:** Will be responsible for order fulfilment. Customers can either visit the store, or have it
 delivered to their doorstep. They should be able to restock their inventory by ordering products from the
