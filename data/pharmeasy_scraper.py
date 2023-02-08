@@ -1,25 +1,34 @@
 from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.edge.options import Options as EdgeOptions
 from datetime import datetime, timedelta
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from selenium.webdriver.edge.service import Service as EdgeService
 from selenium.webdriver.common.by import By
 from fake_useragent import UserAgent
+from pprint import pprint
 import selenium.common.exceptions
 import time
 import json
-import logging 
+import logging
+from datetime import datetime, timezone
+
+from bs4 import BeautifulSoup
+
 
 logging.basicConfig(filename="errorlogs.log", level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
 def User():
-    
+
     ua = UserAgent()
     return ua.random
 
-def makeProduct(name:str, price:int, brand:str, expiry_date:str, description:str, rating:str, no_of_reviews:str, images:list[str]):
+
+def makeProduct(name: str, price: float, brand: str, expiry_date: str, description: str, rating: str, no_of_reviews: str, images: list[str]):
     return {
         "name": str(name),
         "price": price,
@@ -30,6 +39,13 @@ def makeProduct(name:str, price:int, brand:str, expiry_date:str, description:str
         "no_of_reviews": str(no_of_reviews),
         "images": images
     }
+
+
+def makeDummyProduct(name: str):
+    return {
+        "name": str(name),
+    }
+
 
 BASE_URL = "https://pharmeasy.in/"
 
@@ -49,134 +65,155 @@ for option in options:
 edge_options.add_argument(f'user-agent={User()}')
 edge_options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
-browser = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()), options=edge_options)
+browser = webdriver.Edge(service=EdgeService(
+    EdgeChromiumDriverManager().install()), options=edge_options)
 
 url = "https://pharmeasy.in/health-care"
 browser.get(url)
 browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-time.sleep(1)
 
 # creating dictionary to store data
 data = {}
 
+logger.info("Start time: " + str(datetime.now()))
 try:
-    Cats = browser.find_element("xpath", r'//*[@id="__next"]/main/div/div[2]/div[2]/div/div')
-    Containers = Cats.find_elements("xpath", "*")
+    # iterating over every category
+    idx_cat = 0
+    no_of_cats = len(browser.find_element(
+        "xpath", r'//*[@id="__next"]/main/div/div[2]/div[2]/div/div').find_elements('xpath', r'*'))
 
-    for container in Containers:
+    while(idx_cat < no_of_cats):
+        # getting category
+        categories = browser.find_element(
+            'xpath', r'//*[@id="__next"]/main/div/div[2]/div[2]/div/div').find_elements('xpath', r'*')
+        category = categories[idx_cat]
 
-        # Going into a category
-        name = container.find_element("xpath", r'./div[2]/h2').text
-        browser.execute_script('arguments[0].click()', container)
-        
-        # adding category to dictionary, and initializing it's subcategory
-        data[name] = {}
-        subcat_content = data[name]
+        # getting category info
+        idx_cat += 1
 
-        #clicking on view more button
-        view_more_button = browser.find_element("xpath", r'//*[@id="__next"]/main/div/div[2]/section[1]/div[1]/div/div[3]/div[2]')
+        name = category.find_element('xpath', r'./div[2]/h2').text
+        image = category.find_elements(By.TAG_NAME, 'img')[
+            1].get_attribute('src')
+
+        # clicking on category
+        browser.execute_script('arguments[0].click()', category)
+        time.sleep(0.5)
+
+        # clicking on view more and finding no. of subcategories
+        try:
+            view_more_button = browser.find_element(
+                'xpath', r'//*[@id="__next"]/main/div/div[2]/section[1]/div[1]/div/div[3]/div[2]')
+
+            # adding category if subcategories exist
+            data[name] = {"image": image, "subcategories": {}}
+            subcats = data[name]["subcategories"]
+
+        except selenium.common.exceptions.NoSuchElementException:
+            all_cats_button = browser.find_element(
+                "xpath", r'//*[@id="__next"]/main/div/div[1]/a[2]')
+            browser.execute_script('arguments[0].click()', all_cats_button)
+            continue
+
         browser.execute_script('arguments[0].click()', view_more_button)
-        time.sleep(1)
+        time.sleep(0.5)
+        no_of_subcats = len((browser.find_element(
+            "xpath", r'//*[@id="drawers-portal"]/div/div[2]/div[2]/div[2]')).find_elements('xpath', r'./label')) // 2
 
-        # getting subcats and exiting
-        exit_button = browser.find_element("xpath", r'//*[@id="drawers-portal"]/div/div[2]/div[1]')
-        subcats = (browser.find_element("xpath", r'//*[@id="drawers-portal"]/div/div[2]/div[2]/div[2]')).find_elements('xpath', r'./label')
-        no_of_subcats = len(subcats)
-        # time.sleep(1)
+        # clicking on exit button
+        exit_button = browser.find_element(
+            "xpath", r'//*[@id="drawers-portal"]/div/div[2]/div[1]')
         browser.execute_script('arguments[0].click()', exit_button)
-        time.sleep(1)
 
-
-        # interating over every subcategory
         idx_subcat = 0
+
         while(idx_subcat < no_of_subcats):
-            #clicking on view more button
-            view_more_button = browser.find_element("xpath", r'//*[@id="__next"]/main/div/div[2]/section[1]/div[1]/div/div[3]/div[2]')
+            view_more_button = browser.find_element(
+                "xpath", r'//*[@id="__next"]/main/div/div[2]/section[1]/div[1]/div/div[3]/div[2]')
             browser.execute_script('arguments[0].click()', view_more_button)
-            time.sleep(1)
+            time.sleep(0.5)
 
-            #getting specific subcat and clicking it
-            subcats = (browser.find_element("xpath", r'//*[@id="drawers-portal"]/div/div[2]/div[2]/div[2]')).find_elements('xpath', r'./label')
-            browser.execute_script('arguments[0].click()', subcats[idx_subcat])
-            apply_button = browser.find_element("xpath", r'//*[@id="drawers-portal"]/div/div[2]/div[2]/div[3]/button[2]')
+            # getting subcategory
+            all_subcats = (browser.find_element(
+                "xpath", r'//*[@id="drawers-portal"]/div/div[2]/div[2]/div[2]')).find_elements('xpath', r'./label')
+            browser.execute_script(
+                'arguments[0].click()', all_subcats[idx_subcat])
 
-            # adding subcategory to list, and initializing it's products
-            subcat_content[subcats[idx_subcat].text] = []
-            products_content = subcat_content[subcats[idx_subcat].text]
+            subcats[all_subcats[idx_subcat].text] = []
+            products = subcats[all_subcats[idx_subcat].text]
 
+            # clicking on apply button
+            apply_button = browser.find_element(
+                "xpath", r'//*[@id="drawers-portal"]/div/div[2]/div[2]/div[3]/button[2]')
             browser.execute_script('arguments[0].click()', apply_button)
-            time.sleep(1)
-            
-            
-            # getting count of products
-            no_of_products = len(browser.find_element("xpath", r'//*[@id="__next"]/main/div/div[2]/section[1]/div[2]/div[3]/div[1]').find_elements('xpath', r'./div'))
-            temp = browser.find_element("xpath", r'//*[@id="__next"]/main/div/div[2]/section[1]/div[2]/div[3]/div[1]').find_elements('xpath', r'./div')
+            idx_subcat += 1
 
-            # iterating over every product
+            time.sleep(1)
+            all_products = (browser.find_element(
+                "xpath", r'//*[@id="__next"]/main/div/div[2]/section[1]/div[2]/div[3]/div[1]').find_elements('xpath', r'./div'))
+            no_of_products = len(all_products) // 2
+
             idx_product = 0
             while(idx_product < no_of_products):
-                # getting product
-                products = (browser.find_element("xpath", r'//*[@id="__next"]/main/div/div[2]/section[1]/div[2]/div[3]/div[1]').find_elements('xpath', r'./div'))
-                url = (products[idx_product]).find_element('xpath', r'./a').get_attribute('href')
+                time.sleep(1)
+                all_products = (browser.find_element(
+                    "xpath", r'//*[@id="__next"]/main/div/div[2]/section[1]/div[2]/div[3]/div[1]').find_elements('xpath', r'./div'))
+                url = (all_products[idx_product]).find_element(By.TAG_NAME, 'a').get_attribute('href')
 
                 # opening new tab and going to product
                 browser.execute_script("window.open('');")
                 browser.switch_to.window(browser.window_handles[1])
                 browser.get(url)
+                idx_product += 1
                 time.sleep(1)
 
                 # getting product info
-                # if it doesn't exist then skip
                 try:
-                    name = browser.find_element("xpath", r'//*[@id="__next"]/main/div/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/h1').text
-                    try:
-                        price = int(browser.find_element("xpath", r'//*[@id="__next"]/main/div/div[2]/div[1]/div[1]/div[2]/div/div[4]/div[1]/div[1]/div[1]').text[1:])
-                    except ValueError:
-                        continue
-                    brand = browser.find_element("xpath", r'//*[@id="__next"]/main/div/div[2]/div[1]/div[4]/div[4]/div/div[1]/div[2]').text
-                    expiry_date = browser.find_element("xpath", r'//*[@id="__next"]/main/div/div[2]/div[1]/div[4]/div[4]/div/div[2]/div[2]').text
-                    description = browser.find_element("xpath", r'//*[@id="__next"]/main/div/div[2]/div[1]/div[4]/div[1]/div/div/div/div[1]/div').text
-                    rating = browser.find_element("xpath", r'//*[@id="__next"]/main/div/div[2]/div[1]/div[6]/div/div[2]/div[1]/div/div/div[1]/div').text
-                    no_of_reviews = int(((browser.find_element("xpath", r'//*[@id="__next"]/main/div/div[2]/div[1]/div[6]/div/div[2]/div[1]/div/div/div[3]').text).split())[0])
-                    
-                    # getting images
-                    image_elements = browser.find_element("xpath", r'//*[@id="__next"]/main/div/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]').find_elements('xpath', r'./div/img')
-                    images = [str(element.get_attribute('src')) for element in image_elements]
+                    name = browser.find_element(
+                        "xpath", r'//*[@id="__next"]/main/div/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/h1').text
+                    price = float(browser.find_element(
+                        "xpath", r'//*[@id="__next"]/main/div/div[2]/div[1]/div[1]/div[2]/div[1]/div[4]/div[1]/div[1]/div[1]/div').text[1:])
+                    expiry_date = browser.find_element(
+                        "xpath", r'//*[@id="__next"]/main/div/div[2]/div[1]/div[5]/div[4]/div/div[2]/div[2]').text
+                    brand = browser.find_element(
+                        "xpath", r'//*[@id="__next"]/main/div/div[2]/div[1]/div[5]/div[4]/div/div[1]/div[2]/span').text
+                    description = browser.find_element(
+                        "xpath", r'//*[@id="__next"]/main/div/div[2]/div[1]/div[5]/div[1]/div/div/div/div[1]/div').text
+                    rating = browser.find_element(
+                        "xpath", r'//*[@id="__next"]/main/div/div[2]/div[1]/div[7]/div/div[2]/div[1]/div/div/div[1]/div').text
+                    no_of_reviews = int(((browser.find_element(
+                        "xpath", r'//*[@id="__next"]/main/div/div[2]/div[1]/div[7]/div/div[2]/div[1]/div/div/div[3]').text).split())[0])
+                    image_elements = browser.find_element(
+                        "xpath", r'//*[@id="__next"]/main/div/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]').find_elements('xpath', r'./div/img')
+                    images = [str(element.get_attribute('src'))
+                              for element in image_elements]
 
-                    # creating product object
-                    product = makeProduct(name, price, brand, expiry_date, description, rating, no_of_reviews, images)
-                    products_content.append(product)
-                    json.dump(data, open("json/data.json", "w"), indent=2)
-                except selenium.common.exceptions.NoSuchElementException as e:
-                    pass
-                
+                    product = makeProduct(
+                        name, price, brand, expiry_date, description, rating, no_of_reviews, images)
+                    products.append(product)
+                except selenium.common.exceptions.NoSuchElementException:
+                    continue
+
                 except Exception as e:
-                    logger.exception(e)
-                    logger.info(f"URL - {browser.current_url}\n")
+                    logger.exception(e.with_traceback)
 
-                browser.close()
-                browser.switch_to.window(browser.window_handles[0])
+                finally:
+                    # closing tab no matter what
+                    browser.close()
+                    browser.switch_to.window(browser.window_handles[0])
+                    json.dump(data, open('json/products.json', 'w'), indent=2)
 
-                #updating index
-                idx_product += 1
+        all_cats_button = browser.find_element(
+            "xpath", r'//*[@id="__next"]/main/div/div[1]/a[2]')
+        browser.execute_script('arguments[0].click()', all_cats_button)
 
-            # updating index
-            idx_subcat += 1
+    print("Completed Scraping Successfully")
 
-
-            browser.back()
-
-        
-
-        
-        
-except selenium.common.exceptions.NoSuchElementException:
-    print("No such element")
 
 except Exception as e:
-    logger.exception(e.with_traceback)
-    logger.info()
-    logger.info(f"URL - {browser.current_url}\n")
+    print("UNEXPECTED ERROR OCCURED")
+    logger.info("Something terrible happened")
+    logger.exception(e)
+    logger.info("\n")
 finally:
-    json.dump(data, open("json/data.json", "w"), indent=2)
     browser.quit()
+    logger.info("End time : " + str(datetime.datetime.now()))
