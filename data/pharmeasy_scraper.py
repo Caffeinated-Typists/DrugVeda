@@ -124,7 +124,6 @@ try:
                 browser.execute_script("window.open('');")
                 browser.switch_to.window(browser.window_handles[1])
                 browser.get(url)
-                idx_product += 1
                 time.sleep(1)
 
                 # getting product info
@@ -158,7 +157,10 @@ try:
 
                 browser.close()
                 browser.switch_to.window(browser.window_handles[0])
-        
+
+                #updating index
+                idx_product += 1
+
             
             browser.back()
 
