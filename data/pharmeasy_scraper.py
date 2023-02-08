@@ -98,7 +98,6 @@ try:
             #getting specific subcat and clicking it
             subcats = (browser.find_element("xpath", r'//*[@id="drawers-portal"]/div/div[2]/div[2]/div[2]')).find_elements('xpath', r'./label')
             browser.execute_script('arguments[0].click()', subcats[idx_subcat])
-            idx_subcat += 1
             apply_button = browser.find_element("xpath", r'//*[@id="drawers-portal"]/div/div[2]/div[2]/div[3]/button[2]')
 
             # adding subcategory to list, and initializing it's products
@@ -147,7 +146,7 @@ try:
                     # creating product object
                     product = makeProduct(name, price, brand, expiry_date, description, rating, no_of_reviews, images)
                     products_content.append(product)
-                    json.dump(data, open("data.json", "w"), indent=2)
+                    json.dump(data, open("json/data.json", "w"), indent=2)
                 except selenium.common.exceptions.NoSuchElementException as e:
                     pass
                 
@@ -161,7 +160,10 @@ try:
                 #updating index
                 idx_product += 1
 
-            
+            # updating index
+            idx_subcat += 1
+
+
             browser.back()
 
         
@@ -176,5 +178,5 @@ except Exception as e:
     logger.info()
     logger.info(f"URL - {browser.current_url}\n")
 finally:
-    json.dump(data, open("data.json", "w"), indent=2)
+    json.dump(data, open("json/data.json", "w"), indent=2)
     browser.quit()
