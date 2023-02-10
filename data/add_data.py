@@ -23,7 +23,14 @@ def add_data_retailers()->None:
     db.commit()
     json_file.close()
 
-
+def add_data_suppliers()->None:
+    """Add data to suppliers table"""
+    json_file = open("data/json/supplier.json", "r")
+    json_data = load(json_file)
+    for supplier in json_data:
+        cursor.execute("INSERT INTO suppliers (SupplierID, Name, Email, Phone, Lat, Lon) VALUES ('{}', '{}', '{}', '{}', {}, {})".format(supplier['user_id'], supplier['name'], supplier['email'], supplier['phone'], supplier['latitude'], supplier['longitude']))
+    db.commit()
+    json_file.close()
 
 def main()->None:
     """Main function"""
@@ -37,6 +44,7 @@ def main()->None:
     cursor = db.cursor()
     # add_data_customers()
     # add_data_retailers()
+    add_data_suppliers()
     db.close()
 
 if __name__ == "__main__":
