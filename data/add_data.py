@@ -57,7 +57,7 @@ def add_data_labs()->None:
     json_file.close()
 
 def get_brand_id(brand_name:str)->str:
-    """Get brand id from brand name"""
+    """Get brand id from brand name, adds brand to brands table if not present"""
     global brands
     if brand_name in brands:
         return brands[brand_name]
@@ -111,6 +111,16 @@ def add_tests()->None:
     db.commit()
     json_file.close()
 
+def add_product_orders()->None:
+    """Add data to product_orders table"""
+    json_file = open("data/json/product_orders.json", "r")
+    json_data = load(json_file)
+    for order in json_data:
+        cursor.execute("INSERT INTO product_orders (OrderID, CustomerID, OrderDate, Quantity, Amount, Status, DeliveryMethod, PaymentMethod) VALUES ('{}', '{}', '{}', '{}', {}, '{}', '{}', '{}')"
+        .format(order['order_id'], order['user_id'], order['order_date'], order['quantity'], order['amount'], order['status'], order['delivery_method'], order['payment_method']))
+    db.commit()
+    json_file.close()
+
 def main()->None:
     """Main function"""
     global db, cursor
@@ -126,7 +136,8 @@ def main()->None:
     # add_data_suppliers()
     # add_data_labs()
     # add_data_products()
-    add_tests()
+    # add_tests()
+    # add_product_orders()
     db.close()
 
 if __name__ == "__main__":
