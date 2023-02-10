@@ -1,0 +1,437 @@
+[
+  {
+    "name": "Urine routine",
+    "price": 399,
+    "description": "A routine urinalysis is used for evaluating kidney and urinary tract involvement in infections, metabolic and genetic disorders."
+  },
+  {
+    "name": "Fasting Blood Sugar (FBS)",
+    "price": 199,
+    "description": "The Fasting Blood Sugar Test is a blood glucose test that helps determine blood sugar levels in your body after fasting for more than eight hours. It helps detect prediabetes, type 1 diabetes, type 2 diabetes, gestational diabetes, and other types of diabetes. Fasting blood sugar levels above 125 mg/dL, indicate a possibility of diabetes mellitus, and the patient must be evaluated by a doctor. Your fasting sugar readings may be high if you have prediabetes, diabetes or gestational diabetes. This test is beneficial for routine monitoring of blood sugar levels in people diagnosed with diabetes. Regular monitoring and well-controlled blood sugar can minimise the risk of severe complications due to diabetes. This test can be taken by people of all age groups and/or as recommended by your doctor."
+  },
+  {
+    "name": "HbA1c (Glycosylated Hemoglobin)",
+    "price": 399,
+    "description": "The HbA1c Profile, also known as Glycosylated Hemoglobin, also called Glycated Hemoglobin or Hemoglobin A1c, helps with the screening, diagnosis and monitoring of diabetes or prediabetes in adults. It enables you to identify if you are on the edge of developing diabetes. If you already have diabetes mellitus, the HbA1C test results help monitor your blood sugar levels."
+  },
+  {
+    "name": "Post Prandial Blood Sugar (PPBS)",
+    "price": 199,
+    "description": "The Postprandial Blood Sugar Test can help detect prediabetes, type 1 diabetes, type 2 diabetes, gestational diabetes, and other types of diabetes. It is a blood glucose test that helps determine your blood sugar levels two hours after a meal. If your postprandial blood sugars are above 140-200 mg/dL, it indicates that you may have diabetes mellitus. This test is also recommended for people with diabetes to monitor their sugar control. Regular monitoring and well-controlled postprandial blood sugar can help minimise the risk of cardiovascular and other health complications due to diabetes. The test can be taken by people of all age groups or as recommended by your doctor."
+  },
+  {
+    "name": "Liver Function Test (LFT)",
+    "price": 499,
+    "description": "Liver Function Test consists of various blood tests that may help diagnose and monitor liver-related diseases. Some tests help determine how well the liver is functioning. The LFT test measures the level of liver enzymes and proteins in your blood. Liver disorders may present symptoms like abdominal pain, weight loss, nausea, diarrhoea, lack of energy, jaundice, fever or fatigue, dark-coloured urine or light-coloured stools. Doctors often recommend this test for monitoring liver function during ongoing treatment of other conditions as well. People who are overweight, eat unhealthy food, face digestion-related problems frequently, consume alcohol, and suffer from autoimmune diseases are at a higher risk of liver injury. Individuals can take this test for a routine evaluation of their liver function or as advised by a doctor."
+  },
+  {
+    "name": "Creatinine",
+    "price": 225,
+    "description": "The Creatinine Test is taken to evaluate the health of your kidneys by estimating the creatinine levels in your blood. People with diabetes, high blood pressure, autoimmune disorders etc., are at a higher risk of kidney damage. Symptoms like fatigue, swelling of feet, loss of appetite, lower back pain, change in the amount and frequency of urine, nausea, and vomiting can be due to the improper functioning of the kidneys. Individuals can take this test as recommended by the doctor."
+  },
+  {
+    "name": "Serum Electrolytes",
+    "price": 399,
+    "description": "A Serum Electrolyte Test helps measure the electrolytes (Sodium, Potassium and Chloride) and gives an overview of the acid-base levels in your blood. This test can help diagnose several problems related to nutrition, kidney disease or heart problems. The test is prescribed for people who complain of symptoms such as weakness, confusion, irregular heartbeat or dehydration."
+  },
+  {
+    "name": "Urine Culture (Urine C/S)",
+    "price": 650,
+    "description": "It is a urine test used to detect germs like bacteria or microbial infections of the urinary tract. Bacteria enter the body through the urethra and cause a urinary tract infection. This Urine Culture Test diagnoses an infected urinary tract. Germs like bacteria that arise in the urine can cause infections like urinary tract infections. The urinary tract includes the bladder, kidneys, urethra and ureters."
+  },
+  {
+    "name": "Estradiol / Estrogen (E2)",
+    "price": 525,
+    "description": "It is a simple blood test to determine the amount of estradiol in an individual\u2019s blood. Estradiol is a type of estrogen that the ovaries produce. It is the chief female hormone produced by nonpregnant women."
+  },
+  {
+    "name": "Complete Blood Count / Hemogram (CBC)",
+    "price": 349,
+    "description": "A CBC Test or the Complete Blood Count Test is a blood test that can help your doctor determine your health status. It measures the levels of different blood cells in your body. Testing White Blood Cells, Red Blood Cells, Platelets, and Haemoglobin helps determine your overall health status and specific health issues. This test can help detect disorders ranging from different types of anaemia, infections, fever, inflammation and cancers."
+  },
+  {
+    "name": "Cardiac Risk Markers",
+    "price": 300,
+    "description": "Cardiac Risk Markers Profile estimates the levels of cardiac risk markers in the body, which help in evaluating the functioning of the heart. The test also evaluates lipids in the body, abnormal levels of which can lead to heart attacks or other severe heart conditions. The Cardiac Risk Markers Profile is helpful to individuals who have a family history of cardiac disease or where there is an increase in the prevalence of cardiac disease at a young age. Early diagnosis of cardiac disorder can help in the overall prognosis."
+  },
+  {
+    "name": "Thyroid Profile (T3, T4, UTSH)",
+    "price": 399,
+    "description": "The Thyroid Profile Test can help with the diagnosis of a thyroid disorder. It is also helpful in monitoring the effectiveness of treatment for people who are already diagnosed with thyroid-related diseases such as Hypothyroidism, Hyperthyroidism etc. The test measures three important parameters - Total T3, Total T4, and Serum TSH levels. T3 and T4 hormones regulate the body's metabolism and growth, whereas UTSH helps control the secretions of the thyroid gland. Problems like hair loss, dry skin, unexplained weight gain or loss, mood swings, muscle cramps, lassitude, depression or anxiety, constipation, menstrual irregularities and unexplained weakness are often associated with an underlying thyroid disorder."
+  },
+  {
+    "name": "Human Leukocyte Antigen B27 (HLA B27)",
+    "price": 1200,
+    "description": "The HLA-B27 Test helps in the diagnosis of various autoimmune diseases. It helps determine whether or not your white blood cells have the HLA-B27 protein present on their surface."
+  },
+  {
+    "name": "Lipid Profile",
+    "price": 399,
+    "description": "Lipid profile is a group of blood tests that detects the levels of different types of lipids in the blood. Lipids are fatty substances that play an important role in a number of body functions. Apart from being structural components of the cells, Lipids also act as a source and mode of storage of energy for the body."
+  },
+  {
+    "name": "Renal/Kidney Function Test (RFT/KFT)",
+    "price": 449,
+    "description": "Renal Function Test (RFT), also called kidney function tests, are a group of tests performed to evaluate the functions of the kidneys. It helps diagnose inflammation, infection or damage in the kidneys. The test measures Calcium, Uric Acid, Creatinine, BUN and BUN/Creatinine Ratio in the blood to determine the health of the kidneys. The doctor prescribes a Renal Function Test for the early detection of any kidney disease. In addition, people who have diabetes, hypertension, heart disease and a family history of kidney disease also need to undergo a renal function test regularly to check for any kidney damage."
+  },
+  {
+    "name": "Total IgE",
+    "price": 375,
+    "description": "An immunoglobulin E (IgE) are antibodies made by the immune system against parasites and allergens. This test checks for the levels of IgE in blood. Higher amounts can be a sign of allergy or infection."
+  },
+  {
+    "name": "Free Thyroid Profile",
+    "price": 540,
+    "description": "The Free Thyroid Profile includes blood tests that evaluate the functioning of the thyroid gland. It can detect disorders of the thyroid gland. Free Thyroid Profile is a group of tests that measures thyroid hormone levels in their free form. It primarily measures the level of three hormones - Serum TSH levels, Free T3 and Free T4. The free thyroid profile results can give a clear indication of how efficiently the thyroid gland performs."
+  },
+  {
+    "name": "Insulin Fasting",
+    "price": 449,
+    "description": "Insulin fasting is a blood test to measure the insulin level in the blood after a fasting period. The pancreas secretes insulin to lower blood glucose levels."
+  },
+  {
+    "name": "Malarial Antigen Test",
+    "price": 350,
+    "description": "A Malaria antigen test is a blood test used in the detection of the presence of malaria antigen in the blood. It indicates the presence or absence of various species of Plasmodium present."
+  },
+  {
+    "name": "Progesterone",
+    "price": 400,
+    "description": "The Progesterone Test is a blood test that measures the progesterone levels in your body. This test helps detect the cause of infertility, risk of miscarriage, identify your ovulation day, diagnose an ectopic pregnancy and monitor a high-risk pregnancy."
+  },
+  {
+    "name": "Parathyroid Hormone (PTH)",
+    "price": 849,
+    "description": "PTH levels in the blood may be measured to determine the presence of hyperparathyroidism and its possible role in abnormal calcium levels. Parathyroid hormone, abbreviated as PTH, is also known as the life-saving hormone. The hormone regulates calcium balance in the body and is secreted by four parathyroid glands surrounding the thyroid gland. Calcium is necessary for the formation of teeth, bones, clotting, the release of hormones and the maintenance of the nervous system. The hormone targets the kidneys, intestines and bones. The primary purpose of the parathyroid hormone is to increase calcium levels. It is done via renal calcium resorption and decreasing phosphorus levels. There are two possible scenarios: A low blood calcium level stimulates the parathyroid gland to release PTH in the blood. It results in a normal calcium level. A high blood calcium level causes negative feedback and parathyroid glands stop releasing PTH. It will cause a normal blood calcium level. Any abnormalities in PTH can be detected using the PTH blood test. The test is compatible for both adults and children, irrespective of gender. Your doctor will prescribe a PTH blood test if calcium or phosphorus abnormalities are suspected. Symptoms like increased thirst, nausea, vomiting, fatigue and abdominal pains state this fact. A person needs to fast for eight to twelve hours. They can consume water during this period before the PTH test. To summarise, the primary functions of PTH are: To regulate blood calcium levels 24x7. Phosphate regulation in the body. Synthesising active form of vitamin D. India suffers from an over-functioning parathyroid gland, vitamin D deficiency and other bone disorders at a large scale due to lack of awareness and negligence towards getting routine calcium screening examinations. An over functioning parathyroid gland means hyperparathyroidism. It can result in kidney stones, depression, bone fractures, etc. Thus, getting examined routinely for calcium and parathyroid hormone is an intelligent decision towards leading a healthier lifestyle."
+  },
+  {
+    "name": "Thyroid Stimulating Hormone (TSH)",
+    "price": 249,
+    "description": "Thyroid Stimulating Hormone (TSH) is produced by the Pituitary gland and controls the functioning of your thyroid gland. Thyroid hormones regulate a variety of important functions in the body. Thyroid disorders may present symptoms such as hair loss, dry skin, mood swings, depression, menstrual irregularities, cold extremities, perfused sweating, weight gain/loss, weakness, facial swelling, anaemia, constipation, and stunted growth in children. TSH Test can help detect thyroid disorders and assess the effectiveness of ongoing treatment in people with known thyroid disorders."
+  },
+  {
+    "name": "Widal test (Slide method)",
+    "price": 150,
+    "description": "The Widal test is one method that may be used to help make a presumptive diagnosis of enteric fever, also known as typhoid fever. Strong immunity is key to living a happy life. The immune system protects our body from external sources which can harm our body, such as bacteria, etc. However, when an individual happens to consume contaminated food, it can have varying adverse effects on the body, including ingestion of bacteria like Typhoid and Paratyphoid. An individual can also get infected by Typhoid by using a toilet that was contaminated with bacteria and touching body parts without washing hands, contaminated milk products, unhygienic street food and carrier cases those asymptomatic. Typhoid fever or Typhoid is caused by Salmonella typhi bacteria. Typhoid occurs 8 to 48 hours after the bacterial infection and remains 2 to five days. A patient with Typhoid carries the bacteria in their bloodstream and intestinal tract. It's an acute, life-threatening and fever-causing illness. Typhoid fever is often confirmed through blood testing. Widal test (or Typhidot test) is a rapid serological test for the diagnosis of Typhoid. The Widal test is performed through the slide method. When the typhoid bacilli are mixed with the blood sample containing typhoid antibodies from a patient with Typhoid, agglutination occurs. This means the presence of typhoid bacteria. Physicians may recommend the Widal test when they suspect Typhoid. This test can quickly diagnose if a patient is affected by enteric or Typhoid fever. If a patient has the symptoms of fever with chill, fatigue, headache, abdominal pain, constipation, weight loss and rash spots the doctor may recommend a Widal test to the person."
+  },
+  {
+    "name": "Dengue Rapid Test (IgG/IgM)",
+    "price": 499,
+    "description": "The Dengue Rapid Test (IgG/IgM) is an immunochromatographic tool to identify and differentiate specific IgG and IgM antibodies to the dengue virus in human plasma or serum. Its purpose is to be used as an in-vitro diagnosis of current/past dengue identification. The test detects anti-dengue IgG and anti-dengue IgM antibodies differently and can be used to distinguish between present and past dengue infection."
+  },
+  {
+    "name": "Dengue Ns1 Antigen Rapid Test",
+    "price": 499,
+    "description": "The Dengue NS1 antigen rapid test helps detect the dengue virus during the acute phase of the infection. The antigen can be detected by this test after 24-48 hours of developing symptoms for up to 9 days, after which this test is not very reliable."
+  },
+  {
+    "name": "Albumin Creatinine Ratio (ACR)",
+    "price": 500,
+    "description": "The Albumin Creatinine Ratio (ACR) test values help to determine the level of protein being excreted in the urine, indicating kidney health and the overall nutritional status of the body."
+  },
+  {
+    "name": "Anti-Mullerian Hormone (AMH)",
+    "price": 1149,
+    "description": "Anti Mullerian Hormone (AMH), also known as the Mullerian-inhibiting hormone (MIH) is a naturally produced hormone by the sex organs (testes in males and ovaries in females) that determine the development and functioning of the reproductive organs. AMH levels may also indicate certain health conditions. The AMH Test measures the levels of Anti Mullerian Hormone or AMH in blood. The AMH test evaluates the level of anti-m\u00fcllerian hormone in the blood sample. AMH is a hormone produced by the gonads. In males, testicles and females, ovaries produce AMH. The role of AMH, as well as its amount, varies by gender and age. This test detects the presence of AMH in the blood. The role of AMH is vital in the development of the sex organs of the baby in the womb. The reproductive organs of a baby mature in the first weeks of pregnancy. The baby will be born with the genes to be either a male (XX genes) or a female (XY genes). AMH reduces the development of female organs while enhancing the growth of male organs. In male baby (XY) genes, high levels of AMH and other male hormones are produced. In boys, the AMH range remains high till puberty and begins to decrease after that. If there isn't enough AMH to prevent the formation of female organs, organs for both sexes are formed. Then, it is unclear to determine if a baby's genitals are male or female. It is known as Ambiguous Genitalia. In a baby with female (XX) genes, a minute level of AMH is produced. Female reproductive organs develop due to this AMH. In young girls, AMH levels stay low until adolescence. During adolescence, ovaries (glands that produce egg cells) begin to form AMH. A female has roughly one million eggs (oocytes) at birth. The oocytes decline to about 500,000 during childhood. Only a minute percentage of these remaining eggs will mature into follicles. The eggs grow mature one at a time, throughout a woman's monthly menstrual cycle. During the process of egg maturation and release, AMH has a crucial role. AMH will then gradually decrease in women after their reproductive years. It becomes undetectable after menopause. The AMH test levels in women can detect fertility issues and the ability to conceive. The test can potentially diagnose menstruation abnormalities. An AMH test is commonly used to determine a woman's ability to create fertile eggs for pregnancy. In the reproductive age group, ovaries produce hundreds of eggs. As a woman gets older, the egg number decreases. A woman's blood AMH values indicate how many viable egg cells she still has. This is her ovarian reserve. A woman with a high ovarian reserve has more chances of getting pregnant. If a woman's ovarian reserve is low, her chances of getting pregnant decrease. The AMH test helps the doctor track the health of women who have specific types of ovarian cancer. The AMH test is used for the diagnosis of ovarian cancer. In infants (males), the AMH test evaluates testicular functions. The test is repeated every three months in boys who are under treatment for testicular dysfunction. In young girls, the AMH test helps to detect the cause for male traits. In adolescent women, the AMH test assesses the number of eggs that are remaining. With the AMH test, women can understand their chances of getting pregnant and identify the onset of menopause."
+  },
+  {
+    "name": "Amylase",
+    "price": 299,
+    "description": "It is a simple blood test that measures the amount of amylase in the blood. It is a test used to diagnose or monitor pancreatic disorders like pancreatitis."
+  },
+  {
+    "name": "Androstedione",
+    "price": 1000,
+    "description": "This test measures the amount of androstenedione in the blood. Androstenedione is produced by the ovaries in women. Androgens are a group of sex hormones that play a major role in male traits and reproductive activity. Androgens may be called male hormones but are present and produced in males and females in different amounts. The two principal androgens are testosterone and androstenedione. Androstenedione is a weak androgen steroid hormone. It is a messenger of testosterone and other androgens. It also has weak androgenic activity in its own right. It has been found to maintain some estrogenic activity, similarly to other DHEA metabolites. Also, it is used as a supplement to increase muscle strength. An Androstenedione Test measures the functioning of the adrenal gland and the production of androgen hormones in women. As the adrenal gland majorly produces androstenedione, the test helps detect and diagnose related diseases like adrenal tumours and cancers. It also helps determine the cause of male physical characteristics (virilization) in females or early puberty in boys. A doctor may prescribe an Androstenedione Test to find symptoms in men like an enlarged penis, muscle growth, pubic hair and symptoms in women like infertility, excess facial or body hair, irregular periods, hair growth, male pattern baldness, etc. Abnormal or high Androstenedione test levels may cause mild to severe health complications like an adrenal tumour, adrenal cancer, adrenal hyperplasia or congenital adrenal hyperplasia. In contrast, low levels of Androstenedione may indicate adrenal insufficiency or a decline in ovarian or testicular function."
+  },
+  {
+    "name": "Anti Cyclic Citrullinated Peptide Antibody (Anti CCP)",
+    "price": 999,
+    "description": "Anti-CCP antibody is an immunological test. It detects the presence of antibodies against the cyclic citrullinated peptide (CCP) in the body. These antibodies are present in people who have rheumatoid arthritis. The Anti-CCP antibody test is a blood test that ascertains the presence of antibodies directed against the cyclic citrullinated peptide (CCP) in the body. The CCP antibodies are present in the blood of people with rheumatoid arthritis. The Anti-CCP antibody test is highly accurate and can diagnose rheumatoid arthritis at an early stage, sometimes even years before the development of any signs or symptoms."
+  },
+  {
+    "name": "Anti Nuclear Antibody / Factor (ANA / ANF)",
+    "price": 699,
+    "description": "The Antinuclear Antibody Test is used for the diagnosis of autoimmune disorders."
+  },
+  {
+    "name": "Beta HCG (Beta Human Chorionic Gonadotropin)",
+    "price": 499,
+    "description": "The Beta HCG Test combines a blood test to confirm pregnancy. This test also helps detect hepatocellular carcinoma and testicular and ovarian tumours. Beta HCG Test is performed in pregnant females to confirm pregnancy, ascertain the approximate age of the foetus, diagnose an abnormal pregnancy like ectopic pregnancy where the foetus grows outside the uterus, diagnose a potential miscarriage due to low levels of HCG, screen for Down syndrome and Trisomy 18 and diagnose gestational trophoblastic disease (GTD) - a type of pregnancy-related tumours."
+  },
+  {
+    "name": "Random Blood Sugar (RBS)",
+    "price": 199,
+    "description": "A Blood Sugar Random test measures the amount of sugar or glucose present in a person\u2019s blood. This test helps evaluate roughly if an individual is normal or likely to have diabetes. The results of this test also depend on what food you ate last time. It's a rough screening test."
+  },
+  {
+    "name": "Blood Urea Nitrogen (BUN)",
+    "price": 100,
+    "description": "BUN test is a blood test most commonly used to evaluate kidney function. Blood Urea Nitrogen Test is done as a part of the entire body checkup process. Doctors usually recommend it during the health screening process. It helps them see whether your kidneys are working properly or not. Urea Nitrogen is the waste that your body creates after you eat. The liver breaks down the protein present in your food. This produces ammonia which also contains nitrogen. The nitrogen combines with other elements like hydrogen, carbon and oxygen to form urea. This is a chemical waste product. This substance travels through your blood and eventually ends up in your kidneys. If you have healthy kidneys, they will release the BUN in the form of urine. Only a tiny amount of the same is kept in your blood. When your kidneys are unhealthy, they will fail to remove the adequate amount of BUN and leave an excessive amount of it in the blood. The Blood Urea Nitrogen Procedure helps measure the amount of the waste product present in your blood. If your BUN Test levels are not normal, then it means that you have a problem in your liver or kidneys. People who are in the early stage of kidney disease might not have any symptoms. But, the BUN Test results can help diagnose the problem, which can uncover kidney problems from an early stage. The doctor will want to see the Blood Urea Nitrogen Test results if- They suspect that you have kidney disease or damage, Your kidneys need to be evaluated because of certain chronic conditions like high blood pressure and diabetes, you are getting a blood test group to diagnose many other conditions like urinary tract obstruction, gastrointestinal bleeding, congestive heart failure and liver damage, you are on a hemodialysis or peritoneal dialysis treatment as BUN Test results will help determine the effectiveness of this treatment. India faces a lot of chronic kidney diseases. The primary cause behind this is diabetic nephropathy. The treatment cost of the same is also very high in India, but efforts are being made to lower the costs of the same. Kidney problems due to the increase in BUN are majorly seen in parts of Karnataka, Andhra Pradesh, Delhi and Maharashtra."
+  },
+  {
+    "name": "C Peptide",
+    "price": 849,
+    "description": "C Peptide test is a simple blood test to measure insulin secretion produced by the pancreas. This test gives clarity between insulin secreted by the body and insulin injected into the body in Diabetic patients. C-peptide has a half-life of 30 minutes and tends to stay in the body longer than insulin. Insulin has a half-life of 15 mins. Therefore, this test is an excellent way to measure insulin levels, especially insulin levels produced by the pancreas and exclude the insulin level in the bloodstream from injected insulin."
+  },
+  {
+    "name": "Calcium (Ca)",
+    "price": 199,
+    "description": "Macromineral calcium is needed for teeth and bone formation, blood coagulation, the release of hormones and sustaining neurological functions in our body. Most of it is stored in the bones. Being a double-edged sword, calcium's toxicity and deficiency can lead to some fatal issues. Thus, its level must lie within the normal calcium range. A calcium blood test means testing the amount of calcium present in your blood. The amount that reflects finally is useful for screening, diagnosing and monitoring for calcium-regulation disorders. Calcium levels are used to diagnose bones, teeth, kidneys, pancreas, heart and nervous system disorders. Serum calcium tests will not indicate the amount of calcium present in the bones or the lack of calcium in your diet. To know about bone health, your doctor will advise a bone density scan or a DEXA scan. Based on your history and symptoms, the doctor will prescribe a blood calcium test to assess the functioning of various organs of the body. It can also be prescribed as part of routine blood tests to screen for any dormant/subclinical infection or disease. In modern India, calcium deficiency continues to rise at a fast rate. India, the most extensive milk producer (calcium-rich product), consumes less than 50% of the recommended amount. Approximately 85% of Indians suffer from vitamin D deficiency disorders despite adequate sunlight. High-risk groups for developing calcium disorders are infants, female athletes, postmenopausal women, people with lactose intolerance or milk allergies and the elderly. Some common disorders caused due to insufficient sunlight and calcium that are inclusive to India are Rickets, Osteomalacia and Osteoporosis."
+  },
+  {
+    "name": "Chikungunya",
+    "price": 450,
+    "description": "Chikungunya test is a blood test used for the detection of IgG and IgM antibodies to the chikungunya virus. Chikungunya IgG and IgM tests are most effective if done within 4-6 days after infection."
+  },
+  {
+    "name": "Total Cholesterol",
+    "price": 199,
+    "description": "A cholesterol test is a blood test that measures the amount of cholesterol in your body. The test can help determine your risk of developing fatty deposit build-up in your arteries."
+  },
+  {
+    "name": "Cortisol (8 am)",
+    "price": 450,
+    "description": "The Blood Cortisol Test measures the total amount of cortisol hormone in the blood. The most common way of measuring Cortisol levels is a blood test (two other ways are urine and saliva tests). While these levels vary throughout the day, the Cortisol (8 am) test is conducted in the morning, when the cortisol is present in the body at higher levels. It is lowest at night. Produced by adrenal glands, Cortisol is a steroid hormone. Since most bodily cells have cortisol receptors, this hormone is responsible for (including, but not limited to) controlling blood sugar levels, regulating glucose metabolism, reducing inflammation, releasing insulin, assisting with memory formulation and controlling blood pressure. Cortisol is also known as \u201cstress hormone\u201d, as it\u2019s secreted by the adrenal glands when confronted by some external threat, stress or fear. In a fight-or-flight situation, Cortisol acts like a natural alarm system that communicates with the brain to curb nonessential functions. However, as mentioned above, this steroid hormone does much more than a stress hormone. Cortisol levels vary from person to person and thus, a patient can have low or high cortisol levels even without these uncommon syndromes. Consult your doctor for an actual diagnosis of Cortisol level for better understanding. Stress has been a big challenge for the Indian population to deal with in the past few years. About 82% of the Indian population have been recorded as stressed."
+  },
+  {
+    "name": "C-Reactive Protein - Quantitative (CRP)",
+    "price": 425,
+    "description": "A C-reactive Protein Test measures the level of CRP (produced by the liver) in your blood. CRP test helps monitor health issues linked to the inflammatory process that may be associated with infections, autoimmune conditions (lupus, rheumatoid arthritis, etc.), and long-term effects of smoking. It can help your doctor understand the severity of the disease and monitor ongoing therapy's effectiveness. Individuals can take this test as recommended by the doctor."
+  },
+  {
+    "name": "Blood Group",
+    "price": 299,
+    "description": "The Blood Group Test is performed to learn about the type of blood group a person has. The Blood Group Test becomes very important when a person either wants to donate blood to somebody or wants to receive blood from someone. (This is called \u2018blood transfusion.\u2019)"
+  },
+  {
+    "name": "Dengue NS 1 Antigen",
+    "price": 600,
+    "description": "This test is used for the qualitative detection of Dengue Virus NS1 antigen as an aid to the diagnosis of Acute Dengue infection. NS1 antigen is a nonstructural protein found in infected patients from 1st day of fever up to 5 days after the onset of fever. Dengue fever, a viral infection by nature, is transmitted to individuals through mosquito bites. In most cases, these mosquitoes belong to tropical or subtropical regions responsible for carrying the virus. That is why it is exceedingly rampant in the regions of Africa, the Caribbean Western Pacific, America and the Eastern Mediterranean. The dengue NS1 antigen test diagnoses dengue infection in the first few days itself. It is responsible for measuring the antibodies that are produced in response to dengue. This test allows for rapid detection, making it an extremely viable alternative to other dengue tests. The dengue NS1 antigen test can be prescribed to individuals showing symptoms and signs of dengue fever. Some of the symptoms include - Fever, Retro-orbital pain, Transient macular rash, Severe headache. Many individuals affected by the virus develop only mild symptoms. In some cases, affected individuals don\u2019t show any symptoms. All the signs of the dengue virus only start showing after 4-7 days of being affected by an Aedes aegypti and albopictus mosquito. A dengue NS1 antigen test can also be prescribed if an individual is vomiting continuously or has swollen glands. When it comes to India, dengue is endemic in almost all regions. The DV-2 serotype is the most common dengue serotype in the country. Frequent dengue outbreaks in the country have a severe drain on the country\u2019s economy and put stress on healthcare professionals. South states like Karnataka, Kerala and Tamil are some of the worst dengue affected states in the country. Apart from these, Rajasthan and Gujarat also witness high dengue spread every year."
+  },
+  {
+    "name": "Dehydroepiandrosterone Sulfate (DHEAS)",
+    "price": 800,
+    "description": "The Dehydroepiandrosterone Sulfate (DHEAS) test is a blood test that helps to measure the levels of DHEAS in the blood. DHEAS is a hormone produced by the adrenal glands. So the test helps to determine if the adrenal glands are working properly."
+  },
+  {
+    "name": "Hemoglobin (Hb)",
+    "price": 199,
+    "description": "The purpose of this test is the same as the name suggests. It is used to measure the Hemoglobin in your blood. Haemoglobin is the key protein in your red blood cells that carries oxygen from your lungs to the rest of the body. It also carries carbon dioxide from your organs back to the lungs. Haemoglobin is also the main component of red blood cells as it gives them their red colour. If your Hemoglobin levels are low or high, then you might have a blood disorder. If the Hemoglobin test results are lower than normal, you might have a lower count of Hemoglobin in your red blood cells than normal. This might be a condition of Anaemia. There can be different kinds of Anaemia with various symptoms like bleeding, vitamin deficiencies or chronic diseases. If the Hemoglobin test results are higher than usual, you might have a blood disorder named polycythemia vera. Higher Hemoglobin levels can also occur due to smoking, dehydration or living at a high altitude."
+  },
+  {
+    "name": "Dihydrotestosteron (DHT)",
+    "price": 2000,
+    "description": "DHT (dihydrotestosterone) test measures the hormone dihydrotestosterone in the blood. This dihydrotestosterone test is used for the diagnosis of male pattern hair loss, prostate concerns and fertility problems. DHT (dihydrotestosterone) is a testosterone metabolite. It produces similar effects to testosterone but is more powerful. DHT is three to six times stronger than testosterone. DHT comes under the classification of androgens. It is produced predominantly in the prostate and adrenal glands. Conversion of testosterone to DHT is accomplished by the enzyme 5-alpha reductase. Androgens are a component of steroids that stimulate and regulate the development and maintenance of masculine features. DHT is responsible for male pattern baldness and prostate cancer. Both testosterone and DHT bind to the same receptors. DHT, however, does it more effectively. The reactions of DHT and testosterone binding are distinct. The DHT in the body is attached to proteins in the blood, such as albumin and sex hormone-binding globulin. Less than 1% of the DHT is freely circulating in the blood. The effects of dihydrotestosterone on the human body are numerous. It is a precursor of other steroid hormones. In general, an excess of dihydrotestosterone has several health effects in males, including prostate enlargement and male pattern baldness. Hirsutism and female pattern baldness are other possible side effects. Lack of DHT production might result in sexual differentiation issues such as androgen insensitivity syndrome. Follicles, which are essentially small capsules that contain a single strand of hair, generate hair all over your body. A hair follicle passes through a growth cycle that lasts two to six years on average. The root of the hair present within the follicle will grow back out of the follicle even if you trim or shave your hair. At the end of this cycle, the hair goes into a resting phase before finally emerging a few months later. The follicle subsequently produces new hair and the cycle repeats itself. This cycle starts all over again with a new set of hair. High levels of DHT can shrink the hair follicles and speed up this cycle, causing hair to become thinner, brittle and fall out more quickly. When existing hair falls out, DHT may delay the development of new hair in your follicles."
+  },
+  {
+    "name": "Erythrocyte Sedimentation Rate (ESR)",
+    "price": 249,
+    "description": "ESR Test, or Erythrocyte Sedimentation Rate, is a blood test that can help detect inflammatory activity in the body. It helps with the diagnosis and monitoring of inflammatory problems. The ESR test may act as an indicator for conditions like unexplained fever, arthritis, vasculitis, acute and chronic infections, cancers and IBS. The test reports aid in detecting an existing medical condition and help doctors monitor inflammatory disease progress. Higher values of ESR do not always indicate an abnormality; it can be raised during pregnancy and increasing age. If ESR results are abnormal, doctors may further advise more specific tests to confirm the diagnosis. Individuals can take this test as recommended by their doctor."
+  },
+  {
+    "name": "Ferritin",
+    "price": 449,
+    "description": "Ferritin is a protein that acts as the main storage for iron inside the cells. The Ferritin Test checks for the levels of ferritin in blood to determine the levels of iron in the body and judge the body's capacity to store iron. Serum ferritin is a blood test commonly performed independently or as part of an iron profile test. Ferritin is a protein found in the blood. Its levels help to estimate the levels of iron in the body. It is also an acute-phase reactant produced during inflammation."
+  },
+  {
+    "name": "Free Triiodothyronine (FT3)",
+    "price": 190,
+    "description": "The Free T3 test determines the FT3 or free triiodothyronine hormone amounts present in the blood. The FT3 test measures the active T3 forms that are not bound to protein."
+  },
+  {
+    "name": "Covid IgG Antibody Test",
+    "price": 599,
+    "description": "COVID IgG Antibody Test is a blood test that helps assess the presence/absence of COVID antibodies in people who have been exposed to Severe Acute Respiratory Syndrome Coronavirus 2 (SARS-CoV-2). The test detects the presence of viral exposure by measuring the quantity of IgG antibodies against the virus. The COVID IgG Antibody test helps determine if you have been infected by COVID-19 in the past. COVID-19 is caused by the SARS-CoV-2 coronavirus, which affects your lungs and other body organs. The COVID IgG Antibody test is a blood test that determines the presence of antibodies against SARS-CoV-2 coronavirus. Antibodies are proteins produced by your immune system to protect against certain infections. The Covid IgG Antibody Test can be used to determine if the patient was previously sick and now immune to the infection or still at risk of being sick and spreading the virus. If you have had COVID-19 symptoms in the past or if you have had persistent symptoms for a long time COVID IgG test should be done. A COVID IgG antibody test does not detect the presence of the SARS-CoV-2 virus to diagnose COVID-19. These tests can return a negative test result even in infected patients (for example, if antibodies have not yet developed in response to the virus) or may generate false-positive results (for example, if antibodies to another coronavirus type are detected), so they should not be used to evaluate if you are currently infected or contagious (ability to infect other people)."
+  },
+  {
+    "name": "Free Thyroxine (FT4)",
+    "price": 199,
+    "description": "Thyroxine (T4) is a hormone, secreted by the thyroid gland (a small, butterfly-shaped gland located in front of the neck). The T4 hormone is essential for growth and metabolism. T4 circulates in the blood in two forms: free form (FT4) and bound form. Free Thyroxine (T4) Test measures the free form of thyroxine hormone in the blood. The human body is an ever-growing organism, and to grow, it needs energy. The energy is extracted or produced from enzymes that bond with a hormone produced by the thyroid gland, called T4. An excess of anything is always harmful to the human body. Similarly, with T4, an abnormally high amount of Free T4 can cause severe health issues. Elevated Free T4 levels may also suggest possibilities of Thyroiditis or Toxic Multinodular Goitre. The Free T4 test, formally known as Free Thyroxine Test, is recommended by doctors to accurately measure the amount of T4 hormones not being bound with blood tissues. The laboratory test is essential for the official diagnosis of Thyroiditis and measures Free T4 (FT4) or Free T4 Index (FTI). A regular Free T4 blood test can be recommended based on some studies proving that ignored, elevated measures of Free T4 can mean an increased risk of solid cancers such as lung cancer, breast cancer, and prostate cancer. Hypothyroidism is a disease wherein the thyroid gland releases excess T4 hormones, which slows down metabolism, causing problems like weight gain, uneasiness, and low tolerance to cold temperatures. You can also make Free T4 Tests a part of your health check-up if you start to feel a sudden weight change, fatigue, or anxiety. Also, check for other symptoms like dry skin, hair loss, and hand tremors. If the results of the Free T4 Test are abnormal, consult your doctor. Thyroid-related problems are on the rise in India, where 1 in every 10 Indians have hyperthyroidism. The cause can vary from a deficiency of iodine to contaminated water and environmental factors. While the common belief is that obesity and heart problems are inherited from predecessors, the fact is the typical Indian diet and a lack of exercise can be the causative factors here. With proper diet and regular exercise, thyroid disorders can be avoided to a major extent."
+  },
+  {
+    "name": "Free Testosterone",
+    "price": 849,
+    "description": "It is a blood test that generally measures the levels of free testosterone in the blood."
+  },
+  {
+    "name": "High Sensitivity C-Reactive Protein (hs-CRP)",
+    "price": 399,
+    "description": "A high-sensitivity C-reactive protein (hs-CRP) test assesses the risk of developing heart disease, coronary artery disease or stroke."
+  },
+  {
+    "name": "Malarial Parasite",
+    "price": 398,
+    "description": "The malarial parasite test detects the presence of malarial parasites in the blood, transferred by the Anopheles mosquito during the bite. The malarial parasite test is the most accurate and commonly performed test used for the diagnosis of malaria. It uses thick and thin blood smears from the patient's samples and yields results within 2-4 hours."
+  },
+  {
+    "name": "Human Immunodeficiency Virus I and II (HIV)",
+    "price": 399,
+    "description": "An HIV test is used to detect HIV (Human Immunodeficiency Virus). There are many variants of HIV, but the most common are HIV-1 and HIV-2. They cause HIV infection that affects the immune system of our body. HIV tests help detect the presence of HIV, responsible for prevalent IDS infection. HIV (human immunodeficiency virus) is a virus that attacks the body's immune system."
+  },
+  {
+    "name": "Lipase",
+    "price": 340,
+    "description": "The serum lipase test measures the amount of lipase in the body. Lipase is a protein enzyme mainly produced by the pancreas. It secretes it into the pancreatic duct, from where it flows into the duodenal part of the small intestine. Additionally, small quantities of lipase are also produced by the salivary gland, the intestine, the stomach and the liver. It helps in the breakdown and completes digestion of triglycerides (complex fats) into simple fatty acids for easy absorption into the intestines. A lipase blood test measures the amount of lipase in the blood. Cystic fibrosis, Crohn's disease or celiac disease prevents the body from producing enough lipase that interferes with fat digestion and absorption. Furthermore, when the pancreas is affected by inflammation or infection, the body produces excess lipase. A lipase blood test can determine a disease or damage to the pancreas by measuring the amount of lipase in the body. Although a small amount of lipase in the blood is normal, an increase or decrease in blood lipase levels could indicate a disorder of the pancreas. Having symptoms like abdominal pain, loss of appetite, fever, nausea, vomiting, back pain, diarrhoea and unexplained weight loss shows an abnormality in lipase level in the blood. Your doctor prescribes a blood lipase test for diagnosis and monitoring of disorders related to the pancreas and associated conditions. Blood lipase levels can rise due to its increased secretion into the blood because of cell injury in the pancreas. A high level of blood lipase is commonly seen in acute pancreatitis, chronic pancreatitis, pancreatic cancer, gallstones and pancreatic duct obstruction. Lipase concentrations usually rise within 3 to 6 hours of an acute pancreatic attack and will gain peak elevation in 24 hours and remain elevated for up to 8 to 14 days. This elevation of lipase in the blood gives insight to the doctor to start an effective treatment timely. A higher level of lipase in the blood for a longer period may have adverse medical implications. Lipase test high values give your doctor an idea of the severity of the pancreatic inflammation so that your doctor can begin an effective treatment."
+  },
+  {
+    "name": "17 OH Progesterone",
+    "price": 650,
+    "description": "17 OHP along with Cortisol and Androstenedione constitutes the best screening test for Congenital adrenal hyperplasia caused by either 11 or 21 hydroxylase deficiency. It is also useful to evaluate females with hirsutism and infertility. 17 OH progesterone means an endogenous (formed within the body) progesterone steroid hormone. 17 OH progesterone is a progesterone-related hormone. This hormone is part of the process of the biosynthesis of steroids. 17 OH progesterone is neither the raw material nor end product of the biosynthesis. Yet, it is essential for the process. The adrenal glands produce the hormone 17 Hydroxyprogesterone (17 OH progesterone). Adrenal glands are pairs of small endocrine glands. Each kidney has one on top of it. 17 OH progesterone is converted to cortisol with the help of specific enzymes or proteins. Cortisol is produced in smaller amounts all of the time. The production of cortisol increases under stressful conditions. Cortisol levels rise under both physical and emotional stress. It also has a role in regulating the metabolism and the immune system. People who lack the necessary enzymes may develop cortisol deficiency. Cortisol deficiency results in the accumulation of 17 OH progesterone in the blood. Congenital adrenal hyperplasia (CAH) is a disorder characterised by high amounts of 17 OH progesterone. It is a glandular disorder in which the adrenal glands are unable to produce enough cortisol. In congenital adrenal hyperplasia, the production of male sex hormones known as androgens is increased. Both male and female children can be born with congenital adrenal hyperplasia. It can cause ambiguous genitalia, pubic hair and acne in young children. Later in life, the disease can manifest itself in less prominent ways. Excessive body hair and a deeper voice are common symptoms of congenital adrenal hyperplasia. Congenital adrenal hyperplasia can cause dehydration or shock in newborns. Both of these are life-threatening illnesses. As a result, every newborn's initial medical evaluation should include a 17 OH progesterone test. The 17 OH progesterone is used for the diagnosis of congenital adrenal hyperplasia. When a young child, teenager or adult exhibits some of the characteristic symptoms of congenital adrenal hyperplasia, a doctor will usually request a 17 OH progesterone test. The earlier the congenital adrenal hyperplasia is detected and treated, the fewer are the chances of complications."
+  },
+  {
+    "name": "Prolactin",
+    "price": 475,
+    "description": "The Prolactin Test is a serological test that detects the prolactin levels in your blood. Prolactin is a hormone that is produced by the pituitary gland. It normally increases when a woman is pregnant or has delivered a baby. The Prolactin Test is a test that measures the prolactin levels in the blood. Prolactin is a hormone produced by the pituitary gland that is present at the base of the brain. The normal female body requires prolactin during pregnancy and after delivery. In addition, prolactin supports the growth of breasts and promotes milk production in women. The Prolactin Test is prescribed to measure the prolactin levels in the blood. Measuring the prolactin levels helps diagnose prolactinoma, menstrual irregularities, infertility in women and erectile dysfunction in men. In addition, high prolactin levels result in a condition called hyperprolactinemia. As per research, the incidence of hyperprolactinemia is high in infertile women in India. About 42.31% of infertile women have serum prolactin levels of more than 25 ng/ml. Prolactin Test is usually prescribed when checking for pituitary tumours and to identify the cause of breast milk production not brought on by childbirth (galactorrhoea), decreased libido (sex drive) in men and women, erectile dysfunction in men (Impotency), infertility in women, irregular periods or no periods (amenorrhoea)."
+  },
+  {
+    "name": "Magnesium",
+    "price": 240,
+    "description": "It is a blood test used to evaluate Magnesium levels in the body to check if there are any abnormal levels."
+  },
+  {
+    "name": "Serum Phosphorus (Ph)",
+    "price": 140,
+    "description": "It is a type of blood test that detects a lack or an excess of phosphorus levels in your blood. This can be used to diagnose liver and kidney dysfunctions or other health problems."
+  },
+  {
+    "name": "Platelet Count",
+    "price": 200,
+    "description": "The Platelet Count test determines the number of platelets in a sample of your blood as part of a health examination. It is used for diagnosing or monitoring conditions that affect the number of platelets, such as a bleeding disorder, bone marrow disease or other underlying conditions. Platelets, also known as thrombocytes, are tiny blood cells that aid in the clotting of blood. The process of clotting helps you stop bleeding after an injury. Platelet testing comes under two categories, Platelet count tests and Platelet function tests. A Platelet count test is a lab test that determines the number of platelets in the blood. Thrombocytopenia is a term that denotes a platelet count that is lower than average. This disease might cause you to bleed excessively after a cut or any other bleeding incident. On the other hand, Thrombocytosis is defined as a condition where the platelet count is higher than usual. This might cause your blood to clot more than it should; as blood clots can restrict blood flow, they can be hazardous. Platelets are blood components that aid in clotting. In their inactive state, they form little plates. When a blood vessel is injured, it will send out a signal. Platelets will respond by moving to the location and changing into their active shape. The platelet count in a standard blood sample varies between 150,000 and 450,000 platelets per microliter. Thrombocytosis is a state of having more than 450,000 platelets. On the other hand, Thrombocytopenia is the state of having less than 150,000 platelets. A regular blood test termed a complete blood count (CBC) will determine the platelet count in the blood. As stated before, Thrombocytosis is the medical word for having too many platelets. There are two types. Primary or Essential Thrombocytosis, where an increase in platelets is caused by abnormal cells in the bone marrow, but the origin is unknown. Secondary Thrombocytosis is the same as Primary Thrombocytosis. The slight difference is that it can be caused by a chronic illness or diseases and conditions like anaemia, cancer, inflammation or infection. Symptoms include spontaneous blood clots in the legs and arms, leading to a heart attack or stroke if left untreated. In extreme scenarios, the individual may need plateletpheresis treatment. The platelet count is reduced by extracting the blood, isolating the platelets and restoring the red blood cells to the body. The symptoms of secondary Thrombocytosis are generally based on the underlying disease. For example, if an individual has an infection or anaemia, they treat the condition or anaemia and their platelet count drops. Thrombocytopenia is a state in which the platelets are insufficient. Sustaining injuries is typical and bleeding from the gums, nose or GI tract is common. When anything prevents the body from generating platelets, the platelet count declines. Blood clots, heart attacks or strokes can occur if too many platelets, too few platelets or improperly functioning platelets are present. So when there\u2019s a familial link, it's a good idea to consult the doctor. The Platelet Count test will help the doctor diagnose when an individual has episodes of unexplained or extended bleeding or other symptoms related to a platelet problem."
+  },
+  {
+    "name": "Potassium (K+)",
+    "price": 299,
+    "description": "It is a simple blood test to check the blood levels for the electrolyte potassium. This electrolyte is vital for the functioning of muscles and nerves."
+  },
+  {
+    "name": "Protein creatinine ratio (Urine)",
+    "price": 320,
+    "description": "The protein creatinine test is a screening test in patients suffering from diabetes and hypertension and who are at risk of developing kidney diseases. Plasma proteins are essential for the survival of all living things. The kidneys, which are two organs located near the lower back, filter the blood, remove waste products and expel them from the body through urine. When the kidneys are functioning well, the proteins after filtration are reabsorbed and returned to the bloodstream. Creatinine is a result of muscle metabolism that forms at a steady rate in the urine. The protein creatinine ratio is obtained after doing both a urine creatinine and a random urine protein test. The results come accurate after the 24-hour urine protein test. A random urine protein creatinine ratio is sometimes replaced with a 24-hour urine protein sample. Preserving all of the urine for 24 hours is challenging for adults and impossible for infants and children. If the kidneys are damaged or impaired due to other factors, they lose their ability to filter. Damaged kidneys allow detectable amounts of protein to leak into the urine. The presence of albumin in the urine can be detected using a dipstick test. Urine protein creatinine ratio test measures protein and creatinine levels in the urine sample. Normal protein excretion in the urine is less than 150 mg per day, while albumin excretion is less than 30 mg per day. This test estimates the amount of protein you excrete in your urine per day and does not require collecting a 24-hour sample of your urine for testing. Infections, stress, pregnancy, nutrition, cold exposure and intense exercise can cause temporary elevations in levels. Protein and creatinine in the urine for an extended time may indicate renal damage. Abnormal protein creatinine ratio in the urine due to underlying condition requires more testing to discover the cause. The liver produces a protein called albumin. This protein accounts for around 50% to 60% of the protein in the blood. Albumin is a critical component in detecting a probable kidney illness. The amount of albumin in the urine increases as kidney damage develops. Proteinuria or protein in the urine is a common symptom of chronic conditions like diabetes and hypertension. Increasing levels of protein in the urine indicate worsening kidney impairment. When it comes to early kidney injury, there are generally no indications or symptoms. Fluid build-up (oedema), shortness of breath, nausea and exhaustion may develop as kidney failure continues and protein loss is significant. Proteinuria can also be due to excessive protein synthesis, as observed in multiple myeloma, lymphoma and amyloidosis. In persons with diabetes or hypertension, the albumin in the urine (albuminuria) is a sensitive sign of kidney damage. Patients with these diseases should get urine checked for protein creatinine ratio rather than total urine protein regularly, especially in a country like India. In India, three in every ten people have hypertension. Further, hypertension is responsible for nearly 17.5% of all deaths in India."
+  },
+  {
+    "name": "Aspartate Aminotransferase (AST / SGOT)",
+    "price": 199,
+    "description": "SGOT, also known as the AST test, is a component of a liver function test to diagnose liver damage or liver disease."
+  },
+  {
+    "name": "Alanine Transaminase (SGPT / ALT)",
+    "price": 175,
+    "description": "The SGPT (ALT) test, with ALT standing for alanine aminotransferase, is a blood test used to detect liver damage. The liver is one of the important organs of the human body carrying out several vital roles. The liver helps in the production of bile, which in turn helps to digest food. It also helps in the removal of waste products and toxins from the blood and the production of proteins and cholesterol. Occurrence of diseases such as cirrhosis and hepatitis or intake of certain drugs can cause harm to the liver. The enzyme alanine aminotransferase is mainly found in the liver. This ALT enzyme is used by the body for the breakdown of food and the production of energy. At normal times, ALT is found inside the liver cells. But in case of liver damage or disease, ALT is released into the bloodstream. This results in higher levels of ALT in the blood, which is often the first sign of liver damage. The SGPT (ALT) test is therefore done to determine the levels of ALT in the blood. This would, in turn, help to determine liver damage or disease. Symptoms that call for the SGPT (ALT) test include dark urine, nausea, stomach pain, vomiting and yellowish eyes and skin. Patients with any of these symptoms are advised by doctors to undergo the test immediately. Liver disease has been stated as the tenth most common disease in India by the World Health Organization. Liver diseases are known to affect every one in five Indians. The most common of them is cirrhosis. Currently, the primary cause of liver cirrhosis is excessive alcohol consumption, Hepatitis B and C and non-alcoholic fatty liver disease. Cirrhosis can be associated with other complications, such as ascites, variceal bleeding and other infections. Blood samples are required to carry out the SGPT (ALT) test. Most often, the blood is collected from a vein in the arm."
+  },
+  {
+    "name": "Hepatitis B Surface Antigen (HBsAg)",
+    "price": 549,
+    "description": "Hepatitis B Surface Antigen (HBsAg), also known as Australia antigen is present on the surface of the Hepatitis B virus (HBV). This test detects the presence of Hepatitis B Surface Antigen (HBsAg) in the blood. Several different forms of viruses exist. Some of them cause minor symptoms that are hard to notice and easy to address, while others may be more serious or infectious. Viruses typically enter and affect a particular part of the body, lowering its functioning and efficiency. The Hepatitis B virus is very infectious and usually attacks the liver. The Hepatitis B virus can be easily tested using a simple blood test that can be taken at any time during the day. A Hepatitis B panel test can help give information about past exposure to Hepatitis, identify current infection and reveal immunity to the virus. From a range of examinations, the HBsAg test shows if the Hepatitis infection currently exists in your body and if you run the risk of passing it to others. Other tests conducted as part of the Hepatitis panel include HBsAb, HBcAb and IgM. These tests can show whether immunity to Hepatitis has been built or if there have been past infections. The HBsAg test is used in the diagnosis of Hepatitis in cases where symptoms including pain, loss of appetite, discolouration of the skin, urine and stool or fatigue are experienced. Although difficult to ascertain, some of the risk factors that could cause Hepatitis includes passing or exchanging body fluids, blood and semen. While the HBsAg blood test is important when your doctor notices any of these symptoms, it may also be suggested if you have recently travelled to places where Hepatitis is common. Hepatitis B is the most common yet serious liver condition. Known as a silent epidemic, it is hard to know when you have been infected since there are no visible symptoms in the initial stages. Today, Hepatitis B can be easily diagnosed with the HBsAg blood test and treated quickly. Hepatitis B is widely prevalent in India, with a greater concentration in Arunachal Pradesh and the Andamans. There is a significant increase in the prevalence of the condition among tribal populations compared to non-tribal Indians. The most important reason for outbreaks is infection through unsterilized or inadequately sterilized syringes and needles. The case of the acute outbreak in Modasa, Gujarat, is a classic case in point. The overall rate of Hepatitis B in India stands between 3 and 4%."
+  },
+  {
+    "name": "Serum Sodium (Na)",
+    "price": 199,
+    "description": "The Sodium Serum test is used for measuring the amount of sodium or Na+ present in the body."
+  },
+  {
+    "name": "ASCA IgA",
+    "price": 960,
+    "description": "This test detects allergy to Saccharomyces cerevisiae, a common yeast used in cooking."
+  },
+  {
+    "name": "Triglycerides",
+    "price": 180,
+    "description": "A Triglycerides test measures the level of triglycerides in the blood. In the body, Triglycerides are a form of fat. The Triglycerides test determines the risk of heart disease and tracks the success of lipid-lowering medication. Individuals may have high triglyceride levels in their blood if they consume more calories than they burn, especially carbs and fats. High triglycerides might increase the chances of having a heart attack or stroke. In the blood, triglycerides are a form of fat. When an individual undergoes a TG Test If their triglyceride level is high, the doctors will advise what they should do to lower their triglycerides by making lifestyle adjustments. The body transforms unused energy from meals into triglycerides deposited in fat cells after an individual consumes them. Triglycerides provide power to the body between meals. In the body, triglycerides are a form of fat. Extra calories are converted to triglycerides if an individual consumes more calories than they require. The fat cells store the triglycerides for later use. Then, Triglycerides are released into the bloodstream when the body needs energy. They give fuel for the muscles to operate. A lipid profile generally includes a Triglycerides test. Fat is referred to as lipid. A lipid profile blood test is a test that determines the number of fats in the blood. It contains triglycerides and cholesterol, which are waxy, fatty molecules found in every cell in the body. If the LDL or bad cholesterol and triglyceride levels are high, an individual may be at risk of a heart attack or stroke. A lipid profile may be requested as part of a standard test or to identify or monitor cardiac issues. The majority of triglycerides in the blood are transported by lipoproteins known as very-low-density lipoproteins (VLDL). High triglycerides levels have been related to an increased risk of cardiovascular disease (CVD) in the blood, while this explanation is unknown. Lack of exercise, being overweight, smoking cigarettes, eating excessive alcohol and having medical problems like diabetes and renal disease can contribute to high triglyceride levels and CVD risk. A variety of factors can raise triglyceride levels like having obesity, eating more calories than you burn off regularly, especially if an individual consumes a lot of sugar. Excessive alcohol consumption, certain medicines, thyroid diseases, kidney or liver diseases, poorly controlled Type 2 diabetes, a few genetic disorders and cigarette smoking can also raise the levels of TG. Every year, healthy persons should receive a lipid profile, including a triglycerides test. If individuals have specific risk factors for heart disease, they may need to be checked more frequently."
+  },
+  {
+    "name": "Testosterone",
+    "price": 349,
+    "description": "The testosterone test determines the amount of testosterone in the blood. When the testosterone levels are too high or low, both men and women experience health issues. A testosterone test detects the amount of testosterone in the blood sample. Testosterone is a hormone that helps in detecting sexual dysfunction, PCOS, hypogonadism and cancer."
+  },
+  {
+    "name": "ASCA IgG",
+    "price": 960,
+    "description": "This test is used to distinguish between the two most common types of inflammatory bowel disease, Crohn's disease, and ulcerative colitis. Testing usually includes detecting the IgG antibodies against Saccharomyces cerevisiae."
+  },
+  {
+    "name": "Uric Acid",
+    "price": 399,
+    "description": "A uric acid blood test determines how much uric acid is present in the blood. Uric acid is a nitrogenous compound formed as a waste product of the metabolic activities of purines. Purines are compounds that cells use to make the building blocks of DNA and RNA. They are generally found in some foods and drinks like seafood, alcohol, sweetened beverages, etc. Uric acid is a waste product from the purines, which is dissolved in the blood and travels to the kidneys and from the kidneys, it is excreted in the urine. Most of the uric acid is filtered and eliminated by the kidneys. With stool, another small amount is eliminated. But if there is a high level of purines, it leads to a high content of uric acid in the blood. It may cause many health problems like gouty arthritis, kidney stones and kidney failure. So to measure the amount of uric acid in the blood, the uric acid test is done by taking blood as a sample. Symptoms like pain, inflammation and kidney stones in the human body recommend a uric acid test. Healthcare professionals recommend a uric acid test for diagnosis and monitoring when a person suffers from gout or kidney stones. A uric acid blood test is also prescribed for a person who has been treated for cancer with chemotherapy or radiation therapy as these treatment methods kill cancer cells, which may increase the formation of uric acid and cause several health disorders. In addition to the uric acid test, several other tests can detect diseases such as gouty arthritis and kidney problems. For this, you may have to undergo a test of your blood and urine to find out what's exactly causing the high levels of uric acid in the blood. Also, to confirm the diagnosis of the disease, other specific tests may be taken. A needle may be used to take a sample of joint fluid which will be sent to the lab to rule out another morbidity. Moreover, if your doctor doubts kidney stones, then you may also have to undergo a urinalysis. During urinalysis, crystals, blood and white blood cells are screened."
+  },
+  {
+    "name": "Albumin",
+    "price": 99,
+    "description": "It is frequently ordered as a part of routine physical examination when your doctor thinks that you have symptoms of liver or kidney disease; sometimes when you have symptoms associated with malnutrition. Frequently, it is ordered prior to any planned surgery to check the nutritional status. Proteins circulate in your body via blood to maintain fluid balance. Albumin is a protein that is synthesised by the liver. It is one of the proteins that are abundantly present in your blood. Albumin helps maintain fluid balance by preventing the fluid from leaking out of the blood vessels. It gives your body the necessary proteins for the growth and repair of cells and tissues. This protein also helps in the transportation of vital hormones and nutrients. You are at a higher risk of developing abnormal albumin levels if you have an open wound or burn or just got out of surgery. The Albumin Test is a simple blood test that measures the level of albumin in your blood. For example, when you undergo surgery, get burnt or have multiple open wounds, your body\u2019s albumin levels drop. To ensure that your body has the right amount of albumin, your doctor will prescribe the Albumin Test. If you have abnormal albumin levels that are not caused by any of the above reasons, it is a sign that your kidneys or liver are not functioning properly. A healthy liver makes albumin from the protein consumed through food. If your liver stops functioning or is functioning incorrectly, this process stops or gets reduced. Albumin levels drop because of improper functioning of the liver or kidney. The Albumin Test is thus done to rule out conditions of the kidney, liver and pancreas. The purpose of the Albumin Test is to evaluate the levels of albumin in your blood. If your albumin levels are too high or too low, it can indicate an underlying health condition. Screening of any disease is done when you try to identify the health condition before any symptoms arise. While screening for albumin is not usually conducted, you may include the Albumin Test with a series of other tests in a comprehensive metabolic panel. Your doctor will advise a Serum Albumin Test as a part of the entire metabolic panel required to check for kidney issues. This metabolic panel includes tests for levels of Creatinine, Prealbumin, Blood Urea Nitrogen, Albumin. Studies have shown that the Serum Albumin Test can be used as a prognostic marker for Covid-19 in India. In addition, the research stated that Covid-19 patients had lower albumin levels in their blood, which plays a vital role in their survival."
+  },
+  {
+    "name": "Vitamin B12",
+    "price": 549,
+    "description": "The Vitamin B12 Test is a serological test used to measure the levels of vitamin B12 in your blood. Your body needs Vitamin B12 to make blood cells and ensure the proper functioning of the brain and nervous system. Vitamin B12 deficiency results in the reduction of red blood cells, which is known as pernicious anaemia or megaloblastic anaemia. The Vitamin B12 Test is prescribed as a diagnostic test for macrocytic anaemia and megaloblastic anaemia or pernicious anaemia. For people whose regular reports show signs of these types of anaemias, the Vitamin B12 Test helps confirm the diagnosis. The Vitamin B12 Test is done by taking your blood sample. You can get this test done along with your regular tests or as a single blood test."
+  },
+  {
+    "name": "Venereal Disease Research Laboratory Test (VDRL)",
+    "price": 135,
+    "description": "VDRL means venereal disease research laboratory (VDRL) test. It is a serological test for detecting syphilis infection. The VDRL test measures antibodies produced in response to the bacteria causing syphilis infection."
+  },
+  {
+    "name": "Prothrombin Time & International Normalized Ratio (PT-INR)",
+    "price": 685,
+    "description": "Prothrombin time is a blood test to measure the time that the plasma (Liquid portion of the blood) takes to clot."
+  },
+  {
+    "name": "Insulin Post Prandial (PP)",
+    "price": 450,
+    "description": "The Insulin PP test measures the amount of insulin in your blood after a meal. Insulin is a hormone that helps move the glucose or the blood sugar from your bloodstream into your cells."
+  },
+  {
+    "name": "Vitamin D 1,25 - Dihydroxy",
+    "price": 2050,
+    "description": "A Vitamin D 1,25 Dihydroxy Blood Test is ordered when investigating a problem related to bone metabolism or parathyroid function, possible Vitamin D deficiency or malabsorption."
+  },
+  {
+    "name": "Rheumatoid Factor (RA) - Quantitative",
+    "price": 499,
+    "description": "The Rheumatoid Factor (RA) quantitative test helps to detect the levels of rheumatoid factor in the blood and to diagnose the presence of an autoimmune disease such as Rheumatoid Arthritis. A healthy immune system is vital to the functioning of the human body. The immune system protects the body against disease-causing microorganisms. However, immune deficiency diseases decrease the body\u2019s ability to fight invaders, causing vulnerability to infections. In response to an unknown trigger, the immune system may begin producing antibodies that, instead of fighting infections, attack the body's tissues. One such autoimmune disease is Rheumatoid Arthritis. It is caused by the presence of the rheumatoid factor, which is an autoantibody produced by the immune system. Rheumatoid Arthritis is a systemic autoimmune disease that is chronic (for a long time). It causes inflammation, stiffness, pain and gradually causes permanent joint damage. Usually, it occurs after the age of 40 years. Women are more prone to be affected by it as compared to men. A doctor may recommend the Rheumatoid Factor (RA) quantitative test if a patient is showing symptoms of Rheumatoid Arthritis. RA quantitative test detects the level of rheumatoid factor in the blood, which aids in diagnosing autoimmune diseases such as Rheumatoid Arthritis. If the X-ray of the patient shows swelling in the joint capsules along with the loss of cartilage and bone, an RF test is advised. The results of a rheumatoid factor quantitative test are based on a blood sample."
+  },
+  {
+    "name": "Prostate Specific Antigen (PSA for Men)",
+    "price": 600,
+    "description": "Prostate-Specific Antigen or PSA is a protein secreted by the prostate gland which serves as a marker for conditions affecting the prostate gland including prostate cancer, Benign Prostatic Hyperplasia (BPH), and prostatitis (inflammation of the prostate gland). The PSA test helps determine the levels of a prostate-specific antigen in the blood. It is used to screen for prostate cancer and benign prostatic hyperplasia. Prostate-specific antigen (PSA) is a substance produced by the prostate in males. The prostate is a small gland in the male reproductive system. It secretes a fluid that forms part of the semen. The levels of PSA in the blood are often elevated due to prostate cancer in men. The PSA test was approved in 1986 by the US Food and Drug Administration (FDA) to monitor the prognosis of prostate cancer in men who had been diagnosed with the condition. In 1994, the use of the PSA test was approved in conjunction with a digital rectal exam (DRE) to diagnose prostate cancer in asymptomatic men. A PSA test along with a DRE helps doctors diagnose the medical condition. The PSA test detects prostate cancer, prostate infection (prostatitis) and benign prostate enlargement. Although prostatitis and prostate enlargement are benign conditions, there is no evidence that states that men with these conditions will not develop prostate cancer. Studies show that PSA ranges are lower in Indians as compared to the Western population. The PSA test is not a very accurate test as it can give you false-positive results due to the following reasons: If you have had sex in the last 48 hours If you have masturbated in the last 48 hours If you have had a rectal exam If you have had a urinary catheter inserted If you have had anal sex in the last 48 hours Every 3 in 4 men with a raised PSA level will not develop prostate cancer. The PSA test may also miss out on about 15% of cancers. Advantages of the PSA test: You can relax if your PSA test results are normal. You can detect cancer early with this test and get treated on time. Disadvantages of the PSA test: It can give false-positive or false-negative results. The PSA test cannot differentiate between slow-growing cancer and fast-growing cancer."
+  },
+  {
+    "name": "CPK (Muscle / Brain)",
+    "price": 225,
+    "description": "Creatine Kinase MB (CK-MB) test measures the amount of CK-MB enzyme. They are mostly found in heart muscles and elevated level of CK-MB is an indication of heart damage or heart attack. It also monitors the efficacy of ongoing heart treatment."
+  },
+  {
+    "name": "Insulin Antibodies",
+    "price": 949,
+    "description": "Anti Insulin Antibodies test is performed to detect if your body has produced sufficient antibodies against insulin, a hormone secreted by your pancreas. It also detects the risk of acquiring type 1 diabetes. If you experience sudden weight loss, slow healing of wounds, dehydration, and frequent urination, you will be asked to take this test. This test is performed using blood samples extracted via venipuncture (extraction from a vein, usually the arm). You will be asked to fast for over 8 hours the night before the test and refrain from all liquids except water. If you are on any medication, speak to your doctor about it before the test. This test is considered safe for all patients."
+  },
+  {
+    "name": "Troponin I Rapid Test",
+    "price": 1499,
+    "description": "This high sensitive test is not only used to diagnose a heart attack but also helps identify future cardiac risk in people without symptoms"
+  },
+  {
+    "name": "Blood Ketones",
+    "price": 300,
+    "description": "A blood ketone test measures the level of ketones present in the blood. Ketones are substances produced by the body when there is an inadequate supply of glucose, which is the main energy source of the body. At these times, fat is used as a fuel. The metabolism of fat gives rise to ketone bodies in the blood. This condition is most commonly seen with people suffering from type 1 diabetes, further giving rise to a condition known as diabetic ketosis (DKA). However, type 2 diabetes is also capable of causing DKA. DKA leads to severe insulin deficiency, a high blood glucose level and disruption of the acid-base balance of the body. Symptoms of excessive ketones in the blood are dehydration, shortness of breath, nausea, vomiting, fruity scent of the breath, confusion and ultimately coma. Ketone bodies are of three different types: beta-hydroxybutyrate, acetoacetate and acetone. Among them, beta-hydroxybutyrate makes up 75 per cent of the total ketones. Different blood ketone tests measure the presence of different ketone bodies in the blood. Apart from the blood ketone test, urine ketone tests can also be performed. The blood ketone test helps to indicate the current state of ketone accumulation in blood, while the urine tests help to indicate the recent state of ketone accumulation in the blood. Blood ketone tests are mostly prescribed to patients who have diabetes along with symptoms of DKA. It is also recommended to sick or pregnant individuals who can develop DKA. The incidence of DKA is quite common in India. DKA mostly affects infants, children and individuals who are less than 24 years of age. DKA is found to affect 15 to 70 per cent of children and infants with diabetes. The overall mortality associated with DKA ranges from 4 to 10 per cent."
+  },
+  {
+    "name": "Adenosine Deaminase",
+    "price": 450,
+    "description": "Adenosine deaminase (ADA) is a protein synthesised by cells throughout the body. ADA functions by activating lymphocytes. The lymphocytes are a kind of white blood cells that help in the immunological response to infections. When the immune system is triggered, with Mycobacterium tuberculosis (the bacteria that causes tuberculosis or TB), ADA increases in the tissues where bacilli are present. The adenosine deaminase test detects the level of adenosine deaminase protein in the pleural (tissues that line between lungs and chest wall) fluid. The adenosine deaminase test is used for the diagnosis of pleural tuberculosis infection. Adenosine Deaminase or ADA is an enzyme found in human bodies that helps with purine metabolism. The primary purpose of ADA in humans is to keep the immune system established and maintained. Tuberculosis (TB) is a potentially fatal infectious ailment affecting the lungs. It is transmitted from person to person through droplets released into the air by coughs and sneezes. This contagious disease has the potential to spread to other parts of your body, including the brain and spine. Mycobacterium tuberculosis is a causative agent of TB. After a severe, typically long-term tuberculosis infection, an accumulation of fluid in the space between the lining of the lungs and the lung tissue (pleural space) is known as tuberculous pleural effusion. Pleurae are membranes that line the inside of each lung and cover the chest cavity. During inhalation and expiration, small volumes of pleural fluid continuously lubricate lung movement against these membranes and the membranes against each other. Pleural inflammation (pleurisy or pleuritis) can be due to infection and other diseases. Tuberculosis can spread to the lungs and pleura, producing chest pain, a persistent cough and shortness of breath. Because these symptoms can be associated with a range of other problems, it's critical to figure out what's causing them. The early diagnosis helps the doctor to begin treatment. However, because there may be a large amount of fluid and very few bacteria present, detecting mycobacteria in pleural fluid can be difficult. The adenosine deaminase test result isn't specific and can't substitute culture for tuberculosis diagnosis. The adenosine deaminase test results can be positive even when bacteria numbers are low. Therefore, it can help determine whether tuberculosis is the most likely cause. The adenosine deaminase (ADA) test is a diagnostic test. Still, it is used along with other tests like pleural fluid analysis, acid-fast bacillus (AFB) smear and culture and tuberculosis molecular testing to detect if a person has the Mycobacterium tuberculosis infection. Although it might take a few days or weeks to complete, culture is the \"gold standard\" for diagnosing tuberculosis and guiding treatment. The AFB smear and molecular testing are quick tests, but they require many bacteria in the fluid to identify them. Although the adenosine deaminase test chart is not conclusive, it is a quick test that can show increased levels even when only a few bacteria are present. Until the culture findings are obtained, the adenosine deaminase reports can help the doctor guide treatment."
+  },
+  {
+    "name": "Stool Analysis",
+    "price": 225,
+    "description": "Stool analysis means a series of tests that examines both the physical and chemical characteristics of the stool for the detection of digestive tract infections as well as cancer."
+  },
+  {
+    "name": "HCV Antibody",
+    "price": 575,
+    "description": "It is a blood test used to check if a person has or ever has been infected with the hepatitis C virus."
+  },
+  {
+    "name": "D-DIMER",
+    "price": 1200,
+    "description": "Our body creates substances to help heal and stay healthy. Among these is a protein called D-dimer, which is a small protein made when blood clots dissolve in the body. A D-dimer test checks for D-dimer levels in the blood. D-dimer is one of the protein fragments produced when a blood clot gets dissolved in the body. It is normally undetectable or detectable at a very low level unless the body is forming and breaking down blood clots. Then, its level in the blood can significantly rise. This test detects D-dimer in the blood. Blood clotting is an essential process in the body. It prevents excessive blood loss during injury. Without blood clotting, you stand the chance of losing too much blood, which can prove fatal. In the normal course, blood clots dissolve as the injury heals. Sometimes, blood clots may not dissolve after the injury heals. In other cases, they may sometimes form without a real injury. These are typical signs of a blood clotting disorder that can prove quite dangerous. Clotting episodes are usually referred to as thrombotic episodes. A D-dimer test is conducted to eliminate the possibility of thrombotic episodes and to help diagnose other conditions related to thrombosis. For individuals at risk of thrombosis, a D-dimer blood test can determine the likely presence of a clot. The D-dimer report will let you know whether further investigations are required. Detection of blood clots is essential since they can obstruct blood flow in the body. In the legs, they can cut off supply and cause pain, swelling and tissue damage. A clot in the lungs, called a pulmonary embolism, may prevent breathing and prove fatal. The major cause of heart attacks is clots in the arteries. When an artery in the brain is blocked, it leads to a stroke. In such cases, the D-dimer test can prove exceptionally useful. In addition, the D-dimer test is very valuable in diagnosing a condition called DIC or disseminated intravascular coagulation. The body forms numerous small blood clots that leave the individual prone to excessive bleeding. In addition, the D-dimer blood test also helps understand the risk and progression in cases of pneumonia and COVID-19. Cases of venous thromboembolism or thrombosis in the veins are as prevalent in India as anywhere else in the world. Awareness of the condition is significantly lower in the country. With an incidence of about 17 for every 10,000 admissions, the cases have been noted to be on the rise, owing mainly due to greater awareness among the physician community. This increased awareness could help reduce the severity of the cases as well as the number of related deaths."
+  }
+]

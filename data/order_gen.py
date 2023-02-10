@@ -5,9 +5,6 @@ from db_enums import Status, Payment, Delivery
 import json
 import uuid
 
-
-
-
 def random_date(days:int) -> str:
     """Generates random date from now to now + timedelta
     timedelta is in days"""
@@ -119,4 +116,4 @@ def product_order_gen():
 
 
 if __name__ == "__main__":
-    product_order_gen()
+    pass
