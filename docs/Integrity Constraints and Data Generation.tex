@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{paralist}
+\usepackage{blindtext}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=black
+    }
+
+\title{Integrity Constraints and Data Generation - DrugVeda}
+% \author{Anirudh S. Kumar (2021517), Aakarsh Jain (2021507)}
+\author{
+    \\\vspace{0em} Anirudh S. Kumar \\\vspace{-0.5em}
+    \footnotesize{Roll Number - 2021517}\\\vspace{-0.5em}
+    \footnotesize{IIIT - Delhi}\\\vspace{-0.5em}
+    \footnotesize{\href{mailto:anirudh21517@iiitd.ac.in}{\texttt{anirudh21517@iiitd.ac.in}}}
+  \and
+    \\\vspace{0em} Aakarsh Jain \\\vspace{-0.5em}
+    \footnotesize{Roll Number - 2021507}\\\vspace{-0.5em}
+    \footnotesize{IIIT - Delhi}\\\vspace{-0.5em}
+    \footnotesize{\href{mailto:aakarsh21507@iiitd.ac.in}{\texttt{aakarsh21507@iiitd.ac.in}}} 
+    \vspace{1em}
+}
+
+
+
+\date{February 10, 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Data Generation and Population}
+
+\subsection{Data Generation}
+\begin{itemize}
+    \item Primary Data was generated through 2 sources
+    \begin{itemize}
+        \item For \textcolor{blue}{\texttt{products}}, \textcolor{blue}{\texttt{tests}} and \textcolor{blue}{\texttt{brands}}, we scrapped  \href{https://pharmeasy.in/}{\underline{Pharmeasy}}
+        \item For \textcolor{blue}{\texttt{users}}, \textcolor{blue}{\texttt{retailers}}, \textcolor{blue}{\texttt{medical\_labs}} and \textcolor{blue}{\texttt{suppliers}}, we used 
+        \href{https://mockaroo.com/}{\underline{Mockaroo}} to generate the data
+    \end{itemize}
+
+    \item Secondary data, like the orders and inventory for retailers, was made with the help of python.
+
+    \item We made sure that whatever data we were generating would be consistent with the logic of our application while also having variety.
+\end{itemize}
+
+\subsection{Data Population}
+
+All the data generated in the above process was stored inside JSON files, which were then parsed via Python to insert into the database.
+
+\begin{itemize}
+    \item We used SQLAlchemy as ORM to make the creation of the database process easier.
+    \item We then used \texttt{mysql.connector} module in python to parse the JSON files and insert the data into the database
+\end{itemize}
+
+\section{Integrity Constraints}
+
+For most of the tables, we tried to make a special ID column to ensure there is guaranteed one unique column among all the columns, which also served as the foreign key to different tables.
+For example :-
+\begin{itemize}
+    \item Primary Key for \textcolor{blue}{\texttt{customers}} table is set to \texttt{CustomerID}
+    \item Primary key for \textcolor{blue}{\texttt{appointments}} table is set to \texttt{AppointmentID}
+\end{itemize}
+
+However, certain tables do not have an explicit primary key but instead use a combination of foreign keys to identify a row uniquely. An example of this is the \textcolor{blue}{\texttt{inventory}} table, where every row has a uniq \texttt{BatchID} and \texttt{RetailerID} pair. 
+
+\end{document}
