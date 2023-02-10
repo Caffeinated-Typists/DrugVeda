@@ -165,7 +165,79 @@ def appointments_gen():
     # dumping appointments into appointments.json
     json.dump(appointments, open("json/appointments.json", "w"), indent=2)
 
+def product_supplier_gen():
+    """Fills the product_supplier table"""
+    
+    # get all the products
+    product_ids:list[tuple(str, float)] = []
 
+    # storing all product IDs
+    with open("json/products.json", "r") as f:
+        data = json.load(f)
+        
+        for category in data:
+            for subcategory in data[category]["subcategories"]:
+                for product in data[category]["subcategories"][subcategory]:
+                    product_ids.append((product["id"], product["price"]))
+
+    # get all the suppliers
+    supplier_ids:list[str] = []
+
+    # storing all supplier IDs
+    with open("json/supplier.json", "r") as f:
+        data = json.load(f)
+        for supplier in data:
+            supplier_ids.append(supplier["user_id"])
+    
+    # generating product_supplier
+    product_suppliers:list[dict[str]] = []
+    for _ in range(100):
+        prod_supp_obj:dict[str] = {}
+
+        prod_supp_obj["product_id"] = sample(product_ids, 1)[0][0]
+        prod_supp_obj["supplier_id"] = sample(supplier_ids, 1)[0]
+        product_suppliers.append(prod_supp_obj)
+
+    json.dump(product_suppliers, open("json/product_supplier.json", "w"), indent=2)
+
+def batch_gen():
+    """Generate all the batches"""
+
+    # loading all the products
+    products = []
+    with open("json/products.json", "r") as f:
+        products = json.load(f)
+    
+    # loading all the retailers
+    retailers = []
+    with open("json/retailers.json", "r") as f:
+        retailers = json.load(f)
+    
+    # generating batches
+    batches = []
+    for _ in range(100):
+        batch = {}
+
+        batch["batch_id"] = uuid.uuid1().hex
+        batch["product_id"] = sample(products, 1)[0]["id"]
+        batch["retailer_id"] = sample(retailers, 1)[0]["retailer_id"]
+        batch["batch_date"] = str(random_date(30).replace(microsecond=0))
+        batch["quantity"] = randint(1, 100)
+        batch["price"] = randint(1, 100)
+
+        batches.append(batch)
+
+    # dumping batches into batches.json
+    json.dump(batches, open("json/batches.json", "w"), indent=2)
+
+def inventory_gen():
+    """Generate inventory for every retailer"""
+
+    # Get all the retailers
+    retailers = []
+    with open("json/retailers.json", "r") as f:
+        retailers = json.load(f)
+    
 
 if __name__ == "__main__":
-    appointments_gen()
+    product_supplier_gen()
