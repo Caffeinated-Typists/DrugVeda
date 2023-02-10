@@ -101,6 +101,16 @@ def add_data_products()->None:
     db.commit()
     json_file.close()
 
+def add_tests()->None:
+    """Add data to tests table"""
+    json_file = open("data/json/tests.json", "r")
+    json_data = load(json_file)
+    for test in json_data:
+        cursor.execute("INSERT INTO tests (TestID, Name, Description, Price, LabID) VALUES ('{}', '{}', '{}', {}, '{}')".
+        format(test['test_id'], test['name'], test['description'], test['price'], test['lab_id']))
+    db.commit()
+    json_file.close()
+
 def main()->None:
     """Main function"""
     global db, cursor
@@ -115,7 +125,8 @@ def main()->None:
     # add_data_retailers()
     # add_data_suppliers()
     # add_data_labs()
-    add_data_products()
+    # add_data_products()
+    add_tests()
     db.close()
 
 if __name__ == "__main__":
