@@ -121,6 +121,16 @@ def add_product_orders()->None:
     db.commit()
     json_file.close()
 
+def add_product_order_items()->None:
+    """Add data to orders table"""
+    json_file = open("data/json/order.json", "r")
+    json_data = load(json_file)
+    for order in json_data:
+        cursor.execute("INSERT INTO product_order_items (OrderID, ProductID, CustomerID, RetailerID, Quantity, Amount) VALUES ('{}', '{}', '{}', '{}', {}, {})"
+        .format(order['order_id'], order['product_id'], order['user_id'], order['retailer_id'], order['quantity'], order['amount']))
+    db.commit()
+    json_file.close()
+
 def main()->None:
     """Main function"""
     global db, cursor
@@ -138,6 +148,7 @@ def main()->None:
     # add_data_products()
     # add_tests()
     # add_product_orders()
+    # add_product_order_items()
     db.close()
 
 if __name__ == "__main__":
