@@ -200,35 +200,74 @@ def product_supplier_gen():
 
     json.dump(product_suppliers, open("json/product_supplier.json", "w"), indent=2)
 
-def batch_gen():
+def batch_supply_order_gen():
     """Generate all the batches"""
 
     # loading all the products
-    products = []
+    products:dict[str, float] = {}
     with open("json/products.json", "r") as f:
-        products = json.load(f)
+        data = json.load(f)
+        for category in data:
+            for subcategory in data[category]["subcategories"]:
+                for product in data[category]["subcategories"][subcategory]:
+                    products[product["id"]] = product["price"]
     
     # loading all the retailers
-    retailers = []
+    retailer_ids:list[str] = []
     with open("json/retailers.json", "r") as f:
         retailers = json.load(f)
+        for retailer in retailers:
+            retailer_ids.append(retailer["retailer_id"])
+
+    # loading all the suppliers
+    supplier_ids:list[str] = []
+    with open("json/supplier.json", "r") as f:
+        suppliers = json.load(f)
+        for supplier in suppliers:
+            supplier_ids.append(supplier["user_id"])
+
+    product_suppliers:dict[str:list[str]] = {}
+    with open("json/product_supplier.json", "r") as f:
+        product_suppliers = json.load(f)
+        for pair in product_suppliers:
+            if pair["product_id"] not in product_suppliers:
+                product_suppliers[pair["product_id"]] = []
+            product_suppliers[pair["product_id"]].append(pair["supplier_id"])
     
-    # generating batches
-    batches = []
+    supply_orders:list[dict] = []
+    batches:list[dict] = []
     for _ in range(100):
-        batch = {}
-
-        batch["batch_id"] = uuid.uuid1().hex
-        batch["product_id"] = sample(products, 1)[0]["id"]
-        batch["retailer_id"] = sample(retailers, 1)[0]["retailer_id"]
-        batch["batch_date"] = str(random_date(30).replace(microsecond=0))
-        batch["quantity"] = randint(1, 100)
-        batch["price"] = randint(1, 100)
-
-        batches.append(batch)
+        retailer_id:str = choice(retailer_ids)
+        order_id:str = uuid.uuid1().hex
+        order_date:str = str(random_date(30).replace(microsecond=0))
+        status = choice(list(Status)).value
+        for _ in range(randint(1, 5)):
+            batch_id:str = uuid.uuid1().hex
+            product_id:str = choice(list(products.keys()))
+            quantity:int = randint(1, 100)
+            price:float = products[product_id]
+            supplier_id:str = choice(product_suppliers[product_id])
+            supply_orders.append({
+                "order_id": order_id,
+                "batch_id": batch_id,
+                "order_date": order_date,
+                "price": price,
+                "status": status
+            })
+            batches.append({
+                "batch_id": batch_id,
+                "product_id": product_id,
+                "quantity": quantity,
+                "order_id": order_id,
+                "batch_date": order_date,
+                "retailer_id": retailer_id,
+                "supplier_id": supplier_id
+            })
 
     # dumping batches into batches.json
     json.dump(batches, open("json/batches.json", "w"), indent=2)
+    # dumping supply_orders into supply_orders.json
+    json.dump(supply_orders, open("json/supply_orders.json", "w"), indent=2)
 
 def inventory_gen():
     """Generate inventory for every retailer"""

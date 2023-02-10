@@ -159,7 +159,7 @@ def main()->None:
     # add_tests()
     # add_product_orders()
     # add_product_order_items()
-    add_appointments()
+    # add_appointments()
     db.close()
 
 if __name__ == "__main__":
