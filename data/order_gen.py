@@ -1,18 +1,18 @@
 from random import randint, random, choice
 from random import sample
 from datetime import datetime, timedelta
-from db_enums import Status, Payment, Delivery
+from db_enums import Status, Payment, Delivery, AppointmentStatus
 import json
 import uuid
 
-def random_date(days:int) -> str:
+def random_date(days:int) -> datetime:
     """Generates random date from now to now + timedelta
     timedelta is in days"""
     start = datetime.now()
     end = start + timedelta(days=days)
     random_date = start + (end - start) * random()
 
-    return str(random_date.replace(microsecond=0))
+    return random_date
 
 def add_id(data):
     """helper function which added id to all products"""
@@ -102,7 +102,7 @@ def product_order_gen():
 
         order["order_id"] = order_item["order_id"]
         order["user_id"] = order_item["user_id"]
-        order["order_date"] = random_date(30)
+        order["order_date"] = str(random_date(30).replace(microsecond=0))
         order["quantity"] = order_item["quantity"]
         order["amount"] = order_item["amount"]
         order["delivery_method"] = choice(list(Delivery)).value
@@ -133,5 +133,39 @@ def metadata_tests():
     with open("json/tests.json", "w") as f:
         json.dump(tests, f, indent=2)
 
+def appointments_gen():
+    """Generate all the appointments"""
+
+    # loading all the tests
+    tests = []
+    with open("json/tests.json", "r") as f:
+        tests = json.load(f)
+    
+    # loading all the users
+    users = []
+    with open("json/users.json", "r") as f:
+        users = json.load(f)
+    
+    # generating appointments
+    appointments = []
+    for _ in range(100):
+        appointment = {}
+
+        appointment_date = random_date(30)
+
+        appointment["appointment_id"] = uuid.uuid1().hex
+        appointment["user_id"] = sample(users, 1)[0]["user_id"]
+        appointment["test_id"] = sample(tests, 1)[0]["test_id"]
+        appointment["appointment_date"] = str(appointment_date.replace(microsecond=0))
+        appointment["booking_date"] = str((appointment_date - timedelta(days=randint(1, 10))).replace(microsecond=0))
+        appointment["status"] = choice(list(AppointmentStatus)).value
+
+        appointments.append(appointment)
+
+    # dumping appointments into appointments.json
+    json.dump(appointments, open("json/appointments.json", "w"), indent=2)
+
+
+
 if __name__ == "__main__":
-    metadata_tests()
+    appointments_gen()
