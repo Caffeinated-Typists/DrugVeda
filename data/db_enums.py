@@ -22,3 +22,7 @@ class Delivery(Enum):
     Delivery = 'Delivery'
     Pickup = 'Pickup'
 
+class AppointmentStatus(Enum):
+    Scheduled = 'Scheduled'
+    Completed = 'Completed'
+
