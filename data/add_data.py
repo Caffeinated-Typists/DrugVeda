@@ -131,6 +131,16 @@ def add_product_order_items()->None:
     db.commit()
     json_file.close()
 
+def add_appointments()->None:
+    """Add data to appointments table"""
+    json_file = open("data/json/appointments.json", "r")
+    json_data = load(json_file)
+    for appointment in json_data:
+        cursor.execute("INSERT INTO appointments (AppointmentID, CustomerID, TestID, AppointmentDate, BookingDate, Result) VALUES ('{}', '{}', '{}', '{}', '{}', '{}')"
+        .format(appointment['appointment_id'], appointment['user_id'], appointment['test_id'], appointment['appointment_date'], appointment['booking_date'], appointment['status']))
+    db.commit()
+    json_file.close()
+
 def main()->None:
     """Main function"""
     global db, cursor
@@ -149,6 +159,7 @@ def main()->None:
     # add_tests()
     # add_product_orders()
     # add_product_order_items()
+    add_appointments()
     db.close()
 
 if __name__ == "__main__":
