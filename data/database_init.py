@@ -20,7 +20,7 @@ def create_tables(engine)->None:
         sqlalchemy.Column("Email", sqlalchemy.String(50), nullable=False, index=True),
         sqlalchemy.Column("Phone", sqlalchemy.String(50)),
         sqlalchemy.Column("Lat", sqlalchemy.Float),
-        sqlalchemy.Column("Long", sqlalchemy.Float),
+        sqlalchemy.Column("Lon", sqlalchemy.Float),
     )
 
     retailers = sqlalchemy.Table(
@@ -30,7 +30,7 @@ def create_tables(engine)->None:
         sqlalchemy.Column("Email", sqlalchemy.String(50), nullable=False, index=True),
         sqlalchemy.Column("Phone", sqlalchemy.String(50)),
         sqlalchemy.Column("Lat", sqlalchemy.Float),
-        sqlalchemy.Column("Long", sqlalchemy.Float, nullable=False),
+        sqlalchemy.Column("Lon", sqlalchemy.Float, nullable=False),
         sqlalchemy.Column("Managaer", sqlalchemy.String(50), nullable=False),
     )
 
@@ -41,7 +41,7 @@ def create_tables(engine)->None:
         sqlalchemy.Column("Email", sqlalchemy.String(50), nullable=False, index=True),
         sqlalchemy.Column("Phone", sqlalchemy.String(50)),
         sqlalchemy.Column("Lat", sqlalchemy.Float),
-        sqlalchemy.Column("Long", sqlalchemy.Float),
+        sqlalchemy.Column("Lon", sqlalchemy.Float),
     )
 
     medical_labs = sqlalchemy.Table(
@@ -51,7 +51,7 @@ def create_tables(engine)->None:
         sqlalchemy.Column("Email", sqlalchemy.String(50), nullable=False, index=True),
         sqlalchemy.Column("Phone", sqlalchemy.String(50)),
         sqlalchemy.Column("Lat", sqlalchemy.Float, nullable=False),
-        sqlalchemy.Column("Long", sqlalchemy.Float, nullable=False),
+        sqlalchemy.Column("Lon", sqlalchemy.Float, nullable=False),
     )
 
     brands = sqlalchemy.Table(
@@ -60,7 +60,7 @@ def create_tables(engine)->None:
         sqlalchemy.Column("Name", sqlalchemy.String(50), nullable=False),
         sqlalchemy.Column("Email", sqlalchemy.String(50), nullable=False, index=True),
         sqlalchemy.Column("Lat", sqlalchemy.Float),
-        sqlalchemy.Column("Long", sqlalchemy.Float),
+        sqlalchemy.Column("Lon", sqlalchemy.Float),
         sqlalchemy.Column("ProductCnt", sqlalchemy.Integer),
     )
 
