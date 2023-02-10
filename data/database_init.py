@@ -1,3 +1,15 @@
+import mysql.connector
+
+def connect()->mysql.connector.MySQLConnection:
+    """Connects to the database"""
+    conn: mysql.connector.MySQLConnection = mysql.connector.connect(
+        host="localhost",
+        database="DrugVeda",
+        user="root",
+        password="root"
+    )
+    return conn
+
 def create_table_customers()->None:
     """Creates the table customers"""
 
@@ -48,6 +60,12 @@ def create_table_supply_orders()->None:
 
 def main()->None:
     """Main function"""
+    conn: mysql.connector.MySQLConnection = connect()
+    cursor: mysql.connector.cursor.MySQLCursor = conn.cursor()
+    cursor.execute("select database()")
+    for db in cursor:
+        print(db)
+    cursor.close()
 
 if __name__ == "__main__":
     main()
