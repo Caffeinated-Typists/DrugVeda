@@ -32,6 +32,15 @@ def add_data_suppliers()->None:
     db.commit()
     json_file.close()
 
+def add_data_labs()->None:
+    """Add data to labs table"""
+    json_file = open("data/json/labs.json", "r")
+    json_data = load(json_file)
+    for lab in json_data:
+        cursor.execute("INSERT INTO medical_labs (LabID, Name, Email, Phone, Lat, Lon) VALUES ('{}', '{}', '{}', '{}', {}, {})".format(lab['user_id'], lab['name'], lab['email'], lab['phone'], lab['latitude'], lab['longitude']))
+    db.commit()
+    json_file.close()
+
 def main()->None:
     """Main function"""
     global db, cursor
@@ -44,7 +53,8 @@ def main()->None:
     cursor = db.cursor()
     # add_data_customers()
     # add_data_retailers()
-    add_data_suppliers()
+    # add_data_suppliers()
+    add_data_labs()
     db.close()
 
 if __name__ == "__main__":
