@@ -1,17 +1,21 @@
-from random import randint, random
+from random import randint, random, choice
 from random import sample
 from datetime import datetime, timedelta
+from db_enums import Status, Payment, Delivery
 import json
 import uuid
 
-def random_date(timedelta:int):
+
+
+
+def random_date(days:int) -> str:
     """Generates random date from now to now + timedelta
     timedelta is in days"""
     start = datetime.now()
-    end = start + timedelta(days=timedelta)
+    end = start + timedelta(days=days)
     random_date = start + (end - start) * random()
 
-    return random_date
+    return str(random_date.replace(microsecond=0))
 
 def add_id(data):
     """helper function which added id to all products"""
@@ -26,7 +30,6 @@ def add_id(data):
 
 
     json.dump(data, open("json/products.json", "w"), indent=2)
-
 
 def create_order_item(product:tuple[str, float], user:str, retailer:str) -> dict:
     """creates a single order item
@@ -45,7 +48,6 @@ def create_order_item(product:tuple[str, float], user:str, retailer:str) -> dict
     order["amount"] = amount
 
     return order
-
 
 def product_order_items_gen():
     """generates order items for suing products.json, users.json and retailers.json"""
@@ -88,11 +90,33 @@ def product_order_items_gen():
     # dumping order items into order.json
     json.dump(order_items, open("json/order.json", "w"), indent=2)
 
-
 def product_order_gen():
     """Creating all the products with details like Order DateTime, Payment Method, Status"""
 
+    # loading all the order items
+    order_items:list[dict[str]] = []
+    with open("json/order.json", "r") as f:
+        order_items = json.load(f)
+    
+    # creating order items
+    orders:list[dict[str]] = []
+    for order_item in order_items:
+        order:dict[str] = {}
+
+        order["order_id"] = order_item["order_id"]
+        order["user_id"] = order_item["user_id"]
+        order["order_date"] = random_date(30)
+        order["quantity"] = order_item["quantity"]
+        order["amount"] = order_item["amount"]
+        order["delivery_method"] = choice(list(Delivery)).value
+        order["payment_method"] = choice(list(Payment)).value
+        order["status"] = choice(list(Status)).value
+
+        orders.append(order)
+    
+    # dumping orders into orders.json
+    json.dump(orders, open("json/product_orders.json", "w"), indent=2)
 
 
 if __name__ == "__main__":
-    product_order_items_gen()
+    product_order_gen()

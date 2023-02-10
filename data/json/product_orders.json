@@ -1,0 +1,1002 @@
+[
+  {
+    "order_id": "eb577f6ca91c11ed8b09f889d2839e9e",
+    "user_id": "50651218-196c-4962-95e5-29048bb0ddb6",
+    "order_date": "2023-02-14 20:37:33",
+    "quantity": 2,
+    "amount": 370.68,
+    "delivery_method": "Pickup",
+    "payment_method": "UPI",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577f6da91c11edb126f889d2839e9e",
+    "user_id": "0cd76e24-6225-4a29-bdd3-f34ecd54d961",
+    "order_date": "2023-03-01 10:18:52",
+    "quantity": 3,
+    "amount": 69.87,
+    "delivery_method": "Delivery",
+    "payment_method": "UPI",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577f6ea91c11eda578f889d2839e9e",
+    "user_id": "8cc6be61-987b-48da-82e0-49c93c640271",
+    "order_date": "2023-02-17 08:30:14",
+    "quantity": 8,
+    "amount": 2652.0,
+    "delivery_method": "Delivery",
+    "payment_method": "Amazon Pay",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577f6fa91c11ed8030f889d2839e9e",
+    "user_id": "554c562f-0c36-4b88-ab07-1cb81f4ff6c3",
+    "order_date": "2023-02-21 18:24:32",
+    "quantity": 3,
+    "amount": 336.54,
+    "delivery_method": "Pickup",
+    "payment_method": "Amazon Pay",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577f70a91c11ed964df889d2839e9e",
+    "user_id": "50699b67-9026-4202-9ed4-a368f8a9240b",
+    "order_date": "2023-02-11 10:35:30",
+    "quantity": 2,
+    "amount": 265.6,
+    "delivery_method": "Delivery",
+    "payment_method": "Google Pay",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577f71a91c11ed8fb8f889d2839e9e",
+    "user_id": "c93efa10-a95e-498e-9ca4-97689c5838f1",
+    "order_date": "2023-02-26 14:16:55",
+    "quantity": 8,
+    "amount": 89.44,
+    "delivery_method": "Delivery",
+    "payment_method": "Paytm",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577f72a91c11ed9498f889d2839e9e",
+    "user_id": "7638fcd6-8a38-40d1-98a3-ba6d4a831732",
+    "order_date": "2023-02-27 03:58:51",
+    "quantity": 7,
+    "amount": 708.0500000000001,
+    "delivery_method": "Pickup",
+    "payment_method": "Credit Card",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577f73a91c11edbd42f889d2839e9e",
+    "user_id": "755a46b2-6609-4e06-abb5-0f755d064985",
+    "order_date": "2023-03-05 16:41:21",
+    "quantity": 9,
+    "amount": 708.48,
+    "delivery_method": "Pickup",
+    "payment_method": "Debit Card",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577f74a91c11edb0caf889d2839e9e",
+    "user_id": "2837fa17-8a8f-4d15-b179-cf8b282f490d",
+    "order_date": "2023-03-05 18:28:57",
+    "quantity": 8,
+    "amount": 729.12,
+    "delivery_method": "Pickup",
+    "payment_method": "Amazon Pay",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577f75a91c11ed9f07f889d2839e9e",
+    "user_id": "b6d07418-4df2-42d9-80bb-a5d04b691df9",
+    "order_date": "2023-03-03 07:49:27",
+    "quantity": 4,
+    "amount": 521.52,
+    "delivery_method": "Delivery",
+    "payment_method": "Cash",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577f76a91c11ed800af889d2839e9e",
+    "user_id": "5bc1aab2-7348-4b4b-82fd-75a9a6109066",
+    "order_date": "2023-03-10 04:33:02",
+    "quantity": 9,
+    "amount": 1296.0,
+    "delivery_method": "Pickup",
+    "payment_method": "Net Banking",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577f77a91c11edbd8ef889d2839e9e",
+    "user_id": "e0f47414-5096-449b-86f9-f3b5fdc18efd",
+    "order_date": "2023-02-24 19:36:20",
+    "quantity": 10,
+    "amount": 2640.0,
+    "delivery_method": "Pickup",
+    "payment_method": "Net Banking",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577f78a91c11ed9235f889d2839e9e",
+    "user_id": "ba694734-1a33-4eaf-94bb-1d64ac07bb1c",
+    "order_date": "2023-03-04 21:08:40",
+    "quantity": 8,
+    "amount": 1081.2,
+    "delivery_method": "Delivery",
+    "payment_method": "Net Banking",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577f79a91c11ed8bf7f889d2839e9e",
+    "user_id": "2837fa17-8a8f-4d15-b179-cf8b282f490d",
+    "order_date": "2023-03-09 05:09:48",
+    "quantity": 4,
+    "amount": 582.0,
+    "delivery_method": "Pickup",
+    "payment_method": "Net Banking",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577f7aa91c11ed82caf889d2839e9e",
+    "user_id": "7638fcd6-8a38-40d1-98a3-ba6d4a831732",
+    "order_date": "2023-02-25 14:27:29",
+    "quantity": 4,
+    "amount": 1218.36,
+    "delivery_method": "Delivery",
+    "payment_method": "Cash",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577f7ba91c11edb67ff889d2839e9e",
+    "user_id": "3ff203c5-42f6-4787-9099-3f2acc3c0e8d",
+    "order_date": "2023-03-10 17:46:05",
+    "quantity": 1,
+    "amount": 320.63,
+    "delivery_method": "Pickup",
+    "payment_method": "Debit Card",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577f7ca91c11ed9c65f889d2839e9e",
+    "user_id": "0dca5913-9ee9-4d11-860b-9bddbea4b91c",
+    "order_date": "2023-02-23 18:14:50",
+    "quantity": 1,
+    "amount": 35.13,
+    "delivery_method": "Delivery",
+    "payment_method": "Net Banking",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577f7da91c11edaa65f889d2839e9e",
+    "user_id": "98648540-039d-4996-8b46-388942e41d12",
+    "order_date": "2023-02-22 02:01:32",
+    "quantity": 9,
+    "amount": 11686.59,
+    "delivery_method": "Delivery",
+    "payment_method": "Paytm",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577f7ea91c11eda46df889d2839e9e",
+    "user_id": "09d7e5d1-b4ef-476e-8e87-decca5bc488d",
+    "order_date": "2023-02-23 16:14:18",
+    "quantity": 4,
+    "amount": 679.36,
+    "delivery_method": "Delivery",
+    "payment_method": "Amazon Pay",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577f7fa91c11ed8a28f889d2839e9e",
+    "user_id": "c00a74f5-48a7-49bb-8ff7-7797fd3fef2a",
+    "order_date": "2023-03-09 16:51:43",
+    "quantity": 3,
+    "amount": 303.45000000000005,
+    "delivery_method": "Delivery",
+    "payment_method": "UPI",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577f80a91c11ed8bb4f889d2839e9e",
+    "user_id": "73f96971-21cc-421b-a01d-66ce18432a2e",
+    "order_date": "2023-03-04 16:49:34",
+    "quantity": 8,
+    "amount": 1337.6,
+    "delivery_method": "Pickup",
+    "payment_method": "Debit Card",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577f81a91c11ed93ebf889d2839e9e",
+    "user_id": "8da901d0-4622-4d40-942f-72fb70cd0506",
+    "order_date": "2023-03-03 06:12:33",
+    "quantity": 10,
+    "amount": 1011.5,
+    "delivery_method": "Delivery",
+    "payment_method": "UPI",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577f82a91c11edb525f889d2839e9e",
+    "user_id": "80ccf974-456e-4ee6-ae7f-ac092e99a925",
+    "order_date": "2023-02-28 05:54:19",
+    "quantity": 10,
+    "amount": 2548.0,
+    "delivery_method": "Delivery",
+    "payment_method": "PhonePe",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577f83a91c11ed99daf889d2839e9e",
+    "user_id": "b6d07418-4df2-42d9-80bb-a5d04b691df9",
+    "order_date": "2023-03-07 16:01:58",
+    "quantity": 7,
+    "amount": 946.0500000000001,
+    "delivery_method": "Delivery",
+    "payment_method": "UPI",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577f84a91c11ed80bcf889d2839e9e",
+    "user_id": "09d7e5d1-b4ef-476e-8e87-decca5bc488d",
+    "order_date": "2023-02-21 02:19:45",
+    "quantity": 4,
+    "amount": 755.8,
+    "delivery_method": "Pickup",
+    "payment_method": "PhonePe",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577f85a91c11edaa8cf889d2839e9e",
+    "user_id": "0a916ea7-c796-46ec-86fa-ba1daa489563",
+    "order_date": "2023-02-21 20:51:04",
+    "quantity": 2,
+    "amount": 600.0,
+    "delivery_method": "Delivery",
+    "payment_method": "Paytm",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577f86a91c11edae46f889d2839e9e",
+    "user_id": "9272714d-5d2d-4d54-a120-67cad04b4317",
+    "order_date": "2023-02-23 01:59:24",
+    "quantity": 4,
+    "amount": 5036.4,
+    "delivery_method": "Delivery",
+    "payment_method": "PhonePe",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577f87a91c11edb9d2f889d2839e9e",
+    "user_id": "a27afdb5-0316-483e-9c19-f28ff1307483",
+    "order_date": "2023-02-23 20:33:12",
+    "quantity": 1,
+    "amount": 182.4,
+    "delivery_method": "Delivery",
+    "payment_method": "Cash",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577f88a91c11ed94b3f889d2839e9e",
+    "user_id": "0c88bc4f-004a-48de-95f5-0e1614915cb3",
+    "order_date": "2023-03-03 00:39:22",
+    "quantity": 10,
+    "amount": 1171.5,
+    "delivery_method": "Pickup",
+    "payment_method": "PhonePe",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577f89a91c11ed8094f889d2839e9e",
+    "user_id": "6cf3df38-075a-49b4-b592-f7791bd8b82f",
+    "order_date": "2023-02-11 07:47:09",
+    "quantity": 1,
+    "amount": 126.38,
+    "delivery_method": "Delivery",
+    "payment_method": "Amazon Pay",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577f8aa91c11ed8ec0f889d2839e9e",
+    "user_id": "4a76fad6-a132-4bc5-9b1e-fc58a395ebe6",
+    "order_date": "2023-02-17 04:08:37",
+    "quantity": 3,
+    "amount": 273.42,
+    "delivery_method": "Delivery",
+    "payment_method": "PhonePe",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577f8ba91c11ed9eeef889d2839e9e",
+    "user_id": "0dca5913-9ee9-4d11-860b-9bddbea4b91c",
+    "order_date": "2023-02-25 00:49:49",
+    "quantity": 4,
+    "amount": 2124.8,
+    "delivery_method": "Pickup",
+    "payment_method": "UPI",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577f8ca91c11edaacbf889d2839e9e",
+    "user_id": "424631e8-58b5-4149-86af-59e709158120",
+    "order_date": "2023-03-04 10:11:19",
+    "quantity": 3,
+    "amount": 306.0,
+    "delivery_method": "Pickup",
+    "payment_method": "PhonePe",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577f8da91c11eda184f889d2839e9e",
+    "user_id": "d1b20608-f8a2-4b56-aaf6-2426724dba78",
+    "order_date": "2023-02-26 20:14:45",
+    "quantity": 8,
+    "amount": 2400.0,
+    "delivery_method": "Delivery",
+    "payment_method": "PhonePe",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577f8ea91c11ed84e8f889d2839e9e",
+    "user_id": "b14e236c-71bf-4187-abb8-feab31edd98b",
+    "order_date": "2023-02-25 20:22:18",
+    "quantity": 3,
+    "amount": 1140.48,
+    "delivery_method": "Delivery",
+    "payment_method": "Amazon Pay",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577f8fa91c11ed9f77f889d2839e9e",
+    "user_id": "4a5d8eba-1a3a-4493-a959-327913d6f5f3",
+    "order_date": "2023-02-22 10:48:06",
+    "quantity": 4,
+    "amount": 1615.0,
+    "delivery_method": "Delivery",
+    "payment_method": "PhonePe",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577f90a91c11edb31ef889d2839e9e",
+    "user_id": "a27afdb5-0316-483e-9c19-f28ff1307483",
+    "order_date": "2023-02-28 17:14:11",
+    "quantity": 8,
+    "amount": 2436.72,
+    "delivery_method": "Delivery",
+    "payment_method": "PhonePe",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577f91a91c11ed957ef889d2839e9e",
+    "user_id": "0cd76e24-6225-4a29-bdd3-f34ecd54d961",
+    "order_date": "2023-02-25 04:00:12",
+    "quantity": 3,
+    "amount": 1281.6,
+    "delivery_method": "Delivery",
+    "payment_method": "Debit Card",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577f92a91c11edac61f889d2839e9e",
+    "user_id": "690eed11-ec59-4a61-bb40-f6deac586e55",
+    "order_date": "2023-03-06 13:23:08",
+    "quantity": 7,
+    "amount": 2095.1,
+    "delivery_method": "Pickup",
+    "payment_method": "Google Pay",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577f93a91c11eda8a3f889d2839e9e",
+    "user_id": "50699b67-9026-4202-9ed4-a368f8a9240b",
+    "order_date": "2023-02-22 14:38:47",
+    "quantity": 1,
+    "amount": 380.16,
+    "delivery_method": "Pickup",
+    "payment_method": "UPI",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577f94a91c11edb155f889d2839e9e",
+    "user_id": "309354aa-4836-4397-bfd3-d052e1f98152",
+    "order_date": "2023-03-06 02:15:11",
+    "quantity": 9,
+    "amount": 4668.75,
+    "delivery_method": "Delivery",
+    "payment_method": "PhonePe",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577f95a91c11ed8366f889d2839e9e",
+    "user_id": "690eed11-ec59-4a61-bb40-f6deac586e55",
+    "order_date": "2023-02-22 05:08:32",
+    "quantity": 2,
+    "amount": 4550.0,
+    "delivery_method": "Delivery",
+    "payment_method": "UPI",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577f96a91c11ed8479f889d2839e9e",
+    "user_id": "f76f4387-e502-4e09-8769-65df141855d0",
+    "order_date": "2023-02-27 06:12:21",
+    "quantity": 3,
+    "amount": 1254.0,
+    "delivery_method": "Pickup",
+    "payment_method": "Cash",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577f97a91c11ed894bf889d2839e9e",
+    "user_id": "378ca713-2180-4fce-923d-c51e2ffbe4c5",
+    "order_date": "2023-02-21 05:08:46",
+    "quantity": 10,
+    "amount": 351.3,
+    "delivery_method": "Delivery",
+    "payment_method": "Debit Card",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577f98a91c11ed9255f889d2839e9e",
+    "user_id": "3e74e425-11c3-46a6-8dea-0d8ee3faab29",
+    "order_date": "2023-02-23 19:48:56",
+    "quantity": 8,
+    "amount": 720.0,
+    "delivery_method": "Pickup",
+    "payment_method": "Net Banking",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577f99a91c11ed8672f889d2839e9e",
+    "user_id": "3ff203c5-42f6-4787-9099-3f2acc3c0e8d",
+    "order_date": "2023-03-10 03:49:55",
+    "quantity": 1,
+    "amount": 403.75,
+    "delivery_method": "Delivery",
+    "payment_method": "Net Banking",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577f9aa91c11eda064f889d2839e9e",
+    "user_id": "42b30b4f-5279-4001-8446-1cc7ed5ad2df",
+    "order_date": "2023-02-12 22:28:53",
+    "quantity": 8,
+    "amount": 4150.0,
+    "delivery_method": "Pickup",
+    "payment_method": "Credit Card",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577f9ba91c11ed851cf889d2839e9e",
+    "user_id": "4a5d8eba-1a3a-4493-a959-327913d6f5f3",
+    "order_date": "2023-02-17 00:37:56",
+    "quantity": 10,
+    "amount": 6975.0,
+    "delivery_method": "Pickup",
+    "payment_method": "Credit Card",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577f9ca91c11ed87f3f889d2839e9e",
+    "user_id": "50651218-196c-4962-95e5-29048bb0ddb6",
+    "order_date": "2023-02-15 17:30:50",
+    "quantity": 2,
+    "amount": 307.2,
+    "delivery_method": "Delivery",
+    "payment_method": "Paytm",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577f9da91c11edb29cf889d2839e9e",
+    "user_id": "2f020aa9-e56b-4b3e-b6fc-1ad457f461fb",
+    "order_date": "2023-03-03 11:18:31",
+    "quantity": 6,
+    "amount": 2360.52,
+    "delivery_method": "Pickup",
+    "payment_method": "Amazon Pay",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577f9ea91c11eda009f889d2839e9e",
+    "user_id": "7c87b817-609f-405c-8783-0531a7c3f540",
+    "order_date": "2023-03-05 04:24:27",
+    "quantity": 8,
+    "amount": 5520.0,
+    "delivery_method": "Pickup",
+    "payment_method": "Amazon Pay",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577f9fa91c11edb64cf889d2839e9e",
+    "user_id": "a27afdb5-0316-483e-9c19-f28ff1307483",
+    "order_date": "2023-02-23 15:50:55",
+    "quantity": 4,
+    "amount": 1404.48,
+    "delivery_method": "Pickup",
+    "payment_method": "UPI",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577fa0a91c11ed9888f889d2839e9e",
+    "user_id": "2d664245-521d-4b1b-967d-2066bdd430b9",
+    "order_date": "2023-02-11 06:03:45",
+    "quantity": 3,
+    "amount": 2833.11,
+    "delivery_method": "Pickup",
+    "payment_method": "Debit Card",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577fa1a91c11eda223f889d2839e9e",
+    "user_id": "3ff203c5-42f6-4787-9099-3f2acc3c0e8d",
+    "order_date": "2023-02-14 12:59:47",
+    "quantity": 10,
+    "amount": 3511.2,
+    "delivery_method": "Pickup",
+    "payment_method": "Google Pay",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577fa2a91c11edb834f889d2839e9e",
+    "user_id": "01677896-1dba-463b-864d-6b589313adef",
+    "order_date": "2023-02-20 17:54:02",
+    "quantity": 4,
+    "amount": 360.0,
+    "delivery_method": "Delivery",
+    "payment_method": "Google Pay",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577fa3a91c11eda4a7f889d2839e9e",
+    "user_id": "1d28c7d4-449f-4802-836f-02f36a7433bc",
+    "order_date": "2023-02-18 11:17:40",
+    "quantity": 8,
+    "amount": 980.0,
+    "delivery_method": "Pickup",
+    "payment_method": "Paytm",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577fa4a91c11edb536f889d2839e9e",
+    "user_id": "ed9b3a9d-c429-44db-8d31-e77649aacbbb",
+    "order_date": "2023-02-22 18:01:05",
+    "quantity": 4,
+    "amount": 5848.0,
+    "delivery_method": "Pickup",
+    "payment_method": "PhonePe",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577fa5a91c11edb929f889d2839e9e",
+    "user_id": "986b57b0-469f-48df-9ddb-d7dab0cec36e",
+    "order_date": "2023-02-17 09:23:21",
+    "quantity": 2,
+    "amount": 598.6,
+    "delivery_method": "Delivery",
+    "payment_method": "Paytm",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577fa6a91c11edbceef889d2839e9e",
+    "user_id": "dda17c02-0f79-4f22-984b-8ef77247e426",
+    "order_date": "2023-03-10 14:34:05",
+    "quantity": 4,
+    "amount": 980.4,
+    "delivery_method": "Pickup",
+    "payment_method": "Net Banking",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577fa7a91c11ed927ef889d2839e9e",
+    "user_id": "3252391e-9f74-40b1-bb91-2aab4f6ca300",
+    "order_date": "2023-03-05 02:27:47",
+    "quantity": 1,
+    "amount": 35.2,
+    "delivery_method": "Delivery",
+    "payment_method": "Credit Card",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577fa8a91c11edae7af889d2839e9e",
+    "user_id": "bfa929d5-a121-4897-ae57-060c33011020",
+    "order_date": "2023-03-09 06:41:05",
+    "quantity": 4,
+    "amount": 980.4,
+    "delivery_method": "Delivery",
+    "payment_method": "Credit Card",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577fa9a91c11ed984ff889d2839e9e",
+    "user_id": "3ff203c5-42f6-4787-9099-3f2acc3c0e8d",
+    "order_date": "2023-02-19 14:18:18",
+    "quantity": 3,
+    "amount": 279.0,
+    "delivery_method": "Delivery",
+    "payment_method": "Amazon Pay",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577faaa91c11edb5c4f889d2839e9e",
+    "user_id": "f76f4387-e502-4e09-8769-65df141855d0",
+    "order_date": "2023-03-03 17:19:15",
+    "quantity": 6,
+    "amount": 1133.6999999999998,
+    "delivery_method": "Pickup",
+    "payment_method": "Paytm",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577faba91c11ed8352f889d2839e9e",
+    "user_id": "c93efa10-a95e-498e-9ca4-97689c5838f1",
+    "order_date": "2023-03-05 17:36:21",
+    "quantity": 9,
+    "amount": 881.1,
+    "delivery_method": "Delivery",
+    "payment_method": "Google Pay",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577faca91c11ed8b4df889d2839e9e",
+    "user_id": "8cc6be61-987b-48da-82e0-49c93c640271",
+    "order_date": "2023-02-16 02:24:12",
+    "quantity": 2,
+    "amount": 718.8,
+    "delivery_method": "Delivery",
+    "payment_method": "Amazon Pay",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577fada91c11ed86d2f889d2839e9e",
+    "user_id": "47c53148-240c-40a8-a3ec-da7ab81fa5f6",
+    "order_date": "2023-02-25 18:46:46",
+    "quantity": 6,
+    "amount": 1411.1999999999998,
+    "delivery_method": "Delivery",
+    "payment_method": "UPI",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577faea91c11ed8c22f889d2839e9e",
+    "user_id": "7c87b817-609f-405c-8783-0531a7c3f540",
+    "order_date": "2023-03-09 01:55:51",
+    "quantity": 2,
+    "amount": 1888.74,
+    "delivery_method": "Delivery",
+    "payment_method": "Credit Card",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577fafa91c11edb1adf889d2839e9e",
+    "user_id": "01677896-1dba-463b-864d-6b589313adef",
+    "order_date": "2023-02-13 08:15:40",
+    "quantity": 6,
+    "amount": 1014.9000000000001,
+    "delivery_method": "Delivery",
+    "payment_method": "Debit Card",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577fb0a91c11edbb8df889d2839e9e",
+    "user_id": "d1b20608-f8a2-4b56-aaf6-2426724dba78",
+    "order_date": "2023-02-13 11:45:54",
+    "quantity": 9,
+    "amount": 2694.6,
+    "delivery_method": "Delivery",
+    "payment_method": "UPI",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577fb1a91c11edb3c6f889d2839e9e",
+    "user_id": "4452bdee-7ee4-4f87-a4df-a4ce9ed2475c",
+    "order_date": "2023-02-23 11:56:36",
+    "quantity": 1,
+    "amount": 129.63,
+    "delivery_method": "Delivery",
+    "payment_method": "PhonePe",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577fb2a91c11edb462f889d2839e9e",
+    "user_id": "7e3d8d47-adc5-4436-8e4e-8ea31e21d946",
+    "order_date": "2023-02-16 03:26:49",
+    "quantity": 5,
+    "amount": 393.6,
+    "delivery_method": "Delivery",
+    "payment_method": "Net Banking",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577fb3a91c11ed9f41f889d2839e9e",
+    "user_id": "f4572d15-9c34-4f34-ae9e-d87671c72463",
+    "order_date": "2023-02-25 15:42:59",
+    "quantity": 8,
+    "amount": 1140.0,
+    "delivery_method": "Delivery",
+    "payment_method": "Debit Card",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577fb4a91c11edb1fdf889d2839e9e",
+    "user_id": "6c443ebf-f828-43ed-b221-51ccf040ac98",
+    "order_date": "2023-02-27 14:20:07",
+    "quantity": 4,
+    "amount": 540.6,
+    "delivery_method": "Pickup",
+    "payment_method": "Google Pay",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577fb5a91c11eda05cf889d2839e9e",
+    "user_id": "3ff203c5-42f6-4787-9099-3f2acc3c0e8d",
+    "order_date": "2023-02-26 16:24:00",
+    "quantity": 10,
+    "amount": 930.0,
+    "delivery_method": "Delivery",
+    "payment_method": "PhonePe",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577fb6a91c11edab5bf889d2839e9e",
+    "user_id": "876c3479-5ce2-4d1b-b460-be758b24a494",
+    "order_date": "2023-02-16 18:31:27",
+    "quantity": 7,
+    "amount": 2956.7999999999997,
+    "delivery_method": "Delivery",
+    "payment_method": "Credit Card",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577fb7a91c11ed88d0f889d2839e9e",
+    "user_id": "6c443ebf-f828-43ed-b221-51ccf040ac98",
+    "order_date": "2023-02-25 20:07:51",
+    "quantity": 8,
+    "amount": 1541.76,
+    "delivery_method": "Delivery",
+    "payment_method": "PhonePe",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577fb8a91c11ed88c6f889d2839e9e",
+    "user_id": "cd17541d-25d2-476b-ac1d-29fc40edf1ff",
+    "order_date": "2023-02-14 11:45:37",
+    "quantity": 6,
+    "amount": 6396.18,
+    "delivery_method": "Pickup",
+    "payment_method": "PhonePe",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577fb9a91c11edaddcf889d2839e9e",
+    "user_id": "75b17e2a-8de7-4372-8292-74771031d292",
+    "order_date": "2023-02-11 12:26:30",
+    "quantity": 4,
+    "amount": 1292.0,
+    "delivery_method": "Delivery",
+    "payment_method": "Debit Card",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577fbaa91c11edab6bf889d2839e9e",
+    "user_id": "09d7e5d1-b4ef-476e-8e87-decca5bc488d",
+    "order_date": "2023-02-22 20:22:58",
+    "quantity": 5,
+    "amount": 1408.0,
+    "delivery_method": "Pickup",
+    "payment_method": "UPI",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577fbba91c11eda22af889d2839e9e",
+    "user_id": "b14e236c-71bf-4187-abb8-feab31edd98b",
+    "order_date": "2023-03-10 12:43:35",
+    "quantity": 7,
+    "amount": 2274.65,
+    "delivery_method": "Pickup",
+    "payment_method": "Paytm",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577fbca91c11edb20ff889d2839e9e",
+    "user_id": "399501aa-3179-468d-9887-a5354d873c0b",
+    "order_date": "2023-02-23 16:18:23",
+    "quantity": 8,
+    "amount": 4249.6,
+    "delivery_method": "Pickup",
+    "payment_method": "Net Banking",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577fbda91c11ed815cf889d2839e9e",
+    "user_id": "6fd3b729-76b8-46be-8c8a-84d2a92455d0",
+    "order_date": "2023-02-20 23:11:28",
+    "quantity": 4,
+    "amount": 676.6,
+    "delivery_method": "Pickup",
+    "payment_method": "Net Banking",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577fbea91c11ed9fa6f889d2839e9e",
+    "user_id": "6cf3df38-075a-49b4-b592-f7791bd8b82f",
+    "order_date": "2023-02-23 05:01:03",
+    "quantity": 3,
+    "amount": 566.8499999999999,
+    "delivery_method": "Pickup",
+    "payment_method": "Credit Card",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577fbfa91c11edad6cf889d2839e9e",
+    "user_id": "8cc6be61-987b-48da-82e0-49c93c640271",
+    "order_date": "2023-02-23 22:51:10",
+    "quantity": 10,
+    "amount": 4840.0,
+    "delivery_method": "Pickup",
+    "payment_method": "PhonePe",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577fc0a91c11edb54af889d2839e9e",
+    "user_id": "0dca5913-9ee9-4d11-860b-9bddbea4b91c",
+    "order_date": "2023-02-18 18:28:08",
+    "quantity": 10,
+    "amount": 1740.0,
+    "delivery_method": "Pickup",
+    "payment_method": "Net Banking",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577fc1a91c11eda3b3f889d2839e9e",
+    "user_id": "3ff203c5-42f6-4787-9099-3f2acc3c0e8d",
+    "order_date": "2023-03-10 14:47:11",
+    "quantity": 4,
+    "amount": 1404.48,
+    "delivery_method": "Delivery",
+    "payment_method": "Amazon Pay",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577fc2a91c11edbac2f889d2839e9e",
+    "user_id": "c93efa10-a95e-498e-9ca4-97689c5838f1",
+    "order_date": "2023-02-15 22:58:17",
+    "quantity": 5,
+    "amount": 1569.5,
+    "delivery_method": "Delivery",
+    "payment_method": "PhonePe",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577fc3a91c11ed928cf889d2839e9e",
+    "user_id": "ba694734-1a33-4eaf-94bb-1d64ac07bb1c",
+    "order_date": "2023-02-28 22:45:41",
+    "quantity": 2,
+    "amount": 411.0,
+    "delivery_method": "Pickup",
+    "payment_method": "UPI",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577fc4a91c11ed89f3f889d2839e9e",
+    "user_id": "f6d2bce0-8c8f-463e-a356-5001dc008942",
+    "order_date": "2023-02-18 17:24:09",
+    "quantity": 7,
+    "amount": 637.98,
+    "delivery_method": "Pickup",
+    "payment_method": "Cash",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577fc5a91c11edaf7df889d2839e9e",
+    "user_id": "efaa3594-34f1-4fbb-950e-16426c6023ed",
+    "order_date": "2023-03-03 06:42:39",
+    "quantity": 4,
+    "amount": 2448.0,
+    "delivery_method": "Delivery",
+    "payment_method": "Debit Card",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577fc6a91c11ed96a0f889d2839e9e",
+    "user_id": "3ff203c5-42f6-4787-9099-3f2acc3c0e8d",
+    "order_date": "2023-03-05 18:38:40",
+    "quantity": 9,
+    "amount": 1700.55,
+    "delivery_method": "Pickup",
+    "payment_method": "PhonePe",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577fc7a91c11edbddff889d2839e9e",
+    "user_id": "aebee06c-796a-408c-84b1-10077de1dd7f",
+    "order_date": "2023-03-04 16:58:37",
+    "quantity": 5,
+    "amount": 606.25,
+    "delivery_method": "Pickup",
+    "payment_method": "Net Banking",
+    "status": "Cancelled"
+  },
+  {
+    "order_id": "eb577fc8a91c11eda040f889d2839e9e",
+    "user_id": "cec064de-55ab-4e9f-a5a3-eda93e23cca5",
+    "order_date": "2023-03-05 00:42:08",
+    "quantity": 2,
+    "amount": 98.82,
+    "delivery_method": "Delivery",
+    "payment_method": "Google Pay",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577fc9a91c11edb09ff889d2839e9e",
+    "user_id": "9fce7f49-7a5a-4087-bc4a-066876a02a45",
+    "order_date": "2023-02-18 20:30:55",
+    "quantity": 7,
+    "amount": 2826.25,
+    "delivery_method": "Pickup",
+    "payment_method": "PhonePe",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577fcaa91c11edae68f889d2839e9e",
+    "user_id": "3ff203c5-42f6-4787-9099-3f2acc3c0e8d",
+    "order_date": "2023-02-20 22:16:01",
+    "quantity": 7,
+    "amount": 171.5,
+    "delivery_method": "Pickup",
+    "payment_method": "Debit Card",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577fcba91c11edb14ef889d2839e9e",
+    "user_id": "f5b5a72c-d591-4780-966d-69d2d81f4770",
+    "order_date": "2023-03-10 17:35:36",
+    "quantity": 6,
+    "amount": 540.0,
+    "delivery_method": "Pickup",
+    "payment_method": "Debit Card",
+    "status": "Placed"
+  },
+  {
+    "order_id": "eb577fcca91c11edad9ef889d2839e9e",
+    "user_id": "f6d2bce0-8c8f-463e-a356-5001dc008942",
+    "order_date": "2023-03-04 07:16:27",
+    "quantity": 1,
+    "amount": 80.04,
+    "delivery_method": "Pickup",
+    "payment_method": "Amazon Pay",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577fcda91c11eda6fbf889d2839e9e",
+    "user_id": "1d28c7d4-449f-4802-836f-02f36a7433bc",
+    "order_date": "2023-02-15 20:31:40",
+    "quantity": 2,
+    "amount": 338.3,
+    "delivery_method": "Pickup",
+    "payment_method": "Net Banking",
+    "status": "Shipped"
+  },
+  {
+    "order_id": "eb577fcea91c11ed85fdf889d2839e9e",
+    "user_id": "3e74e425-11c3-46a6-8dea-0d8ee3faab29",
+    "order_date": "2023-02-13 14:55:15",
+    "quantity": 1,
+    "amount": 370.0,
+    "delivery_method": "Delivery",
+    "payment_method": "PhonePe",
+    "status": "Delivered"
+  },
+  {
+    "order_id": "eb577fcfa91c11ed848cf889d2839e9e",
+    "user_id": "ac380ac5-98c0-42fb-8d96-05bbdbd3a7b1",
+    "order_date": "2023-03-01 00:09:19",
+    "quantity": 4,
+    "amount": 518.52,
+    "delivery_method": "Pickup",
+    "payment_method": "Google Pay",
+    "status": "Cancelled"
+  }
+]
