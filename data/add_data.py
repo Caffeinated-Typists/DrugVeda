@@ -153,11 +153,11 @@ def add_product_suppliers()->None:
 
 def add_batches()->None:
     """Add data to supply_batches table"""
-    json_file = open("data/json/supply_batches.json", "r")
+    json_file = open("data/json/batches.json", "r")
     json_data = load(json_file)
     for batch in json_data:
-        cursor.execute("INSERT INTO supply_batches (BatchID, ProductID, Quantity, ManufactureDate, RetailerID, SupplierID) VALUES ('{}', '{}', '{}', {}, {}, '{}')"
-        .format(batch['batch_id'], batch['product_id'], batch['quantity'], batch['manufacture_date'], batch['retailer_id'], batch['supplier_id']))
+        cursor.execute("INSERT INTO batches (BatchID, ProductID, Quantity, ManufactureDate, RetailerID, SupplierID) VALUES ('{}', '{}', {}, '{}', '{}', '{}')"
+        .format(batch['batch_id'], batch['product_id'], batch['quantity'], batch['batch_date'], batch['retailer_id'], batch['supplier_id']))
     db.commit()
     json_file.close()
 
@@ -166,7 +166,7 @@ def add_supply_orders()->None:
     json_file = open("data/json/supply_orders.json", "r")
     json_data = load(json_file)
     for order in json_data:
-        cursor.execute("INSERT INTO supply_orders (OrderID, OrderDate, Amount, Status) VALUES ('{}', '{}', '{}', {}, '{}')"
+        cursor.execute("INSERT INTO supply_orders (OrderID, OrderDate, Amount, Status) VALUES ('{}', '{}', {}, '{}')"
         .format(order['order_id'], order['order_date'], order['price'], order['status']))
     db.commit()
     json_file.close()
