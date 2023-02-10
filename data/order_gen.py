@@ -226,13 +226,13 @@ def batch_supply_order_gen():
         for supplier in suppliers:
             supplier_ids.append(supplier["user_id"])
 
-    product_suppliers:dict[str:list[str]] = {}
+    product_suppliers_map:dict[str:list[str]] = {}
     with open("json/product_supplier.json", "r") as f:
         product_suppliers = json.load(f)
         for pair in product_suppliers:
             if pair["product_id"] not in product_suppliers:
-                product_suppliers[pair["product_id"]] = []
-            product_suppliers[pair["product_id"]].append(pair["supplier_id"])
+                product_suppliers_map[pair["product_id"]] = []
+            product_suppliers_map[pair["product_id"]].append(pair["supplier_id"])
     
     supply_orders:list[dict] = []
     batches:list[dict] = []
@@ -246,7 +246,9 @@ def batch_supply_order_gen():
             product_id:str = choice(list(products.keys()))
             quantity:int = randint(1, 100)
             price:float = products[product_id]
-            supplier_id:str = choice(product_suppliers[product_id])
+            if (product_id not in product_suppliers_map):
+                continue
+            supplier_id:str = choice(product_suppliers_map[product_id])
             supply_orders.append({
                 "order_id": order_id,
                 "batch_id": batch_id,
@@ -259,7 +261,7 @@ def batch_supply_order_gen():
                 "product_id": product_id,
                 "quantity": quantity,
                 "order_id": order_id,
-                "batch_date": str(order_date + timedelta(day=randint(1, 10)))),
+                "batch_date": str(order_date + timedelta(days=randint(1, 10))),
                 "retailer_id": retailer_id,
                 "supplier_id": supplier_id
             })
@@ -279,4 +281,4 @@ def inventory_gen():
     
 
 if __name__ == "__main__":
-    product_supplier_gen()
+    batch_supply_order_gen()
