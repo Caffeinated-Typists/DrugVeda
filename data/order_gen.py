@@ -1,8 +1,17 @@
+from random import randint, random
+from random import sample
+from datetime import datetime, timedelta
 import json
 import uuid
-from random import randint
-from random import sample
 
+def random_date(timedelta:int):
+    """Generates random date from now to now + timedelta
+    timedelta is in days"""
+    start = datetime.now()
+    end = start + timedelta(days=timedelta)
+    random_date = start + (end - start) * random()
+
+    return random_date
 
 def add_id(data):
     """helper function which added id to all products"""
@@ -78,6 +87,10 @@ def product_order_items_gen():
         
     # dumping order items into order.json
     json.dump(order_items, open("json/order.json", "w"), indent=2)
+
+
+def product_order_gen():
+    """Creating all the products with details like Order DateTime, Payment Method, Status"""
 
 
 
