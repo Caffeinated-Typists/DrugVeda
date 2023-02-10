@@ -14,6 +14,17 @@ def add_data_customers()->None:
     db.commit()
     json_file.close()
 
+def add_data_retailers()->None:
+    """Add data to retailers table"""
+    json_file = open("data/json/retailers.json", "r")
+    json_data = load(json_file)
+    for retailer in json_data:
+        cursor.execute("INSERT INTO retailers (RetailerID, Name, Email, Phone, Lat, Lon, Managaer) VALUES ('{}', '{}', '{}', '{}', {}, {}, '{}')".format(retailer['retailer_id'], retailer['name'], retailer['email'], retailer['phone'], retailer['latitude'], retailer['longitude'], retailer['manager_name']))
+    db.commit()
+    json_file.close()
+
+
+
 def main()->None:
     """Main function"""
     global db, cursor
@@ -25,6 +36,7 @@ def main()->None:
     )
     cursor = db.cursor()
     # add_data_customers()
+    # add_data_retailers()
     db.close()
 
 if __name__ == "__main__":
