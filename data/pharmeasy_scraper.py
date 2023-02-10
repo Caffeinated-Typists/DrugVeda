@@ -41,12 +41,6 @@ def makeProduct(name: str, price: float, brand: str, expiry_date: str, descripti
     }
 
 
-def makeDummyProduct(name: str):
-    return {
-        "name": str(name),
-    }
-
-
 BASE_URL = "https://pharmeasy.in/"
 
 edge_options = EdgeOptions()
