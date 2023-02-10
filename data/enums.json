@@ -1,0 +1,25 @@
+{
+    "Status" : [
+        "Placed",
+        "Shipped",
+        "Delivered",
+        "Cancelled"
+    ],
+
+    "Payment" : [
+        "Cash",
+        "Credit Card",
+        "Debit Card",
+        "Net Banking",
+        "Paytm",
+        "PhonePe",
+        "Google Pay",
+        "Amazon Pay",
+        "UPI"
+    ],
+
+    "DeliveryMethod" : [
+        "Delivery",
+        "Pickup"
+    ]
+}
