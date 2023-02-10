@@ -88,6 +88,7 @@ def create_tables(engine)->None:
         sqlalchemy.Column("BrandID", sqlalchemy.String(36), sqlalchemy.ForeignKey("brands.BrandID"), nullable=False),
         sqlalchemy.Column("Rating", sqlalchemy.Float, nullable=False),
         sqlalchemy.Column("RatingCnt", sqlalchemy.Integer, nullable=False),
+        # Check this
         sqlalchemy.Column("TimeToExpire", sqlalchemy.Integer),
     )
 

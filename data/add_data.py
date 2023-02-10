@@ -1,9 +1,24 @@
 import mysql.connector as sql
 from json import load
 import typing
+import random
+import uuid
+from datetime import datetime, timedelta
 
 db:sql.connect = None
 cursor:sql.cursor = None
+
+#  Dictionary of brands and their ids
+brands:dict[str, str] = {}
+
+def random_date(days:int) -> str:
+    """Generates random date from now to now + timedelta
+    timedelta is in days"""
+    start = datetime.now()
+    end = start + timedelta(days=days)
+    random_date = start + (end - start) * random.random()
+
+    return str(random_date.replace(microsecond=0))
 
 def add_data_customers()->None:
     """Add data to customers table"""
@@ -41,6 +56,51 @@ def add_data_labs()->None:
     db.commit()
     json_file.close()
 
+def get_brand_id(brand_name:str)->str:
+    """Get brand id from brand name"""
+    global brands
+    if brand_name in brands:
+        return brands[brand_name]
+    else:
+        brand_id:str = str(uuid.uuid4().hex)
+        brands[brand_name] = brand_id
+        cursor.execute("INSERT INTO brands (BrandID, Name, Email) VALUES ('{}', '{}', '{}')".format(brand_id, brand_name, random.choice(['help', 'support', 'contact']) + '@' + brand_name + '.com'))
+        return brand_id
+
+def add_data_products()->None:
+    """Add data to products, categories and subcategories tables"""
+    json_file = open("data/json/products.json", "r")
+    json_data = load(json_file)
+    # For each category
+    for cat in json_data:
+        catID:str = str(uuid.uuid4().hex)
+        # Add category to categories table
+        cursor.execute("INSERT INTO categories (CategoryID, Name, Image) VALUES ('{}', '{}', '{}')".format(catID, cat, json_data[cat]['image']))
+        # For each subcategory in category
+        for subcat in json_data[cat]["subcategories"]:
+            subcatID:str = str(uuid.uuid4().hex)
+            # Add subcategory to subcategories table
+            cursor.execute("INSERT INTO subcategories (SubcategoryID, Name) VALUES ('{}', '{}')".format(subcatID, subcat))
+            # For each product in subcategory
+            for product in json_data[cat]["subcategories"][subcat]:
+                # Add product to products table
+                cursor.execute("INSERT INTO products (ProductID, Name, Image, Description, Price, BrandID, Rating, RatingCnt, TimeToExpire) VALUES ('{}', '{}', '{}', '{}', {}, '{}', {}, {}, '{}')"
+                .format(str(product['id']), 
+                        product['name'],
+                        product['images'][0], 
+                        product['description'], 
+                        product['price'], 
+                        get_brand_id(product['brand']), 
+                        product['rating'], 
+                        product['no_of_reviews'], 
+                        random_date(60)
+                        )
+                )
+                # Add product to product_categories table
+                cursor.execute("INSERT INTO product_categories (ProductID, CategoryID, SubcategoryID) VALUES ('{}', '{}', '{}')".format(product['id'], catID, subcatID))
+    db.commit()
+    json_file.close()
+
 def main()->None:
     """Main function"""
     global db, cursor
@@ -54,7 +114,8 @@ def main()->None:
     # add_data_customers()
     # add_data_retailers()
     # add_data_suppliers()
-    add_data_labs()
+    # add_data_labs()
+    add_data_products()
     db.close()
 
 if __name__ == "__main__":
