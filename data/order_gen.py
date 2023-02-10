@@ -114,6 +114,24 @@ def product_order_gen():
     # dumping orders into orders.json
     json.dump(orders, open("json/product_orders.json", "w"), indent=2)
 
+def metadata_tests():
+    """Adding TestId and LabId to every test"""
+    tests = []
+    with open("json/tests.json", "r") as f:
+        tests = json.load(f)
+    
+    # taking out all the labs
+    labs = []
+    with open("json/labs.json", "r") as f:
+        labs = json.load(f)
+
+
+    for test in tests:
+        test["test_id"] = uuid.uuid1().hex
+        test["lab_id"] = sample(labs, 1)[0]["user_id"]
+
+    with open("json/tests.json", "w") as f:
+        json.dump(tests, f, indent=2)
 
 if __name__ == "__main__":
-    pass
+    metadata_tests()
