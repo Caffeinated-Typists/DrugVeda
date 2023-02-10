@@ -278,7 +278,23 @@ def inventory_gen():
     retailers = []
     with open("json/retailers.json", "r") as f:
         retailers = json.load(f)
+
+    # Get all the batches
+    batches = []
+    with open("json/batches.json", "r") as f:
+        batches = json.load(f)
     
+    inventory:list[dict] = [] 
+    for retailer in retailers:
+        retailer_id:str = retailer["retailer_id"]
+        batch_choice = choice(batches)
+        batch_id:str = batch_choice["batch_id"]
+        qty:int = randint(1, batch_choice["quantity"])
+
+        inventory.append({"retailer_id": retailer_id, "batch_id": batch_id, "qty": qty})
+    
+    # dumping inventory into inventory.json
+    json.dump(inventory, open("json/inventory.json", "w"), indent=2)
 
 if __name__ == "__main__":
-    batch_supply_order_gen()
+    inventory_gen()
