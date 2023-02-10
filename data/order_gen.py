@@ -239,7 +239,7 @@ def batch_supply_order_gen():
     for _ in range(100):
         retailer_id:str = choice(retailer_ids)
         order_id:str = uuid.uuid1().hex
-        order_date:str = str(random_date(30).replace(microsecond=0))
+        order_date:str = (random_date(30).replace(microsecond=0))
         status = choice(list(Status)).value
         for _ in range(randint(1, 5)):
             batch_id:str = uuid.uuid1().hex
@@ -250,7 +250,7 @@ def batch_supply_order_gen():
             supply_orders.append({
                 "order_id": order_id,
                 "batch_id": batch_id,
-                "order_date": order_date,
+                "order_date": str(order_date),
                 "price": price,
                 "status": status
             })
@@ -259,7 +259,7 @@ def batch_supply_order_gen():
                 "product_id": product_id,
                 "quantity": quantity,
                 "order_id": order_id,
-                "batch_date": order_date,
+                "batch_date": str(order_date + timedelta(day=randint(1, 10)))),
                 "retailer_id": retailer_id,
                 "supplier_id": supplier_id
             })
