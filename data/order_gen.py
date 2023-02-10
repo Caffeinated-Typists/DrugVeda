@@ -307,4 +307,4 @@ def inventory_gen():
     json.dump(inventory, open("json/inventory.json", "w"), indent=2)
 
 if __name__ == "__main__":
-    batch_supply_order_gen()
+    inventory_gen()
