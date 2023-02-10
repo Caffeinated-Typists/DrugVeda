@@ -236,11 +236,14 @@ def batch_supply_order_gen():
     
     supply_orders:list[dict] = []
     batches:list[dict] = []
+    batch_order_pair:list[dict] = []
+
     for _ in range(100):
         retailer_id:str = choice(retailer_ids)
         order_id:str = uuid.uuid1().hex
         order_date:str = (random_date(30).replace(microsecond=0))
         status = choice(list(Status)).value
+
         for _ in range(randint(1, 5)):
             batch_id:str = uuid.uuid1().hex
             product_id:str = choice(list(products.keys()))
@@ -249,27 +252,34 @@ def batch_supply_order_gen():
             if (product_id not in product_suppliers_map):
                 continue
             supplier_id:str = choice(product_suppliers_map[product_id])
-            supply_orders.append({
-                "order_id": order_id,
-                "batch_id": batch_id,
-                "order_date": str(order_date),
-                "price": price,
-                "status": status
-            })
+
             batches.append({
                 "batch_id": batch_id,
                 "product_id": product_id,
                 "quantity": quantity,
-                "order_id": order_id,
                 "batch_date": str(order_date + timedelta(days=randint(1, 10))),
                 "retailer_id": retailer_id,
                 "supplier_id": supplier_id
             })
 
+        supply_orders.append({
+            "order_id": order_id,
+            "order_date": str(order_date),
+            "price": price,
+            "status": status
+        })
+        pair:dict[str] = {}
+        pair["order_id"] = order_id
+        pair["batch_id"] = batch_id
+        batch_order_pair.append(pair)
+
     # dumping batches into batches.json
     json.dump(batches, open("json/batches.json", "w"), indent=2)
     # dumping supply_orders into supply_orders.json
     json.dump(supply_orders, open("json/supply_orders.json", "w"), indent=2)
+    # dumping batch_order_pair into batch_order_pair.json
+    json.dump(batch_order_pair, open("json/batch_order_pair.json", "w"), indent=2)
+
 
 def inventory_gen():
     """Generate inventory for every retailer"""
@@ -297,4 +307,4 @@ def inventory_gen():
     json.dump(inventory, open("json/inventory.json", "w"), indent=2)
 
 if __name__ == "__main__":
-    inventory_gen()
+    batch_supply_order_gen()
