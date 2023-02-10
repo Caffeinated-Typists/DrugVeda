@@ -151,6 +151,32 @@ def add_product_suppliers()->None:
     db.commit()
     json_file.close()
 
+def add_batches()->None:
+    """Add data to supply_batches table"""
+    json_file = open("data/json/supply_batches.json", "r")
+    json_data = load(json_file)
+    for batch in json_data:
+        cursor.execute("INSERT INTO supply_batches (BatchID, ProductID, Quantity, ManufactureDate, RetailerID, SupplierID) VALUES ('{}', '{}', '{}', {}, {}, '{}')"
+        .format(batch['batch_id'], batch['product_id'], batch['quantity'], batch['manufacture_date'], batch['retailer_id'], batch['supplier_id']))
+    db.commit()
+    json_file.close()
+
+def add_supply_orders()->None:
+    """Add data to supply_orders table"""
+    json_file = open("data/json/supply_orders.json", "r")
+    json_data = load(json_file)
+    for order in json_data:
+        cursor.execute("INSERT INTO supply_orders (OrderID, OrderDate, Amount, Status) VALUES ('{}', '{}', '{}', {}, '{}')"
+        .format(order['order_id'], order['order_date'], order['price'], order['status']))
+    db.commit()
+    json_file.close()
+
+def add_order_batches()->None:
+    """Add data to order_batches table"""
+
+def add_inventory()->None:
+    """Add data to inventory table"""
+
 def main()->None:
     """Main function"""
     global db, cursor
@@ -170,7 +196,11 @@ def main()->None:
     # add_product_orders()
     # add_product_order_items()
     # add_appointments()
-    add_product_suppliers()
+    # add_product_suppliers()
+    # add_batches()
+    # add_supply_orders()
+    # add_order_batches()
+    # add_inventory()
     db.close()
 
 if __name__ == "__main__":
