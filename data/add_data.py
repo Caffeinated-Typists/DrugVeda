@@ -173,6 +173,13 @@ def add_supply_orders()->None:
 
 def add_order_batches()->None:
     """Add data to order_batches table"""
+    json_file = open("data/json/batch_order_pair.json", "r")
+    json_data = load(json_file)
+    for order_batch in json_data:
+        cursor.execute("INSERT INTO order_batches (OrderID, BatchID) VALUES ('{}', '{}')"
+        .format(order_batch['order_id'], order_batch['batch_id']))
+    db.commit()
+    json_file.close()
 
 def add_inventory()->None:
     """Add data to inventory table"""
@@ -207,7 +214,7 @@ def main()->None:
     # add_batches()
     # add_supply_orders()
     # add_order_batches()
-    add_inventory()
+    # add_inventory()
     db.close()
 
 if __name__ == "__main__":
