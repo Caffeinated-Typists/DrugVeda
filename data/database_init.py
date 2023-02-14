@@ -1,9 +1,10 @@
+import os
 import sqlalchemy
 meta = sqlalchemy.MetaData()
 
 def connect()->sqlalchemy.create_engine:
     """Connects to the database"""
-    engine = sqlalchemy.create_engine("mysql+mysqlconnector://root:root@localhost/DrugVeda", echo=True)
+    engine = sqlalchemy.create_engine(f"mysql+mysqlconnector://{os.environ['MySQL_USER']}:{os.environ['MySQL_PASSWORD']}@{os.environ['MySQL_DB_LINK']}", echo=True)
     return engine
 
 def drop_tables(engine)->None:
@@ -181,8 +182,8 @@ def create_tables(engine)->None:
 def main()->None:
     """Main function"""
     engine = connect()
-    drop_tables(engine)
-    create_tables(engine)
+    # drop_tables(engine)
+    # create_tables(engine)
 
 if __name__ == "__main__":
     main()
