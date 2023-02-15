@@ -15,10 +15,30 @@ def connect_to_db()->sql.engine.base.Engine:
     engine = sql.create_engine(f"mysql+mysqlconnector://{os.environ['MySQL_USER']}:{os.environ['MySQL_PASSWORD']}@{os.environ['MySQL_DB_LINK']}", echo=True)
     return engine
 
+def create_tables(engine:sql.engine)->None:
+    """Create all the tables"""
+    with orm.Session(engine) as session:
+        Base.metadata.create_all(engine)
+        session.commit()
+
+def drop_tables(engine:sql.engine)->None:
+    """Drop all the tables"""
+    with orm.Session(engine) as session:
+        Base.metadata.drop_all(engine)
+        session.commit()
+
+def clear_tables(engine:sql.engine)->None:
+    """Clear all the tables"""
+    with orm.Session(engine) as session:
+        for table in reversed(Base.metadata.sorted_tables):
+            session.execute(table.delete())
+        session.commit()
+
 def main()->None:
     """Main function of the script"""
     engine:sql.engine = connect_to_db()
-    Base.metadata.create_all(engine) # Create all the tables
+    drop_tables(engine)
+    create_tables(engine)
 
 if __name__ == "__main__":
     main()

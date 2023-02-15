@@ -39,6 +39,9 @@ class Customer(Base):
     Lon:orm.Mapped[float] = orm.mapped_column(sql.Float)
 
     sql.PrimaryKeyConstraint(CustomerID, name="pk_customers_customerid")
+    sql.UniqueConstraint(Email, name="uq_customers_email")
+    sql.UniqueConstraint(Phone, name="uq_customers_phone")
+    sql.Index("idx_customers_email", Email)
 
     def __repr__(self) -> str:
         return f"Customer(ID={self.CustomerID}, Name={self.Name}, Email={self.Email}, Phone={self.Phone}, Lat={self.Lat}, Lon={self.Lon})"
@@ -55,6 +58,9 @@ class Retailer(Base):
     Manager:orm.Mapped[str] = orm.mapped_column(sql.String(255), nullable=False)
 
     sql.PrimaryKeyConstraint(RetailerID, name="pk_retailers_retailerid")
+    sql.UniqueConstraint(Email, name="uq_retailers_email")
+    sql.UniqueConstraint(Phone, name="uq_retailers_phone")
+    sql.Index("idx_retailers_email", Email)
 
     def __repr__(self) -> str:
         return f"Retailer(ID={self.RetailerID}, Name={self.Name}, Email={self.Email}, Phone={self.Phone}, Lat={self.Lat}, Lon={self.Lon}, Manager={self.Manager})"
@@ -70,6 +76,9 @@ class Supplier(Base):
     Lon:orm.Mapped[float] = orm.mapped_column(sql.Float)
 
     sql.PrimaryKeyConstraint(SupplierID, name="pk_suppliers_supplierid")
+    sql.UniqueConstraint(Email, name="uq_suppliers_email")
+    sql.UniqueConstraint(Phone, name="uq_suppliers_phone")
+    sql.Index("idx_suppliers_email", Email)
 
     def __repr__(self) -> str:
         return f"Supplier(ID={self.SupplierID}, Name={self.Name}, Email={self.Email}, Phone={self.Phone}, Lat={self.Lat}, Lon={self.Lon})"
@@ -86,6 +95,9 @@ class Brand(Base):
     ProductCnt:orm.Mapped[int] = orm.mapped_column(sql.Integer)
 
     sql.PrimaryKeyConstraint(BrandID, name="pk_brands_brandid")
+    sql.UniqueConstraint(Email, name="uq_brands_email")
+    sql.UniqueConstraint(Phone, name="uq_brands_phone")
+    sql.Index("idx_brands_email", Email)
 
     def __repr__(self) -> str:
         return f"Brand(ID={self.BrandID}, Name={self.Name}, Email={self.Email}, Phone={self.Phone}, Lat={self.Lat}, Lon={self.Lon}, ProductCnt={self.ProductCnt})"
@@ -101,6 +113,9 @@ class MedicalLab(Base):
     Lon:orm.Mapped[float] = orm.mapped_column(sql.Float)
 
     sql.PrimaryKeyConstraint(LabID, name="pk_medical_labs_labid")
+    sql.UniqueConstraint(Email, name="uq_medical_labs_email")
+    sql.UniqueConstraint(Phone, name="uq_medical_labs_phone")
+    sql.Index("idx_medical_labs_email", Email)
     
     def __repr__(self) -> str:
         return f"Medical_Lab(ID={self.LabID}, Name={self.Name}, Email={self.Email}, Phone={self.Phone}, Lat={self.Lat}, Lon={self.Lon})"
@@ -119,7 +134,8 @@ class Products(Base):
     TimeToExpire:orm.Mapped[datetime.datetime] = orm.mapped_column(sql.DATETIME)
 
     sql.PrimaryKeyConstraint(ProductID, name="pk_products_productid")
-    sql.ForeignKeyConstraint([BrandID], [Brand.BrandID], name="fk_products_brandid")
+    sql.ForeignKeyConstraint([BrandID], [Brand.BrandID], name="fk_products_brandid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.Index("idx_products_brandid", BrandID)
 
     def __repr__(self) -> str:
         return f"Product(ID={self.ProductID}, Name={self.Name}, Image={self.Image}, Description={self.Description}, Price={self.Price}, BrandID={self.BrandID}, Rating={self.Rating}, RatingCnt={self.RatingCnt}, TimeToExpire={self.TimeToExpire})"
@@ -156,9 +172,10 @@ class ProductCategory(Base):
     SubCategoryID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
 
     sql.PrimaryKeyConstraint(ProductID, CategoryID, SubCategoryID, name="pk_product_categories_productid_categoryid_subcategoryid")
-    sql.ForeignKeyConstraint([ProductID], [Products.ProductID], name="fk_product_categories_productid")
-    sql.ForeignKeyConstraint([CategoryID], [Category.CategoryID], name="fk_product_categories_categoryid")
-    sql.ForeignKeyConstraint([SubCategoryID], [SubCategory.SubcategoryID], name="fk_product_categories_subcategoryid")
+    sql.ForeignKeyConstraint([ProductID], [Products.ProductID], name="fk_product_categories_productid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.ForeignKeyConstraint([CategoryID], [Category.CategoryID], name="fk_product_categories_categoryid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.ForeignKeyConstraint([SubCategoryID], [SubCategory.SubcategoryID], name="fk_product_categories_subcategoryid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.Index("idx_product_categories_productid", ProductID, CategoryID, SubCategoryID)
 
     def __repr__(self) -> str:
         return f"Product_Categories(ProductID={self.ProductID}, CategoryID={self.CategoryID}), SubCategoryID={self.SubCategoryID})"
@@ -174,8 +191,12 @@ class Batch(Base):
     SupplierID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
 
     sql.PrimaryKeyConstraint(BatchID, name="pk_batches_batchid")
-    sql.ForeignKeyConstraint([RetailerID], [Retailer.RetailerID], name="fk_batches_retailerid")
-    sql.ForeignKeyConstraint([SupplierID], [Supplier.SupplierID], name="fk_batches_supplierid")
+    sql.ForeignKeyConstraint([ProductID], [Products.ProductID], name="fk_batches_productid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.ForeignKeyConstraint([RetailerID], [Retailer.RetailerID], name="fk_batches_retailerid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.ForeignKeyConstraint([SupplierID], [Supplier.SupplierID], name="fk_batches_supplierid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.Index("idx_batches_productid", ProductID)
+    sql.Index("idx_batches_retailerid", RetailerID)
+    sql.Index("idx_batches_supplierid", SupplierID)
 
     def __repr__(self) -> str:
         return f"Batch(ID={self.BatchID}, ProductID={self.ProductID}, Quantity={self.Quantity}, ManufactureDate={self.ManufactureDate}, RetailerID={self.RetailerID}, SupplierID={self.SupplierID})"
@@ -190,6 +211,7 @@ class Supply_Order(Base):
     Status:orm.Mapped[enum.Enum] = orm.mapped_column(sql.Enum(*[status.value for status in Status]))
 
     sql.PrimaryKeyConstraint(OrderID, name="pk_supply_orders_orderid")
+    sql.Index("idx_supply_orders_status", Status)
 
     def __repr__(self) -> str:
         return f"Supply_Order(ID={self.OrderID}, OrderDate={self.OrderDate}, Amount={self.Amount}, Status={self.Status})"
@@ -201,8 +223,9 @@ class OrderBatch(Base):
     BatchID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
 
     sql.PrimaryKeyConstraint(OrderID, BatchID, name="pk_order_batches_orderid_batchid")
-    sql.ForeignKeyConstraint([OrderID], [Supply_Order.OrderID], name="fk_order_batches_orderid")
-    sql.ForeignKeyConstraint([BatchID], [Batch.BatchID], name="fk_order_batches_batchid")
+    sql.ForeignKeyConstraint([OrderID], [Supply_Order.OrderID], name="fk_order_batches_orderid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.ForeignKeyConstraint([BatchID], [Batch.BatchID], name="fk_order_batches_batchid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.Index("idx_order_batches_orderid", OrderID, BatchID)
 
     def __repr__(self) -> str:
         return f"OrderBatch(OrderID={self.OrderID}, BatchID={self.BatchID})"
@@ -214,8 +237,9 @@ class ProductSupplier(Base):
     SupplierID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
 
     sql.PrimaryKeyConstraint(ProductID, SupplierID, name="pk_product_suppliers_productid_supplierid")
-    sql.ForeignKeyConstraint([ProductID], [Products.ProductID], name="fk_product_suppliers_productid")
-    sql.ForeignKeyConstraint([SupplierID], [Supplier.SupplierID], name="fk_product_suppliers_supplierid")
+    sql.ForeignKeyConstraint([ProductID], [Products.ProductID], name="fk_product_suppliers_productid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.ForeignKeyConstraint([SupplierID], [Supplier.SupplierID], name="fk_product_suppliers_supplierid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.Index("idx_product_suppliers_productid", ProductID, SupplierID)
 
     def __repr__(self) -> str:
         return f"ProductSupplier(ProductID={self.ProductID}, SupplierID={self.SupplierID})"
@@ -228,8 +252,10 @@ class Inventory(Base):
     QuantityRemaining:orm.Mapped[int] = orm.mapped_column(sql.Integer, nullable=False)
 
     sql.PrimaryKeyConstraint(BatchID, RetailerID, name="pk_inventory_batchid_retailerid")
-    sql.ForeignKeyConstraint([BatchID], [Batch.BatchID], name="fk_inventory_batchid")
-    sql.ForeignKeyConstraint([RetailerID], [Retailer.RetailerID], name="fk_inventory_retailerid")
+    sql.ForeignKeyConstraint([BatchID], [Batch.BatchID], name="fk_inventory_batchid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.ForeignKeyConstraint([RetailerID], [Retailer.RetailerID], name="fk_inventory_retailerid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.Index("idx_inventory_batchid", BatchID)
+    sql.Index("idx_inventory_retailerid", RetailerID)
 
     def __repr__(self) -> str:
         return f"Inventory(BatchID={self.BatchID}, RetailerID={self.RetailerID}, QuantityRemaining={self.QuantityRemaining})"
@@ -247,7 +273,9 @@ class ProductOrder(Base):
     PaymentMethod:orm.Mapped[enum.Enum] = orm.mapped_column(sql.Enum(*[payment.value for payment in Payment]))
 
     sql.PrimaryKeyConstraint(OrderID, name="pk_product_orders_orderid")
-    sql.ForeignKeyConstraint([CustomerID], [Customer.CustomerID], name="fk_product_orders_customerid")
+    sql.ForeignKeyConstraint([CustomerID], [Customer.CustomerID], name="fk_product_orders_customerid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.Index("idx_product_orders_customerid", CustomerID)
+    sql.Index("idx_product_orders_status", Status)
 
     def __repr__(self) -> str:
         return f"ProductOrder(OrderID={self.OrderID}, CustomerID={self.CustomerID}, OrderDate={self.OrderDate}, Quantity={self.Quantity}, Amount={self.Amount}, Status={self.Status}, DeliveryMethod={self.DeliveryMethod}, PaymentMethod={self.PaymentMethod})"
@@ -263,10 +291,14 @@ class ProductOrderItem(Base):
     Amount:orm.Mapped[float] = orm.mapped_column(sql.Float, nullable=False)
 
     sql.PrimaryKeyConstraint(OrderID, ProductID, CustomerID, RetailerID, name="pk_product_order_items_orderid_productid_customerid_retailerid")
-    sql.ForeignKeyConstraint([OrderID], [ProductOrder.OrderID], name="fk_product_order_items_orderid")
-    sql.ForeignKeyConstraint([ProductID], [Products.ProductID], name="fk_product_order_items_productid")
-    sql.ForeignKeyConstraint([CustomerID], [Customer.CustomerID], name="fk_product_order_items_customerid")
-    sql.ForeignKeyConstraint([RetailerID], [Retailer.RetailerID], name="fk_product_order_items_retailerid")
+    sql.ForeignKeyConstraint([OrderID], [ProductOrder.OrderID], name="fk_product_order_items_orderid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.ForeignKeyConstraint([ProductID], [Products.ProductID], name="fk_product_order_items_productid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.ForeignKeyConstraint([CustomerID], [Customer.CustomerID], name="fk_product_order_items_customerid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.ForeignKeyConstraint([RetailerID], [Retailer.RetailerID], name="fk_product_order_items_retailerid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.Index("idx_product_order_items_orderid", OrderID)
+    sql.Index("idx_product_order_items_productid", ProductID)
+    sql.Index("idx_product_order_items_customerid", CustomerID)
+    sql.Index("idx_product_order_items_retailerid", RetailerID)
 
     def __repr__(self) -> str:
         return f"ProductOrderItem(OrderID={self.OrderID}, ProductID={self.ProductID}, CustomerID={self.CustomerID}, RetailerID={self.RetailerID}, Quantity={self.Quantity}, Amount={self.Amount})"
@@ -282,7 +314,8 @@ class Test(Base):
     LabID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
 
     sql.PrimaryKeyConstraint(TestID, name="pk_tests_testid")
-    sql.ForeignKeyConstraint([LabID], [MedicalLab.LabID], name="fk_tests_landid")
+    sql.ForeignKeyConstraint([LabID], [MedicalLab.LabID], name="fk_tests_landid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.Index("idx_tests_landid", LabID)
 
     def __repr__(self) -> str:
         return f"Test(TestID={self.TestID}, Name={self.Name}, Image={self.Image}, Description={self.Description}, Price={self.Price}, LabID={self.LabID})"
@@ -298,8 +331,10 @@ class Appointment(Base):
     Result:orm.Mapped[str] = orm.mapped_column(sql.String(8191))
 
     sql.PrimaryKeyConstraint(AppointmentID, name="pk_appointments_appointmentid")
-    sql.ForeignKeyConstraint([TestID], [Test.TestID], name="fk_appointments_testid")
-    sql.ForeignKeyConstraint([CustomerID], [Customer.CustomerID], name="fk_appointments_customerid")
+    sql.ForeignKeyConstraint([TestID], [Test.TestID], name="fk_appointments_testid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.ForeignKeyConstraint([CustomerID], [Customer.CustomerID], name="fk_appointments_customerid", ondelete="CASCADE", onupdate="CASCADE")
+    sql.Index("idx_appointments_testid", TestID)
+    sql.Index("idx_appointments_customerid", CustomerID)
 
     def __repr__(self) -> str:
         return f"Appointment(AppointmentID={self.AppointmentID}, TestID={self.TestID}, CustomerID={self.CustomerID}, BookingDate={self.BookingDate}, AppointmentDate={self.AppointmentDate}, Result={self.Result})"
