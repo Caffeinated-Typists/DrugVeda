@@ -10,6 +10,7 @@ def connect_to_db()->sql.engine.base.Engine:
 
 def main()->None:
     """Main function of the script"""
+    connect_to_db()
 
 if __name__ == "__main__":
     main()
