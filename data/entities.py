@@ -148,13 +148,14 @@ class SubCategory(Base):
     def __repr__(self) -> str:
         return f"SubCategory(ID={self.SubcategoryID}, Name={self.Name}, Description={self.Description})"
 
-class Product_Category(Base):
+class ProductCategory(Base):
     __tablename__ = "product_categories"
 
     ProductID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
     CategoryID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
     SubCategoryID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
 
+    sql.PrimaryKeyConstraint(ProductID, CategoryID, SubCategoryID, name="pk_product_categories_productid_categoryid_subcategoryid")
     sql.ForeignKeyConstraint([ProductID], [Products.ProductID], name="fk_product_categories_productid")
     sql.ForeignKeyConstraint([CategoryID], [Category.CategoryID], name="fk_product_categories_categoryid")
     sql.ForeignKeyConstraint([SubCategoryID], [SubCategory.SubcategoryID], name="fk_product_categories_subcategoryid")
@@ -186,7 +187,7 @@ class Supply_Order(Base):
     OrderID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
     OrderDate:orm.Mapped[datetime.datetime] = orm.mapped_column(sql.DATETIME, nullable=False)
     Amount:orm.Mapped[float] = orm.mapped_column(sql.Float, nullable=False)
-    Status:orm.Mapped[enum.Enum] = orm.mapper_column(sql.Enum([status.value for status in Status]))
+    Status:orm.Mapped[enum.Enum] = orm.mapped_column(sql.Enum(*[status.value for status in Status]))
 
     sql.PrimaryKeyConstraint(OrderID, name="pk_supply_orders_orderid")
 
@@ -199,6 +200,7 @@ class OrderBatch(Base):
     OrderID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
     BatchID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
 
+    sql.PrimaryKeyConstraint(OrderID, BatchID, name="pk_order_batches_orderid_batchid")
     sql.ForeignKeyConstraint([OrderID], [Supply_Order.OrderID], name="fk_order_batches_orderid")
     sql.ForeignKeyConstraint([BatchID], [Batch.BatchID], name="fk_order_batches_batchid")
 
@@ -211,6 +213,7 @@ class ProductSupplier(Base):
     ProductID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
     SupplierID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
 
+    sql.PrimaryKeyConstraint(ProductID, SupplierID, name="pk_product_suppliers_productid_supplierid")
     sql.ForeignKeyConstraint([ProductID], [Products.ProductID], name="fk_product_suppliers_productid")
     sql.ForeignKeyConstraint([SupplierID], [Supplier.SupplierID], name="fk_product_suppliers_supplierid")
 
@@ -224,6 +227,7 @@ class Inventory(Base):
     RetailerID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
     QuantityRemaining:orm.Mapped[int] = orm.mapped_column(sql.Integer, nullable=False)
 
+    sql.PrimaryKeyConstraint(BatchID, RetailerID, name="pk_inventory_batchid_retailerid")
     sql.ForeignKeyConstraint([BatchID], [Batch.BatchID], name="fk_inventory_batchid")
     sql.ForeignKeyConstraint([RetailerID], [Retailer.RetailerID], name="fk_inventory_retailerid")
 
@@ -238,9 +242,9 @@ class ProductOrder(Base):
     OrderDate:orm.Mapped[datetime.datetime] = orm.mapped_column(sql.DATETIME, nullable=False)
     Quantity:orm.Mapped[int] = orm.mapped_column(sql.Integer, nullable=False)
     Amount:orm.Mapped[float] = orm.mapped_column(sql.Float, nullable=False)
-    Status:orm.Mapped[enum.Enum] = orm.mapped_column(sql.Enum([status.value for status in Status]))
-    DeliveryMethod:orm.Mapped[enum.Enum] = orm.mapped_column(sql.Enum([delivery.value for delivery in Delivery]))
-    PaymentMethod:orm.Mapped[enum.Enum] = orm.mapped_column(sql.Enum([payment.value for payment in Payment]))
+    Status:orm.Mapped[enum.Enum] = orm.mapped_column(sql.Enum(*[status.value for status in Status]))
+    DeliveryMethod:orm.Mapped[enum.Enum] = orm.mapped_column(sql.Enum(*[delivery.value for delivery in Delivery]))
+    PaymentMethod:orm.Mapped[enum.Enum] = orm.mapped_column(sql.Enum(*[payment.value for payment in Payment]))
 
     sql.PrimaryKeyConstraint(OrderID, name="pk_product_orders_orderid")
     sql.ForeignKeyConstraint([CustomerID], [Customer.CustomerID], name="fk_product_orders_customerid")
@@ -258,6 +262,7 @@ class ProductOrderItem(Base):
     Quantity:orm.Mapped[int] = orm.mapped_column(sql.Integer, nullable=False)
     Amount:orm.Mapped[float] = orm.mapped_column(sql.Float, nullable=False)
 
+    sql.PrimaryKeyConstraint(OrderID, ProductID, CustomerID, RetailerID, name="pk_product_order_items_orderid_productid_customerid_retailerid")
     sql.ForeignKeyConstraint([OrderID], [ProductOrder.OrderID], name="fk_product_order_items_orderid")
     sql.ForeignKeyConstraint([ProductID], [Products.ProductID], name="fk_product_order_items_productid")
     sql.ForeignKeyConstraint([CustomerID], [Customer.CustomerID], name="fk_product_order_items_customerid")
