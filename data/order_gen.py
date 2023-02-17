@@ -1,7 +1,7 @@
 from random import randint, random, choice
 from random import sample
 from datetime import datetime, timedelta
-from db_enums import Status, Payment, Delivery, AppointmentStatus
+from entities import Status, Payment, Delivery, AppointmentStatus
 import json
 import uuid
 
