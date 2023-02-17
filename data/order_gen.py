@@ -1,7 +1,7 @@
 from random import randint, random, choice
 from random import sample
 from datetime import datetime, timedelta
-from entities import Status, Payment, Delivery, AppointmentStatus
+from entities import Status, Payment, Delivery
 import json
 import uuid
 
@@ -261,6 +261,10 @@ def batch_supply_order_gen():
                 "retailer_id": retailer_id,
                 "supplier_id": supplier_id
             })
+            pair:dict[str] = {}
+            pair["order_id"] = order_id
+            pair["batch_id"] = batch_id
+            batch_order_pair.append(pair)
 
         supply_orders.append({
             "order_id": order_id,
@@ -268,10 +272,6 @@ def batch_supply_order_gen():
             "price": price,
             "status": status
         })
-        pair:dict[str] = {}
-        pair["order_id"] = order_id
-        pair["batch_id"] = batch_id
-        batch_order_pair.append(pair)
 
     # dumping batches into batches.json
     json.dump(batches, open("json/batches.json", "w"), indent=2)
@@ -306,9 +306,9 @@ def inventory_gen():
     json.dump(inventory, open("json/inventory.json", "w"), indent=2)
 
 if __name__ == "__main__":
-    product_order_items_gen()
-    product_order_gen()
-    appointments_gen()
-    product_supplier_gen()
+    # product_order_items_gen()
+    # product_order_gen()
+    # appointments_gen()
+    # product_supplier_gen()
     batch_supply_order_gen()
     inventory_gen()

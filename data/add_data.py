@@ -1,9 +1,10 @@
-import mysql.connector as sql
-from json import load
+import os
 import typing
 import random
-import uuid
 from datetime import datetime, timedelta
+from json import load
+import uuid
+import mysql.connector as sql
 
 db:sql.connect = None
 cursor:sql.cursor = None
@@ -34,7 +35,7 @@ def add_data_retailers()->None:
     json_file = open("data/json/retailers.json", "r")
     json_data = load(json_file)
     for retailer in json_data:
-        cursor.execute("INSERT INTO retailers (RetailerID, Name, Email, Phone, Lat, Lon, Managaer) VALUES ('{}', '{}', '{}', '{}', {}, {}, '{}')".format(retailer['retailer_id'], retailer['name'], retailer['email'], retailer['phone'], retailer['latitude'], retailer['longitude'], retailer['manager_name']))
+        cursor.execute("INSERT INTO retailers (RetailerID, Name, Email, Phone, Lat, Lon, Manager) VALUES ('{}', '{}', '{}', '{}', {}, {}, '{}')".format(retailer['retailer_id'], retailer['name'], retailer['email'], retailer['phone'], retailer['latitude'], retailer['longitude'], retailer['manager_name']))
     db.commit()
     json_file.close()
 
@@ -195,26 +196,26 @@ def main()->None:
     """Main function"""
     global db, cursor
     db = sql.connect(
-        host = "localhost",
-        user = "root",
-        passwd = "root",
+        host = "lin-16287-9495-mysql-primary.servers.linodedb.net",
+        user = os.environ['MySQL_USER'],
+        passwd = os.environ['MySQL_PASSWORD'],
         database = "DrugVeda"
     )
     cursor = db.cursor()
-    # add_data_customers()
-    # add_data_retailers()
-    # add_data_suppliers()
-    # add_data_labs()
-    # add_data_products()
-    # add_tests()
-    # add_product_orders()
-    # add_product_order_items()
-    # add_appointments()
-    # add_product_suppliers()
-    # add_batches()
-    # add_supply_orders()
-    # add_order_batches()
-    # add_inventory()
+    add_data_customers()
+    add_data_retailers()
+    add_data_suppliers()
+    add_data_labs()
+    add_data_products()
+    add_tests()
+    add_product_orders()
+    add_product_order_items()
+    add_appointments()
+    add_product_suppliers()
+    add_batches()
+    add_supply_orders()
+    add_order_batches()
+    add_inventory()
     db.close()
 
 if __name__ == "__main__":
