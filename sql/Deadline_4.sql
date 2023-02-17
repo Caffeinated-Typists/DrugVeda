@@ -36,15 +36,16 @@ update product_orders
 set Status = "Delivered"
 where OrderID = "46cfbccbaea211eda143f889d2839e9e";
 
--- update inventory 
--- set QuantityRemaining -= 
--- where(
-
--- )
-
--- select product_order_items.RetailerID, product_order_items.ProductID, product_order_items.Quantity
--- from product_order_items
--- where OrderID = "46cfbccbaea211eda143f889d2839e9e";
+-- Reduce inventory of retailer "f7ee6a9c-fcc8-47cb-a60a-11594fc52a6e" for product "9e082981a91711edbe5ff889d2839e9e" by 5.
+update inventory
+set QuantityRemaining = QuantityRemaining - 5
+where (RetailerID = "f7ee6a9c-fcc8-47cb-a60a-11594fc52a6e") and (
+    BatchID in (
+        select BatchID
+        from batches
+        where ProductID = "9e082981a91711edbe5ff889d2839e9e"
+    )
+);
 
 -- Check number of pending orders for every retailer. 
 select retailers.Name, count(*) as "Number of Pending Orders"
