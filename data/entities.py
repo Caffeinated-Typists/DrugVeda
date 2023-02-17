@@ -25,6 +25,10 @@ class Delivery(enum.Enum):
     Delivery = 'Delivery'
     Pickup = 'Pickup'
 
+class AppointmentStatus(enum.Enum):
+    Completed = 'Completed'
+    Scheduled = 'Scheduled'
+
 class Base(orm.DeclarativeBase):
     pass
 
@@ -89,14 +93,14 @@ class Brand(Base):
     BrandID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
     Name:orm.Mapped[str] = orm.mapped_column(sql.String(255), nullable=False)
     Email:orm.Mapped[str] = orm.mapped_column(sql.String(255), nullable=False, index=True)
-    # Phone:orm.Mapped[str] = orm.mapped_column(sql.String(20))
-    Lat:orm.Mapped[float] = orm.mapped_column(sql.Float, nullable=True)
-    Lon:orm.Mapped[float] = orm.mapped_column(sql.Float, nullable=True)
-    ProductCnt:orm.Mapped[int] = orm.mapped_column(sql.Integer, nullable=True, default=0)
+    Phone:orm.Mapped[str] = orm.mapped_column(sql.String(20))
+    Lat:orm.Mapped[float] = orm.mapped_column(sql.Float)
+    Lon:orm.Mapped[float] = orm.mapped_column(sql.Float)
+    ProductCnt:orm.Mapped[int] = orm.mapped_column(sql.Integer)
 
     sql.PrimaryKeyConstraint(BrandID, name="pk_brands_brandid")
     sql.UniqueConstraint(Email, name="uq_brands_email")
-    # sql.UniqueConstraint(Phone, name="uq_brands_phone")
+    sql.UniqueConstraint(Phone, name="uq_brands_phone")
     sql.Index("idx_brands_email", Email)
 
     def __repr__(self) -> str:
@@ -157,7 +161,7 @@ class SubCategory(Base):
 
     SubcategoryID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
     Name:orm.Mapped[str] = orm.mapped_column(sql.String(255), nullable=False)
-    # Image:orm.Mapped[str] = orm.mapped_column(sql.String(255))
+    Image:orm.Mapped[str] = orm.mapped_column(sql.String(255))
 
     sql.PrimaryKeyConstraint(SubcategoryID, name="pk_subcategory_subcategoryid")
 
@@ -307,9 +311,9 @@ class Test(Base):
     __tablename__ = "tests"
 
     TestID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
-    Name:orm.Mapped[str] = orm.mapped_column(sql.String(127), nullable=False)
-    # Image:orm.Mapped[str] = orm.mapped_column(sql.String(255), nullable=True)
-    Description:orm.Mapped[str] = orm.mapped_column(sql.String(8191), nullable=True)
+    Name:orm.Mapped[str] = orm.mapped_column(sql.String(127))
+    Image:orm.Mapped[str] = orm.mapped_column(sql.String(255))
+    Description:orm.Mapped[str] = orm.mapped_column(sql.String(8191))
     Price:orm.Mapped[float] = orm.mapped_column(sql.Float, nullable=False)
     LabID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
 
@@ -328,7 +332,7 @@ class Appointment(Base):
     CustomerID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
     BookingDate:orm.Mapped[datetime.datetime] = orm.mapped_column(sql.DATETIME, nullable=False)
     AppointmentDate:orm.Mapped[datetime.datetime] = orm.mapped_column(sql.DATETIME, nullable=False)
-    Result:orm.Mapped[str] = orm.mapped_column(sql.String(8191), nullable=True)
+    Result:orm.Mapped[str] = orm.mapped_column(sql.String(8191))
 
     sql.PrimaryKeyConstraint(AppointmentID, name="pk_appointments_appointmentid")
     sql.ForeignKeyConstraint([TestID], [Test.TestID], name="fk_appointments_testid", ondelete="CASCADE", onupdate="CASCADE")
