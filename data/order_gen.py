@@ -280,7 +280,6 @@ def batch_supply_order_gen():
     # dumping batch_order_pair into batch_order_pair.json
     json.dump(batch_order_pair, open("json/batch_order_pair.json", "w"), indent=2)
 
-
 def inventory_gen():
     """Generate inventory for every retailer"""
 
@@ -307,4 +306,9 @@ def inventory_gen():
     json.dump(inventory, open("json/inventory.json", "w"), indent=2)
 
 if __name__ == "__main__":
+    product_order_items_gen()
+    product_order_gen()
+    appointments_gen()
+    product_supplier_gen()
+    batch_supply_order_gen()
     inventory_gen()
