@@ -1,10 +1,16 @@
 from fastapi import Depends, FastAPI, Response, status
 from fastapi.security import HTTPBearer
+from fastapi.middleware.cors import CORSMiddleware
 from backend.utils import VerifyToken
 import backend.queries as queries
 
 app = FastAPI()
 engine = queries.connect_to_db()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*']
+)
 
 token_auth_scheme = HTTPBearer()
 
