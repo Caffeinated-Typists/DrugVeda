@@ -37,7 +37,7 @@ def clear_tables(engine:sql.engine)->None:
 def main()->None:
     """Main function of the script"""
     engine:sql.engine = connect_to_db()
-    clear_tables(engine)
+    # clear_tables(engine)
     # drop_tables(engine)
     # create_tables(engine)
 
