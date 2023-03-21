@@ -1,14 +1,14 @@
-const typography = require("@tailwindcss/typography");
-const forms = require("@tailwindcss/forms");
-
-const config = {
-  content: ["./src/**/*.{html,js,svelte,ts}"],
-
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
     extend: {},
   },
+  plugins: [
+    require('flowbite/plugin'),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    
 
-  plugins: [forms, typography],
-};
-
-module.exports = config;
+  ],
+}

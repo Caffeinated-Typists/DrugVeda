@@ -1,7 +1,7 @@
 from random import randint, random, choice
 from random import sample
 from datetime import datetime, timedelta
-from entities import Status, Payment, Delivery
+from entities import Status, Payment, Delivery, AppointmentStatus
 import json
 import uuid
 

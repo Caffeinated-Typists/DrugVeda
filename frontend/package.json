@@ -1,31 +1,48 @@
 {
-  "name": "drugveda",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.json",
-    "deploy": "npx gh-pages -d dist"
-
-  },
-  "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^2.0.0",
-    "@tailwindcss/forms": "^0.5.2",
-    "@tailwindcss/typography": "^0.5.3",
-    "@tsconfig/svelte": "^3.0.0",
-    "autoprefixer": "^10.4.7",
-    "gh-pages": "^5.0.0",
-    "postcss": "^8.4.14",
-    "postcss-load-config": "^4.0.1",
-    "svelte": "^3.54.0",
-    "svelte-check": "^2.10.0",
-    "svelte-preprocess": "^4.10.7",
-    "tailwindcss": "^3.1.5",
-    "tslib": "^2.4.1",
-    "typescript": "^4.9.3",
-    "vite": "^4.0.0"
-  }
+	"name": "sveltekit-demo",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+		"format": "prettier --plugin-search-dir . --write .",
+		"deploy": "wsl touch build/.nojekyll && npx gh-pages -d build -t true"
+	},
+	"devDependencies": {
+		"@ernane/svelte-star-rating": "^1.1.2",
+		"@poppanator/sveltekit-svg": "^2.1.2",
+		"@sveltejs/adapter-auto": "^1.0.0",
+		"@sveltejs/adapter-static": "^1.0.5",
+		"@sveltejs/kit": "^1.0.0",
+		"@tailwindcss/forms": "^0.5.3",
+		"@tailwindcss/typography": "^0.5.9",
+		"@types/svelte-range-slider-pips": "^2.0.0",
+		"@typescript-eslint/eslint-plugin": "^5.45.0",
+		"@typescript-eslint/parser": "^5.45.0",
+		"autoprefixer": "^10.4.13",
+		"eslint": "^8.28.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-svelte3": "^4.0.0",
+		"flowbite": "^1.6.4",
+		"flowbite-svelte": "^0.30.6",
+		"postcss": "^8.4.21",
+		"prettier": "^2.8.0",
+		"prettier-plugin-svelte": "^2.8.1",
+		"svelte": "^3.54.0",
+		"svelte-check": "^3.0.1",
+		"tailwindcss": "^3.2.4",
+		"tslib": "^2.4.1",
+		"typescript": "^4.9.3",
+		"vite": "^4.0.0"
+	},
+	"type": "module",
+	"dependencies": {
+		"firebase": "^9.17.2",
+		"firebase-auth": "^0.1.2",
+		"svelte-range-slider-pips": "^2.1.1"
+	}
 }
