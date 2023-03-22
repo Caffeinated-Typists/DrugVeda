@@ -7,10 +7,16 @@ import backend.queries as queries
 app = FastAPI()
 engine = queries.connect_to_db()
 
+origins = ['*']
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['*']
-)
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+) 
+
 
 token_auth_scheme = HTTPBearer()
 
