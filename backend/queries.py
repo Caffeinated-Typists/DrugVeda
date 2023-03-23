@@ -23,4 +23,4 @@ def get_all_categories(engine:sqlalchemy.engine)->list[dict[str: str]]:
     """Returns name of all categories from the database"""
     with orm.Session(engine) as session:
         categories = session.query(entities.Category).all()
-        return [{category.CategoryID: category.Name} for category in categories]
+        return [{category.CategoryID: [category.Name, category.Image]} for category in categories]
