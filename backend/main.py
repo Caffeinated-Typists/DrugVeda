@@ -2,10 +2,11 @@ from fastapi import Depends, FastAPI, Response, status
 from fastapi.security import HTTPBearer
 from fastapi.middleware.cors import CORSMiddleware
 from backend.utils import VerifyToken
-import backend.queries as queries
+import backend.connect as connect
+from backend.categories import categoryrouter
 
 app = FastAPI()
-engine = queries.connect_to_db()
+app.include_router(categoryrouter)
 
 origins = ['*']
 
@@ -39,11 +40,3 @@ def private(response: Response, token: str = Depends(token_auth_scheme)):
        return result
  
     return result
-
-@app.get("/api/categories")
-def categories():
-    res = {
-        "status": "success",
-        "data" : queries.get_all_categories(engine)
-    }
-    return res
