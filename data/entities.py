@@ -93,14 +93,14 @@ class Brand(Base):
     BrandID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
     Name:orm.Mapped[str] = orm.mapped_column(sql.String(255), nullable=False)
     Email:orm.Mapped[str] = orm.mapped_column(sql.String(255), nullable=False, index=True)
-    Phone:orm.Mapped[str] = orm.mapped_column(sql.String(20))
+    # Phone:orm.Mapped[str] = orm.mapped_column(sql.String(20))
     Lat:orm.Mapped[float] = orm.mapped_column(sql.Float)
     Lon:orm.Mapped[float] = orm.mapped_column(sql.Float)
     ProductCnt:orm.Mapped[int] = orm.mapped_column(sql.Integer)
 
     sql.PrimaryKeyConstraint(BrandID, name="pk_brands_brandid")
     sql.UniqueConstraint(Email, name="uq_brands_email")
-    sql.UniqueConstraint(Phone, name="uq_brands_phone")
+    # sql.UniqueConstraint(Phone, name="uq_brands_phone")
     sql.Index("idx_brands_email", Email)
 
     def __repr__(self) -> str:
@@ -161,7 +161,7 @@ class SubCategory(Base):
 
     SubcategoryID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
     Name:orm.Mapped[str] = orm.mapped_column(sql.String(255), nullable=False)
-    Image:orm.Mapped[str] = orm.mapped_column(sql.String(255))
+    # Image:orm.Mapped[str] = orm.mapped_column(sql.String(255))
 
     sql.PrimaryKeyConstraint(SubcategoryID, name="pk_subcategory_subcategoryid")
 
