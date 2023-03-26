@@ -11,7 +11,7 @@ begin
     declare BID varchar(36);
     declare QTYR int;
     declare done tinyint default FALSE;
-    declare cur cursor for select inventory.BatchID, inventory.QuantityRemaining from inventory, batches where(inventory.BatchID = batches.BatchID) order by batches.ManufactureDate;
+    declare cur cursor for select inventory.BatchID, inventory.QuantityRemaining from inventory, batches where(inventory.BatchID = batches.BatchID) and (inventory.RetailerID = RID) and (batches.ProductID = PID) order by batches.ManufactureDate;
     declare continue handler for not found set done = TRUE;
     open cur;
     read_loop: loop
@@ -125,18 +125,6 @@ begin
 end $$
 DELIMITER ;
 
--- Create a trigger to remove a batch from inventory if QuantityRemaining is 0
-DELIMITER $$
-create trigger remove_batch
-after update on inventory
-for each row
-begin
-    if (new.QuantityRemaining = 0) then
-        delete from inventory where BatchID = new.BatchID;
-    end if;
-end $$
-DELIMITER ;
-
 -- Create a trigger to increase the inventory after receiving the supply order
 DELIMITER $$
 create trigger increase_inventory
@@ -146,7 +134,7 @@ begin
     if (new.Status = "Delivered") then
         insert into inventory (RetailerID, BatchID, QuantityRemaining)
         select batches.RetailerID, batches.BatchID, batches.Quantity
-        from batches
+        from batches, order_batches
         where (batches.BatchID = order_batches.BatchID) and (order_batches.OrderID = new.OrderID);
     end if;
 end$$
