@@ -4,6 +4,32 @@ select inventory.RetailerID as RetailerID, product_categories.ProductID as Produ
 from inventory, batches, product_categories
 where (batches.BatchID = inventory.BatchID) and (batches.ProductID = product_categories.ProductID);
 
+-- Create a stored procedure to sell a product from a retailer
+DELIMITER $$
+create procedure sell_product(IN RID varchar(36), IN PID varchar(36), IN QTY int)
+begin
+    declare BID varchar(36);
+    declare QTYR int;
+    declare done tinyint default FALSE;
+    declare cur cursor for select inventory.BatchID, inventory.QuantityRemaining from inventory, batches where(inventory.BatchID = batches.BatchID) order by batches.ManufactureDate;
+    declare continue handler for not found set done = TRUE;
+    open cur;
+    read_loop: loop
+        fetch next from cur into BID, QTYR;
+        if done then
+            leave read_loop;
+        end if;
+        if (QTYR >= QTY) then
+            update inventory set QuantityRemaining = QuantityRemaining - QTY where BatchID = BID;
+            leave read_loop;
+        else
+            update inventory set QuantityRemaining = 0 where BatchID = BID;
+            set QTY = QTY - QTYR;
+        end if;
+    end loop;
+end $$
+DELIMITER ;
+
 
 -- Get the current inventory for every retailer
 select 
@@ -71,3 +97,57 @@ from product_inventory_view
 join products on products.ProductID = product_inventory_view.ProductID
 join brands on brands.BrandID = products.BrandID
 group by cube(products.Rating, brands.Name, products.Name);
+
+
+-- Create a trigger to reduce the inventory after delivering the order
+DELIMITER $$
+create trigger reduce_inventory
+after update on product_orders
+for each row
+begin
+    declare RID varchar(36);
+    declare PID varchar(36);
+    declare QTY int;
+    declare done tinyint default FALSE;
+    declare cur cursor for select RetailerID, ProductID, Quantity from product_order_items where product_order_items.OrderID = new.OrderID;
+    declare continue handler for not found set done = TRUE;
+    if (new.Status = "Delivered") then
+        open cur;
+        read_loop: loop
+            fetch cur into RID, PID, QTY;
+            if done then
+                leave read_loop;
+            end if;
+            call sell_product(RID, PID, QTY);
+        end loop;
+        close cur;
+    end if;
+end $$
+DELIMITER ;
+
+-- Create a trigger to remove a batch from inventory if QuantityRemaining is 0
+DELIMITER $$
+create trigger remove_batch
+after update on inventory
+for each row
+begin
+    if (new.QuantityRemaining = 0) then
+        delete from inventory where BatchID = new.BatchID;
+    end if;
+end $$
+DELIMITER ;
+
+-- Create a trigger to increase the inventory after receiving the supply order
+DELIMITER $$
+create trigger increase_inventory
+after update on supply_orders
+for each row
+begin
+    if (new.Status = "Delivered") then
+        insert into inventory (RetailerID, BatchID, QuantityRemaining)
+        select batches.RetailerID, batches.BatchID, batches.Quantity
+        from batches
+        where (batches.BatchID = order_batches.BatchID) and (order_batches.OrderID = new.OrderID);
+    end if;
+end$$
+DELIMITER ;

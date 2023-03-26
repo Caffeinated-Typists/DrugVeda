@@ -205,3 +205,45 @@ def EmbeddedSQL2():
         "status" : "success",
         "data" : data
     }
+
+@deadlinerouter.get("/Trigger1/{OrderID}")
+def Trigger1(OrderID:str):
+    """Update the order status to Delivered for Retail Order with provided OrderID"""
+    db = mysql.connect(
+        host = "lin-16287-9495-mysql-primary.servers.linodedb.net",
+        user = os.environ['MySQL_USER'],
+        passwd = os.environ['MySQL_PASSWORD'],
+        database = "DrugVeda"
+    )
+    cursor = db.cursor()
+    cursor.execute(f"""
+        update product_orders
+        set Status = "Delivered"
+        where OrderID = {OrderID};
+    """)
+    db.commit()
+    return {
+        "status" : "success",
+        "message" : "Order Status Updated"
+    }
+
+@deadlinerouter.get("/Trigger2/{OrderID}")
+def Trigger2(OrderID:str):
+    """Update the order status to Delivered for Supply Order with provided OrderID"""
+    db = mysql.connect(
+        host = "lin-16287-9495-mysql-primary.servers.linodedb.net",
+        user = os.environ['MySQL_USER'],
+        passwd = os.environ['MySQL_PASSWORD'],
+        database = "DrugVeda"
+    )
+    cursor = db.cursor()
+    cursor.execute(f"""
+        update supply_orders
+        set Status = "Delivered"
+        where OrderID = {OrderID};
+    """)
+    db.commit()
+    return {
+        "status" : "success",
+        "message" : "Order Status Updated"
+    }
