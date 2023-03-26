@@ -219,7 +219,7 @@ def Trigger1(OrderID:str):
     cursor.execute(f"""
         update product_orders
         set Status = "Delivered"
-        where OrderID = {OrderID};
+        where OrderID = '{OrderID}';
     """)
     db.commit()
     return {
@@ -240,7 +240,7 @@ def Trigger2(OrderID:str):
     cursor.execute(f"""
         update supply_orders
         set Status = "Delivered"
-        where OrderID = {OrderID};
+        where OrderID = '{OrderID}';
     """)
     db.commit()
     return {
