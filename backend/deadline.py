@@ -150,3 +150,58 @@ def OLAP4():
         "status" : "success",
         "data" : data
     }
+
+@deadlinerouter.get("/EmbeddedSQL1")
+def EmbeddedSQL1():
+    """Get the number of orders placed by each customer"""
+    db = mysql.connect(
+        host = "lin-16287-9495-mysql-primary.servers.linodedb.net",
+        user = os.environ['MySQL_USER'],
+        passwd = os.environ['MySQL_PASSWORD'],
+        database = "DrugVeda"
+    )
+    cursor = db.cursor()
+    cursor.execute("""
+        select customers.CustomerID, customers.Name, count(*) as "Number of Orders" 
+        from customers 
+        inner join product_orders on customers.CustomerID = product_orders.CustomerID 
+        group by customers.CustomerID 
+        order by count(*) desc;
+    """)
+    result = cursor.fetchall()
+    data = [{
+        "CustomerID" : row[0],
+        "Name" : row[1],
+        "Number of Orders" : row[2]
+    } for row in result]
+    return {
+        "status" : "success",
+        "data" : data
+    }
+
+@deadlinerouter.get("/EmbeddedSQL2")
+def EmbeddedSQL2():
+    """Get the pending orders of each retailer"""
+    db = mysql.connect(
+        host = "lin-16287-9495-mysql-primary.servers.linodedb.net",
+        user = os.environ['MySQL_USER'],
+        passwd = os.environ['MySQL_PASSWORD'],
+        database = "DrugVeda"
+    )
+    cursor = db.cursor()
+    cursor.execute("""
+        select retailers.Name, count(*) as "Number of Pending Orders"
+        from product_orders, product_order_items, retailers
+        where (product_orders.Status = "Placed") and (product_order_items.RetailerID = retailers.RetailerID) and (product_orders.OrderID = product_order_items.OrderID)
+        group by product_order_items.RetailerID;
+        order by count(*) desc;
+    """)
+    result = cursor.fetchall()
+    data = [{
+        "Retailer" : row[0],
+        "Number of Pending Orders" : row[1]
+    } for row in result]
+    return {
+        "status" : "success",
+        "data" : data
+    }
