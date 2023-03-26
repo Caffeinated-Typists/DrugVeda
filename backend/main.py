@@ -6,6 +6,9 @@ import backend.connect as connect
 from backend.categories import categoryrouter
 from backend.deadline import deadlinerouter
 
+# Load the credentials from the .json file
+connect.load_creds()
+
 app = FastAPI()
 app.include_router(categoryrouter)
 app.include_router(deadlinerouter)

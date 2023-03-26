@@ -15,6 +15,5 @@ def load_creds()->None:
 
 def connect_to_db()->sqlalchemy.engine.base.Engine:
     """Connect to the database and return the engine"""
-    load_creds()
     engine = sqlalchemy.create_engine(f"mysql+mysqlconnector://{os.environ['MySQL_USER']}:{os.environ['MySQL_PASSWORD']}@{os.environ['MySQL_DB_LINK']}", echo=True)
     return engine
