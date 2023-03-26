@@ -4,9 +4,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from backend.utils import VerifyToken
 import backend.connect as connect
 from backend.categories import categoryrouter
+from backend.deadline import deadlinerouter
 
 app = FastAPI()
 app.include_router(categoryrouter)
+app.include_router(deadlinerouter)
 
 origins = ['*']
 
