@@ -61,3 +61,13 @@ join subcategories on subcategories.SubCategoryID = product_categories.SubCatego
 join products on products.ProductID = product_categories.ProductID
 group by categories.Name, subcategories.Name, products.Name, retailers.Name with rollup;
 
+-- Get the current stock w.r.t items, brands and ratings
+select
+    if(grouping(products.Rating), 'All Ratings', products.Rating) as Rating,
+    if(grouping(brands.Name), 'All Brands', brands.Name) as Brand,
+    if(grouping(products.Name), 'All Products', products.Name) as Product,
+    sum(product_inventory_view.QuantityRemaining) as QuantityRemaining
+from product_inventory_view
+join products on products.ProductID = product_inventory_view.ProductID
+join brands on brands.BrandID = products.BrandID
+group by cube(products.Rating, brands.Name, products.Name);

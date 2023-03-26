@@ -4,8 +4,8 @@ import mysql.connector as mysql
 
 deadlinerouter = APIRouter(prefix="/api/deadline")
 
-@deadlinerouter.get("/endpoint1")
-def endpoint1():
+@deadlinerouter.get("/OLAP1")
+def OLAP1():
     """Return the current inventory for all the retailers"""
     db = mysql.connect(
         host = "lin-16287-9495-mysql-primary.servers.linodedb.net",
@@ -41,8 +41,8 @@ def endpoint1():
         "data" : data
     }
 
-@deadlinerouter.get("/endpoint2/{supplier_id}")
-def endpoint2(supplier_id:str):
+@deadlinerouter.get("/OLAP2/{supplier_id}")
+def OLAP2(supplier_id:str):
     """Get the history of all products supplied by a supplier"""
     db = mysql.connect(
         host = "lin-16287-9495-mysql-primary.servers.linodedb.net",
@@ -77,8 +77,8 @@ def endpoint2(supplier_id:str):
         "data" : data
     }
 
-@deadlinerouter.get("/endpoint3")
-def endpoint3():
+@deadlinerouter.get("/OLAP3")
+def OLAP3():
     """Get the average rating of all the products"""
     db = mysql.connect(
         host = "lin-16287-9495-mysql-primary.servers.linodedb.net",
@@ -111,8 +111,8 @@ def endpoint3():
         "data" : data
     }
 
-@deadlinerouter.get("/endpoint4")
-def endpoint4():
+@deadlinerouter.get("/OLAP4")
+def OLAP4():
     """Get the sales of all the products by all the retailers"""
     db = mysql.connect(
         host = "lin-16287-9495-mysql-primary.servers.linodedb.net",
@@ -150,4 +150,3 @@ def endpoint4():
         "status" : "success",
         "data" : data
     }
-    
