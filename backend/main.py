@@ -1,26 +1,35 @@
-from fastapi import Depends, FastAPI, Response, status
+import json
+
+from fastapi import Depends, FastAPI, Request, Response, status
 from fastapi.security import HTTPBearer
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from fastapi.exceptions import HTTPException
+
+import firebase_admin
+import pyrebase
+from firebase_admin import credentials, auth
+
 from backend.utils import VerifyToken
 import backend.connect as connect
 from backend.categories import categoryrouter
 from backend.deadline import deadlinerouter
 
-# Load the credentials from the .json file
+# Load the credentials from the .json file for accessing the MySQL database
 connect.load_creds()
 
 app = FastAPI()
 app.include_router(categoryrouter)
-app.include_router(deadlinerouter)
+# app.include_router(deadlinerouter)
 
-origins = ['*']
+allow_all = ['*']
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=allow_all,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=allow_all,
+    allow_headers=allow_all,
 ) 
 
 
