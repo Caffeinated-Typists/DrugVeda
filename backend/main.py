@@ -6,9 +6,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import HTTPException
 
-import firebase_admin
-import pyrebase
-from firebase_admin import credentials, auth
+# import firebase_admin
+# import pyrebase
+# from firebase_admin import credentials, auth
 
 from backend.utils import VerifyToken
 import backend.connect as connect
