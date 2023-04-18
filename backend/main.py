@@ -6,9 +6,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import HTTPException
 
-# import firebase_admin
-# import pyrebase
-# from firebase_admin import credentials, auth
+import firebase_admin
+import pyrebase
+from firebase_admin import credentials, auth
 
 from backend.utils import VerifyToken
 import backend.connect as connect
@@ -18,6 +18,8 @@ from backend.products import productrouter
 
 # Load the credentials from the .json file for accessing the MySQL database
 connect.load_creds()
+# Load the credentials from the .json file for accessing the Firebase
+connect.connect_to_firebase()
 
 app = FastAPI()
 app.include_router(categoryrouter)
@@ -45,8 +47,44 @@ def public():
     }
     return res
 
-# @app.post("/signup", include_in_schema=False)
-# async def signup()
+@app.post("/signup")
+async def signup(request: Request):
+    req = await request.json()
+    email = req.get("email")
+    password = req.get("password")
+    if email is None or password is None:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Email or password is missing"})
+    try:
+        user = auth.create_user(email=email, password=password)
+        return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "User created successfully"})
+    except Exception as e:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": str(e)})
+
+@app.post("/login")
+async def login(request: Request):
+    req = await request.json()
+    email = req.get("email")
+    password = req.get("password")
+    if email is None or password is None:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Email or password is missing"})
+    try:
+        user = auth.sign_in_with_email_and_password(email, password)
+        return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "User logged in successfully", "token": user.get("idToken")})
+    except Exception as e:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": str(e)})
+
+@app.post("/logout")
+async def logout(request: Request):
+    req = await request.json()
+    token = req.get("token")
+    if token is None:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Token is missing"})
+    try:
+        user = auth.verify_id_token(token)
+        auth.revoke_refresh_tokens(user.get("user_id"))
+        return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "User logged out successfully"})
+    except Exception as e:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": str(e)})
 
 @app.get("/api/private")
 def private(response: Response, token: str = Depends(token_auth_scheme)):
