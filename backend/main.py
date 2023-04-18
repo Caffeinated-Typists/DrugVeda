@@ -13,13 +13,15 @@ from firebase_admin import credentials, auth
 from backend.utils import VerifyToken
 import backend.connect as connect
 from backend.categories import categoryrouter
-from backend.deadline import deadlinerouter
+# from backend.deadline import deadlinerouter
+from backend.products import productrouter
 
 # Load the credentials from the .json file for accessing the MySQL database
 connect.load_creds()
 
 app = FastAPI()
 app.include_router(categoryrouter)
+app.include_router(productrouter)
 # app.include_router(deadlinerouter)
 
 allow_all = ['*']
@@ -42,6 +44,9 @@ def public():
         "msg" : "You have reached a public endpoint, the server is up and running"
     }
     return res
+
+# @app.post("/signup", include_in_schema=False)
+# async def signup()
 
 @app.get("/api/private")
 def private(response: Response, token: str = Depends(token_auth_scheme)):
