@@ -8,7 +8,7 @@ from backend.connect import connect_to_db
 testrouter = APIRouter(prefix="/api/test")
 
 @testrouter.get("/")
-def get_all_tests():
+async def get_all_tests():
     """Retuns the names of all tests from the database"""
     engine:sqlalchemy.engine.base.Engine = connect_to_db()
     with orm.Session(engine) as session:

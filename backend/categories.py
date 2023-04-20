@@ -8,7 +8,7 @@ from backend.connect import connect_to_db
 categoryrouter = APIRouter(prefix="/api/categories")
 
 @categoryrouter.get("/")
-def get_all_categories():
+async def get_all_categories():
     """Returns name of all categories from the database"""
     engine:sqlalchemy.engine.base.Engine = connect_to_db()
     with orm.Session(engine) as session:
@@ -20,7 +20,7 @@ def get_all_categories():
     }
 
 @categoryrouter.get("/{category_id}")
-def get_category(category_id:str):
+async def get_category(category_id:str):
     engine:sqlalchemy.engine.base.Engine = connect_to_db()
     with orm.Session(engine) as session:
         check = False
