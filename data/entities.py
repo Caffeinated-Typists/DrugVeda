@@ -44,7 +44,6 @@ class Customer(Base):
 
     sql.PrimaryKeyConstraint(CustomerID, name="pk_customers_customerid")
     sql.UniqueConstraint(Email, name="uq_customers_email")
-    sql.UniqueConstraint(Phone, name="uq_customers_phone")
     sql.Index("idx_customers_email", Email)
 
     def __repr__(self) -> str:

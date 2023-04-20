@@ -3,7 +3,6 @@ import os
 import mysql.connector as mysql
 import firebase_admin
 from firebase_admin import credentials, firestore
-from backend.connect import connect_to_firebase
 
 def add_user_customer(name:str, email:str, phone:str, lat:float, lon:float):
     """Add a new customer to the database"""
@@ -112,13 +111,11 @@ def add_user_medical_labs(name:str, email:str, phone:str, lat:float, lon:float):
 
 def add_role_to_firestore(uid:str, role:str):
     """Add a role to the user in firestore"""
-    # connect_to_firebase()
     db = firestore.client()
     db.collection('roles').document(uid).set({"role":role})
 
 def get_role_from_firestore(uid:str):
     """Get the role of the user from firestore"""
-    # connect_to_firebase()
     db = firestore.client()
     doc = db.collection('roles').document(uid).get()
     if doc.exists:
@@ -126,12 +123,10 @@ def get_role_from_firestore(uid:str):
     else:
         return None
     
-def get_role_using_token(token:str):
+def get_uid_using_token(token:str):
     """Get the role of the user using the token"""
-    # connect_to_firebase()
     try:
         decoded_token = firebase_admin.auth.verify_id_token(token)
-        uid = decoded_token.get('uid')
-        return get_role_from_firestore(uid)
+        return decoded_token.get('uid')
     except Exception as e:
         return None
