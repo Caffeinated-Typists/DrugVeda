@@ -1,11 +1,12 @@
 import os
+import requests
 import uuid
-from fastapi import APIRouter
+from fastapi import APIRouter, Request
 import mysql.connector as mysql
 from backend.connect import connect_to_db
-from users import get_uid_using_token, get_role_from_firestore
+from backend.users import get_uid_using_token, get_role_from_firestore
 
-appointmentsrouter = APIRouter("/api/appointments")
+appointmentsrouter = APIRouter(prefix="/api/appointments")
 
 @appointmentsrouter.post("/create")
 async def create_appointment(request: Request):
