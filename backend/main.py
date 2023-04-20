@@ -49,7 +49,7 @@ def public():
     }
     return res
 
-@app.post("/signup")
+@app.post("/api/signup")
 async def signup(request: Request):
     req = await request.json()
     name = req.get("name")
@@ -82,7 +82,7 @@ async def signup(request: Request):
     except Exception as e:
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": str(e)})
 
-@app.post("/login")
+@app.post("/api/login")
 async def login(request: Request):
     req = await request.json()
     email = req.get("email")
@@ -107,7 +107,7 @@ async def login(request: Request):
     except Exception as e:
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": str(e)})
 
-@app.post("/logout")
+@app.post("/api/logout")
 async def logout(request: Request):
     req = await request.json()
     token = req.get("token")
