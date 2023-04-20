@@ -312,7 +312,7 @@ class Test(Base):
 
     TestID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
     Name:orm.Mapped[str] = orm.mapped_column(sql.String(127))
-    Image:orm.Mapped[str] = orm.mapped_column(sql.String(255))
+    # Image:orm.Mapped[str] = orm.mapped_column(sql.String(255))
     Description:orm.Mapped[str] = orm.mapped_column(sql.String(8191))
     Price:orm.Mapped[float] = orm.mapped_column(sql.Float, nullable=False)
     LabID:orm.Mapped[str] = orm.mapped_column(sql.String(36), nullable=False)
@@ -322,7 +322,7 @@ class Test(Base):
     sql.Index("idx_tests_landid", LabID)
 
     def __repr__(self) -> str:
-        return f"Test(TestID={self.TestID}, Name={self.Name}, Image={self.Image}, Description={self.Description}, Price={self.Price}, LabID={self.LabID})"
+        return f"Test(TestID={self.TestID}, Name={self.Name}, Description={self.Description}, Price={self.Price}, LabID={self.LabID})"
 
 class Appointment(Base):
     __tablename__ = "appointments"

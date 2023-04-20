@@ -13,8 +13,9 @@ from firebase_admin import credentials, auth
 from backend.utils import VerifyToken
 import backend.connect as connect
 from backend.categories import categoryrouter
-# from backend.deadline import deadlinerouter
 from backend.products import productrouter
+from backend.lab_tests import testrouter
+# from backend.deadline import deadlinerouter
 
 # Load the credentials from the .json file for accessing the MySQL database
 connect.load_creds()
@@ -24,6 +25,7 @@ connect.connect_to_firebase()
 app = FastAPI()
 app.include_router(categoryrouter)
 app.include_router(productrouter)
+app.include_router(testrouter)
 # app.include_router(deadlinerouter)
 
 allow_all = ['*']
