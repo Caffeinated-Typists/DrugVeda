@@ -112,7 +112,7 @@ def add_user_medical_labs(name:str, email:str, phone:str, lat:float, lon:float):
 
 def add_role_to_firestore(uid:str, role:str):
     """Add a role to the user in firestore"""
-    connect_to_firebase()
+    # connect_to_firebase()
     db = firestore.client()
     db.collection('roles').document(uid).set({"role":role})
 
