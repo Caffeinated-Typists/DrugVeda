@@ -1,4 +1,5 @@
 import uuid
+import os
 import mysql.connector as mysql
 import firebase_admin
 from firebase_admin import credentials, firestore
