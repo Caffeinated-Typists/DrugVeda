@@ -125,3 +125,12 @@ def get_role_from_firestore(uid:str):
     else:
         return None
     
+def get_role_using_token(token:str):
+    """Get the role of the user using the token"""
+    connect_to_firebase()
+    try:
+        decoded_token = firebase_admin.auth.verify_id_token(token)
+        uid = decoded_token.get('uid')
+        return get_role_from_firestore(uid)
+    except Exception as e:
+        return None

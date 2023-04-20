@@ -39,7 +39,6 @@ app.add_middleware(
     allow_headers=allow_all,
 ) 
 
-
 token_auth_scheme = HTTPBearer()
 
 @app.get("/api/public")
@@ -57,8 +56,8 @@ async def signup(request: Request):
     email:str = req.get("email")
     phone:str = req.get("phone")
     password:str = req.get("password")
-    lat = req.get("lat")
-    lon = req.get("lon")
+    lat:float = req.get("lat")
+    lon:float = req.get("lon")
     role:str = req.get("role")
     userid:str = None
     if email is None or password is None:
