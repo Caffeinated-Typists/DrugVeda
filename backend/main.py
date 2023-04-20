@@ -10,6 +10,7 @@ from fastapi.exceptions import HTTPException
 import firebase_admin
 from firebase_admin import credentials, auth
 
+import backend.users as users
 from backend.utils import VerifyToken
 import backend.connect as connect
 from backend.categories import categoryrouter
@@ -52,13 +53,32 @@ def public():
 @app.post("/signup")
 async def signup(request: Request):
     req = await request.json()
-    email = req.get("email")
-    password = req.get("password")
-    role = req.get("role")
+    name = req.get("name")
+    email:str = req.get("email")
+    phone:str = req.get("phone")
+    password:str = req.get("password")
+    lat = req.get("lat")
+    lon = req.get("lon")
+    role:str = req.get("role")
+    userid:str = None
     if email is None or password is None:
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Email or password is missing"})
     try:
-        user = auth.create_user(email=email, password=password)
+        if(role == 'customer'):
+            userid = users.add_user_customer(name, email, phone, lat, lon)
+        elif(role == 'retailer'):
+            manager = req.get("manager")
+            userid = users.add_user_retailer(name, email, phone, lat, lon, manager)
+        elif(role == 'supplier'):
+            userid = users.add_user_supplier(name, email, phone, lat, lon)
+        elif(role == 'brand'):
+            userid = users.add_user_brands(name, email, phone, lat, lon)
+        elif(role == 'medical_lab'):
+            userid = users.add_user_medical_lab(name, email, phone, lat, lon)
+        else:
+            return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Invalid role"})
+        user = auth.create_user(uid = userid, email=email, password=password, display_name=name, phone_number=phone)
+        user.add_role_to_firestore(userid, role)
         return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "User created successfully"})
     except Exception as e:
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": str(e)})

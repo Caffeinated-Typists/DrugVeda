@@ -1,5 +1,8 @@
-import mysql.connector as mysql
 import uuid
+import mysql.connector as mysql
+import firebase_admin
+from firebase_admin import credentials, firestore
+from backend.connect import connect_to_firebase
 
 def add_user_customer(name:str, email:str, phone:str, lat:float, lon:float):
     """Add a new customer to the database"""
@@ -105,3 +108,20 @@ def add_user_medical_labs(name:str, email:str, phone:str, lat:float, lon:float):
     finally:
         db.close()
     return LabID
+
+def add_role_to_firestore(uid:str, role:str):
+    """Add a role to the user in firestore"""
+    connect_to_firebase()
+    db = firestore.client()
+    db.collection('roles').document(uid).set({"role":role})
+
+def get_role_from_firestore(uid:str):
+    """Get the role of the user from firestore"""
+    connect_to_firebase()
+    db = firestore.client()
+    doc = db.collection('roles').document(uid).get()
+    if doc.exists:
+        return doc.to_dict()['role']
+    else:
+        return None
+    
