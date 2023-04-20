@@ -54,6 +54,7 @@ async def signup(request: Request):
     req = await request.json()
     email = req.get("email")
     password = req.get("password")
+    role = req.get("role")
     if email is None or password is None:
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Email or password is missing"})
     try:
