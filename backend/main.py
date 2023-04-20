@@ -78,7 +78,7 @@ async def signup(request: Request):
             return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Invalid role"})
         user = auth.create_user(uid = userid, email=email, password=password, display_name=name)
         users.add_role_to_firestore(userid, role)
-        return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "User created successfully"})
+        return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "User created successfully", "token" : user.uid, "refreshToken": user.refresh_token, "expiresIn": user.tokens_valid_after_timestamp})
     except Exception as e:
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": str(e)})
 
