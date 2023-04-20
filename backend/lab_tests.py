@@ -13,9 +13,10 @@ async def get_all_tests():
     engine:sqlalchemy.engine.base.Engine = connect_to_db()
     with orm.Session(engine) as session:
         tests = session.query(entities.Test).all()
+        labName:dict[str, str] = {}
         for test in tests:
-            test.LabID = session.query(entities.MedicalLab).filter(entities.MedicalLab.LabID == test.LabID).first().Name
-        data = [{"id" : test.TestID, "name" : test.Name, "desc" : test.Description, "price" : test.Price, "lab" : test.LabID} for test in tests]
+            labName[test.TestID] = session.query(entities.MedicalLab).filter(entities.MedicalLab.LabID == test.LabID).first().Name
+        data = [{"id" : test.TestID, "name" : test.Name, "desc" : test.Description, "price" : test.Price, "lab" : labName[test.TestID]} for test in tests]
 
     return {
         "status" : "success",
