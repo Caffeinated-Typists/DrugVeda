@@ -5,7 +5,6 @@ import sqlalchemy.orm as orm
 import data.entities as entities
 
 import firebase_admin
-import pyrebase
 from firebase_admin import credentials, auth
 
 def load_creds()->None:

@@ -1,4 +1,5 @@
 import json
+import requests
 
 from fastapi import Depends, FastAPI, Request, Response, status
 from fastapi.security import HTTPBearer
@@ -7,7 +8,6 @@ from fastapi.responses import JSONResponse
 from fastapi.exceptions import HTTPException
 
 import firebase_admin
-import pyrebase
 from firebase_admin import credentials, auth
 
 from backend.utils import VerifyToken
@@ -68,8 +68,20 @@ async def login(request: Request):
     if email is None or password is None:
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Email or password is missing"})
     try:
-        user = auth.sign_in_with_email_and_password(email, password)
-        return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "User logged in successfully", "token": user.get("idToken")})
+        FIREBASE_WEB_API_KEY = json.load(open("firebase_credentials.json")).get("FIREBASE_WEB_API_KEY")
+        payload = json.dumps({
+            "email": email,
+            "password": password,
+            "returnSecureToken": "true"
+        })
+        response = requests.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword",
+                                params = {"key" : FIREBASE_WEB_API_KEY},
+                                data=payload,)   
+        return JSONResponse(status_code=status.HTTP_200_OK, 
+                            content={"status": "success", "msg": "User logged in successfully", 
+                                    "token": response.json().get("idToken"), 
+                                    "refreshToken": response.json().get("refreshToken"), 
+                                    "expiresIn": response.json().get("expiresIn")})
     except Exception as e:
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": str(e)})
 

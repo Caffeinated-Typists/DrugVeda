@@ -132,6 +132,7 @@ dmypy.json
 
 # credentials and config files
 credentials.json
+firebase_credentials.json
 firebase_config.json
 drugveda_service_account_keys.json
 
