@@ -2,14 +2,13 @@ import os
 import uuid
 from fastapi import APIRouter
 import mysql.connector as mysql
-import data.entities as entities
 from backend.connect import connect_to_db
 from users import get_uid_using_token, get_role_from_firestore
 
 productorderrouter = APIRouter("/api/productorder")
 
 @productorderrouter.post("/create")
-async def create_product_order(product_order: entities.ProductOrder):
+async def create_product_order(request: Request):
     """Create a product order in the database"""
     req = await request.json()
     user_token = req.get("user_token")
