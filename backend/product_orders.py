@@ -79,4 +79,42 @@ async def create_product_order(request: Request):
     db.close()
     return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "Product order created successfully", "orderid": orderid})
 
-    
+@productorderrouter.get("/get/{orderid}")
+async def get_product_order(orderid:str):
+    """Returns the product order details for the given Order ID"""
+    # Implement check to ensure that the user is the customer who placed the order using jwt token
+    db = mysql.connect(
+        host = "lin-16287-9495-mysql-primary.servers.linodedb.net",
+        user = os.environ['MySQL_USER'],
+        passwd = os.environ['MySQL_PASSWORD'],
+        database = "DrugVeda"
+    )
+    cursor = db.cursor()
+    cursor.execute("START TRANSACTION;")
+    cursor.execute("""
+        select CustomerID, OrderDate, Quantity, Amount, Status, DeliveryMethod, PaymentMethod from product_orders where OrderID = "{}";
+    """.format(orderid))
+    order = cursor.fetchone()
+    if order is None:
+        cursor.execute("ROLLBACK;")
+        db.close()
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Product order not found"})
+    cursor.execute("""
+        select ProductID, Quantity from product_order_items where OrderID = "{}";
+    """.format(orderid))
+    items = [{"pid" : i[0], "quantity" : i[1]} for i in cursor.fetchall()]
+    cursor.execute("ROLLBACK;")
+    db.close()
+    return JSONResponse(status_code=status.HTTP_200_OK, content={
+        "status": "success", 
+        "msg": "Product order fetched successfully", 
+        "orderid": orderid, 
+        "orderdate": order[1], 
+        "quantity": order[2], 
+        "amount": order[3], 
+        "status": order[4], 
+        "deliverymethod": order[5], 
+        "paymentmethod": order[6], 
+        "items": items}
+    )
+
