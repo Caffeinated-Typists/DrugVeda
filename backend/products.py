@@ -40,3 +40,29 @@ async def get_product(product_id:str):
             "message" : "Product not found"
         }
         
+@productrouter.post("/create")
+async def create_product(request:Request):
+    """Create a product in the database"""
+    # Add check for brand role, and add brand id to the product
+    req = await request.json()
+    name:str = req.get("name")
+    image:str = req.get("image")
+    description:str = req.get("description")
+    price:int = req.get("price")
+    timetoexpire = req.get("timetoexpire")
+    brand_id:str
+    if name is None:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Name is missing"})
+    if image is None:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Image is missing"})
+    if description is None:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Description is missing"})
+    if price is None:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Price is missing"})
+    engine:sqlalchemy.engine.base.Engine = connect_to_db()
+    with orm.Session(engine) as session:
+        product = entities.Products(Name=name, Image=image, Description=description, Price=price, BrandID=brand_id, Rating=0, RatingCnt=0)
+        session.add(product)
+        session.commit()
+        session.refresh(product)
+    return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "Product created successfully", "data": {"id": product.ProductID}})
