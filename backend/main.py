@@ -106,6 +106,8 @@ async def login(request: Request):
         response = requests.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword",
                                 params = {"key" : FIREBASE_WEB_API_KEY},
                                 data=payload,)   
+        if response.json().get("error") is not None:
+            return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": response.json().get("error").get("message")})
         return JSONResponse(status_code=status.HTTP_200_OK, 
                             content={"status": "success", "msg": "User logged in successfully", 
                                     "token": response.json().get("idToken"), 
