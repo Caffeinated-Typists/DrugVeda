@@ -56,7 +56,7 @@ async def create_appointment(request: Request, token: str = Depends(token_auth_s
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Appointment could not be created"})
     return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "Appointment created successfully", "appointment_id": appointment_id})
 
-@appointmentsrouter.get("/get")
+@appointmentsrouter.get("/view")
 async def get_appointment(request: Request, token: str = Depends(token_auth_scheme)):
     """Get all the appointments of a Medical Lab"""
     user_token = token.credentials
@@ -137,3 +137,37 @@ def complete_appointment(request: Request, token: str = Depends(token_auth_schem
     if not check:
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Appointment could not be completed"})
     return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "Appointment completed successfully"})
+
+@appointmentsrouter.post("/get/{AppointmentID}")
+def get_appointment_details(request: Request, AppointmentID: str, token: str = Depends(token_auth_scheme)):
+    user_token = token.credentials
+    user_id = users.get_uid_using_token(user_token)
+    if user_id is None:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Invalid user token"})
+    role = users.get_role_from_firestore(user_id)
+    if role is None:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "User not found in firestore"})
+    if role == 'medical_lab' or role == 'customer':
+        db = mysql.connect(
+            host = "lin-16287-9495-mysql-primary.servers.linodedb.net",
+            user = os.environ['MySQL_USER'],
+            passwd = os.environ['MySQL_PASSWORD'],
+            database = "DrugVeda"
+        )
+        cursor = db.cursor()
+        cursor.execute("START TRANSACTION;")
+        cursor.execute("""
+            select * from appointments where AppointmentID = '{}';
+            """.format(AppointmentID))
+        appointment = cursor.fetchone()
+        cursor.execute("COMMIT;")
+        db.close()
+        if appointment is None:
+            return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Appointment not found"})
+        return JSONResponse(status_code=status.HTTP_200_OK, content={
+                "status": "success", 
+                "msg": "Appointment fetched successfully", 
+                "appointment": {"appointment_id" : appointment[0], "test_id" : appointment[1], "customer_id" : appointment[2], "booking_date" : appointment[3], "appointment_date" : appointment[4], "appointment_status" : appointment[5]}
+            })
+    else:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Only labs and customers can get appointments"})
