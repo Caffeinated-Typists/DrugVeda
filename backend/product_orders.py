@@ -63,7 +63,6 @@ async def create_product_order(request: Request, token: str = Depends(token_auth
             possible = False
             cursor.execute("ROLLBACK;")
             buy_from[item["pid"]] = None
-            break
         else:
             buy_from[item["pid"]] = available_retailers[0][0]
         cursor.execute("ROLLBACK;")
