@@ -55,3 +55,37 @@ async def create_appointment(request: Request, token: str = Depends(token_auth_s
     if appointment_id is None:
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Appointment could not be created"})
     return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "Appointment created successfully", "appointment_id": appointment_id})
+
+@appointmentsrouter.get("/get")
+async def get_appointment(request: Request, token: str = Depends(token_auth_scheme)):
+    """Get all the appointments of a Medical Lab"""
+    user_token = token.credentials
+    lab_id:str = users.get_uid_using_token(user_token)
+    if lab_id is None:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Invalid user token"})
+    role:str = users.get_role_from_firestore(lab_id)
+    if role is None:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "User not found in firestore"})
+    if role != 'medical_lab':
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Only labs can get appointments"})
+    db = mysql.connect(
+        host = "lin-16287-9495-mysql-primary.servers.linodedb.net",
+        user = os.environ['MySQL_USER'],
+        passwd = os.environ['MySQL_PASSWORD'],
+        database = "DrugVeda"
+    )
+    cursor = db.cursor()
+    cursor.execute("START TRANSACTION;")
+    cursor.execute("""
+        select tests.TestID, customers.CustomerID, appointments.AppointmentDate
+        from appointments
+        right join tests on tests.TestID = appointments.TestID
+        right join medical_labs on medical_labs.LabID = tests.LabID
+        right join customers on customers.CustomerID = appointments.CustomerID
+        where medical_labs.LabID = '{}'
+        order by appointments.AppointmentDate;
+    """.format(lab_id))
+    appointments = cursor.fetchall()
+    cursor.execute("COMMIT;")
+    db.close()
+    return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "Appointments fetched successfully", "appointments": [{"test_id" : appointment[0], "customer_id" : appointment[1], "appointment_date" : appointment[2]} for appointment in appointments]})
