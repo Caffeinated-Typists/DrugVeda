@@ -1,7 +1,7 @@
 import os
 import requests
 import uuid
-from fastapi import APIRouter, Request, Depends
+from fastapi import APIRouter, Request, Depends, Response, status
 from fastapi.security import HTTPBearer
 import mysql.connector as mysql
 from backend.connect import connect_to_db
@@ -48,6 +48,10 @@ async def create_product_order(request: Request, token: str = Depends(token_auth
     possible = True
     buy_from:dict[str, str] = {}
     for item in cart:
+        if item["pid"] is None:
+            return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Product ID is missing"})
+        if item["quantity"] is None:
+            return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Quantity is missing"})
         cursor.execute("START TRANSACTION;")
         cursor.execute("""
             select inventory.RetailerID from inventory, batches 
