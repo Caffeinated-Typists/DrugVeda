@@ -66,7 +66,6 @@ async def create_product_order(request: Request, token: str = Depends(token_auth
         else:
             buy_from[item["pid"]] = available_retailers[0][0]
         cursor.execute("ROLLBACK;")
-    db.close()
     if not possible:
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": f"Not enough stock for products {[item['pid'] for item in cart if buy_from[item['pid']] is None]}"})
     cursor.execute("START TRANSACTION;")
