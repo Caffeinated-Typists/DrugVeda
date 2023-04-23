@@ -131,12 +131,9 @@ async def logout(request: Request):
 
 @app.get("/api/private")
 def private(response: Response, token: str = Depends(token_auth_scheme)):
-    """A valid access token is required to access this route"""
- 
-    result = VerifyToken(token.credentials).verify()
-
-    if result.get("status"):
-       response.status_code = status.HTTP_400_BAD_REQUEST
-       return result
- 
-    return result
+    """Check the passed jwt token and return the user id"""
+    jwt_token = token.credentials
+    userid = users.get_uid_using_token(jwt_token)
+    if userid is None:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Invalid token"})
+    return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "User logged in successfully", "ID": users.get_uid_using_token(jwt_token)})
