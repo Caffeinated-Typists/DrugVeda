@@ -11,7 +11,6 @@ import firebase_admin
 from firebase_admin import credentials, auth
 
 import backend.users as users
-from backend.utils import VerifyToken
 import backend.connect as connect
 from backend.categories import categoryrouter
 from backend.products import productrouter
@@ -117,9 +116,9 @@ async def login(request: Request):
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": str(e)})
 
 @app.post("/api/logout")
-async def logout(request: Request):
+async def logout(creds: str = Depends(token_auth_scheme)):
     req = await request.json()
-    token = req.get("token")
+    token = creds.credentials
     if token is None:
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Token is missing"})
     try:

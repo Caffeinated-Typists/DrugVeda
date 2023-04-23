@@ -1,18 +1,21 @@
 import os
 import requests
 import uuid
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, Depends
+from fastapi.security import HTTPBearer
 import mysql.connector as mysql
 from backend.connect import connect_to_db
 from backend.users import get_uid_using_token, get_role_from_firestore
 
+token_auth_scheme = HTTPBearer()
+
 productorderrouter = APIRouter(prefix="/api/productorder")
 
 @productorderrouter.post("/create")
-async def create_product_order(request: Request):
+async def create_product_order(request: Request, token: str = Depends(token_auth_scheme)):
     """Create a product order in the database"""
     req = await request.json()
-    user_token = req.get("user_token")
+    user_token = token.credentials
     cart = req.get("cart")
     delivery_method = req.get("delivery_method")
     payment_method = req.get("payment_method")
@@ -80,9 +83,9 @@ async def create_product_order(request: Request):
     return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "Product order created successfully", "orderid": orderid})
 
 @productorderrouter.get("/get/{orderid}")
-async def get_product_order(orderid:str):
-    """Returns the product order details for the given Order ID"""
-    # Implement check to ensure that the user is the customer who placed the order using jwt token
+async def get_product_order(orderid:str, token: str = Depends(token_auth_scheme)):
+    """Returns the product order details for the given Order ID (Customer Endpoint)"""
+    user_token = token.credentials
     db = mysql.connect(
         host = "lin-16287-9495-mysql-primary.servers.linodedb.net",
         user = os.environ['MySQL_USER'],
@@ -105,6 +108,8 @@ async def get_product_order(orderid:str):
     items = [{"pid" : i[0], "quantity" : i[1]} for i in cursor.fetchall()]
     cursor.execute("ROLLBACK;")
     db.close()
+    if order[0] != get_uid_using_token(user_token):
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Not Authorized to view this product order"})
     return JSONResponse(status_code=status.HTTP_200_OK, content={
         "status": "success", 
         "msg": "Product order fetched successfully", 

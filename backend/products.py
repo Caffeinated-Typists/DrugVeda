@@ -1,9 +1,13 @@
 import os
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, Depends
+from fastapi.security import HTTPBearer
 import sqlalchemy
 import sqlalchemy.orm as orm
 import data.entities as entities
 from backend.connect import connect_to_db
+import backend.users as users
+
+token_auth_scheme = HTTPBearer()
 
 productrouter = APIRouter(prefix="/api/products")
 
@@ -41,16 +45,23 @@ async def get_product(product_id:str):
         }
         
 @productrouter.post("/create")
-async def create_product(request:Request):
+async def create_product(request:Request, token:str = Depends(token_auth_scheme)):
     """Create a product in the database"""
-    # Add check for brand role, and add brand id to the product
+    user_token:str = token.credentials
+    if user_token is None:
+        return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED, content={"status": "error", "msg": "Token is missing"})
+    brand_id:str = users.get_uid_using_token(user_token)
+    if brand_id is None:
+        return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED, content={"status": "error", "msg": "Invalid token"})
+    role:str = user.get_role_from_firestore(brand_id)
+    if role != "brand":
+        return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED, content={"status": "error", "msg": "You are not authorized to perform this action"})
     req = await request.json()
     name:str = req.get("name")
     image:str = req.get("image")
     description:str = req.get("description")
     price:int = req.get("price")
     timetoexpire = req.get("timetoexpire")
-    brand_id:str
     if name is None:
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Name is missing"})
     if image is None:

@@ -1,18 +1,21 @@
 import os
 import requests
 import uuid
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, Depends
+from fastapi.security import HTTPBearer
 import mysql.connector as mysql
 from backend.connect import connect_to_db
 from backend.users import get_uid_using_token, get_role_from_firestore
 
+token_auth_scheme = HTTPBearer()
+
 appointmentsrouter = APIRouter(prefix="/api/appointments")
 
 @appointmentsrouter.post("/create")
-async def create_appointment(request: Request):
+async def create_appointment(request: Request, token: str = Depends(token_auth_scheme)):
     """Create an appointment in the database"""
     req = await request.json()
-    user_token = req.get("user_token")
+    user_token = token.credentials
     test_id = req.get("test_id")
     appointment_date = req.get("date")
     if user_token is None:
