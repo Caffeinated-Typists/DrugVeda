@@ -56,7 +56,7 @@ async def create_product_order(request: Request, token: str = Depends(token_auth
         cursor.execute("START TRANSACTION;")
         cursor.execute("""
             select inventory.RetailerID from inventory, batches 
-            where inventory.BatchID = batches.BatchID and batches.ProductID = "{}" and inventory.Quantity > {};
+            where inventory.BatchID = batches.BatchID and batches.ProductID = "{}" and inventory.QuantityRemaining > {};
         """.format(item["pid"], item["quantity"]))
         available_retailers = cursor.fetchall()
         if(len(available_retailers) == 0):
