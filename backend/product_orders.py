@@ -72,9 +72,9 @@ async def create_product_order(request: Request, token: str = Depends(token_auth
     cursor.execute("START TRANSACTION;")
     orderid = uuid.uuid1().hex
     cursor.execute("""
-        insert into product_orders (OrderID, CustomerID, OrderDate, Amount, Status, DeliveryMethod, PaymentMethod)
-        values ("{}", "{}", "{}", {}, "Placed", "{}", "{}");
-    """.format(orderid, user_id, datetime.now().strftime("%Y-%m-%d %H:%M:%S"), subtotal, delivery_method, payment_method))
+        insert into product_orders (OrderID, CustomerID, OrderDate, Quantity, Amount, Status, DeliveryMethod, PaymentMethod)
+        values ("{}", "{}", "{}", {}, {}, "Placed", "{}", "{}");
+    """.format(orderid, user_id, datetime.now().strftime("%Y-%m-%d %H:%M:%S"), sum([item["quantity"] for item in cart]), subtotal, delivery_method, payment_method))
     for item in cart:
         cursor.execute("""select Price from products where ProductID = "{}";""".format(item["pid"]))
         item_price = cursor.fetchone()[0]
