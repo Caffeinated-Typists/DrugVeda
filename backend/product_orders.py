@@ -3,6 +3,7 @@ import requests
 import uuid
 from fastapi import APIRouter, Request, Depends, Response, status
 from fastapi.security import HTTPBearer
+from fastapi.responses import JSONResponse
 import mysql.connector as mysql
 from backend.connect import connect_to_db
 from backend.users import get_uid_using_token, get_role_from_firestore
