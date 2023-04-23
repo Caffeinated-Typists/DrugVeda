@@ -89,3 +89,51 @@ async def get_appointment(request: Request, token: str = Depends(token_auth_sche
     cursor.execute("COMMIT;")
     db.close()
     return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "Appointments fetched successfully", "appointments": [{"test_id" : appointment[0], "customer_id" : appointment[1], "appointment_date" : appointment[2]} for appointment in appointments]})
+
+@appointmentsrouter.post("/complete")
+def complete_appointment(request: Request, token: str = Depends(token_auth_scheme)):
+    user_token = token.credentials
+    user_id = users.get_uid_using_token(user_token)
+    if user_id is None:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Invalid user token"})
+    role = users.get_role_from_firestore(user_id)
+    if role is None:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "User not found in firestore"})
+    if role != 'medical_lab':
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Only labs can complete appointments"})
+    req = await request.json()
+    appointment_id = req.get("appointment_id")
+    if appointment_id is None:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Appointment ID is missing"})
+    db = mysql.connect(
+        host = "lin-16287-9495-mysql-primary.servers.linodedb.net",
+        user = os.environ['MySQL_USER'],
+        passwd = os.environ['MySQL_PASSWORD'],
+        database = "DrugVeda"
+    )
+    cursor = db.cursor()
+    check:Bool = False
+    try:
+        cursor.execute("START TRANSACTION;")
+        cursor.execute("""
+            select tests.LabID from appointments, tests 
+            where tests.TestID = appointments.TestID and appointments.AppointmentID = '{}';
+            """.format(appointment_id))
+        lab_id = cursor.fetchone()[0]
+        if lab_id != user_id:
+            cursor.execute("COMMIT;")
+            db.close()
+            return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Appointment does not belong to this lab"})
+        cursor.execute("""
+            update appointments set AppointmentStatus = 'completed' where AppointmentID = '{}';
+            """.format(appointment_id))
+        cursor.execute("COMMIT;")
+        check = True
+    except Exception as e:
+        cursor.execute("ROLLBACK;")
+        check = False
+    finally:
+        db.close()
+    if not check:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Appointment could not be completed"})
+    return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "Appointment completed successfully"})
