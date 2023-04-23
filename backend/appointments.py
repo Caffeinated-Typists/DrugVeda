@@ -91,7 +91,7 @@ async def get_appointment(request: Request, token: str = Depends(token_auth_sche
     return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "Appointments fetched successfully", "appointments": [{"test_id" : appointment[0], "customer_id" : appointment[1], "appointment_date" : appointment[2]} for appointment in appointments]})
 
 @appointmentsrouter.post("/complete")
-def complete_appointment(request: Request, token: str = Depends(token_auth_scheme)):
+async def complete_appointment(request: Request, token: str = Depends(token_auth_scheme)):
     user_token = token.credentials
     user_id = users.get_uid_using_token(user_token)
     if user_id is None:
@@ -138,8 +138,8 @@ def complete_appointment(request: Request, token: str = Depends(token_auth_schem
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Appointment could not be completed"})
     return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "Appointment completed successfully"})
 
-@appointmentsrouter.post("/get/{AppointmentID}")
-def get_appointment_details(request: Request, AppointmentID: str, token: str = Depends(token_auth_scheme)):
+@appointmentsrouter.get("/get/{AppointmentID}")
+async def get_appointment_details(request: Request, AppointmentID: str, token: str = Depends(token_auth_scheme)):
     user_token = token.credentials
     user_id = users.get_uid_using_token(user_token)
     if user_id is None:
