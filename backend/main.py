@@ -17,6 +17,7 @@ from backend.products import productrouter
 from backend.lab_tests import testrouter
 from backend.product_orders import productorderrouter
 from backend.appointments import appointmentsrouter
+from backend.supply_order import supplyorderrouter
 # from backend.deadline import deadlinerouter
 
 # Load the credentials from the .json file for accessing the MySQL database
@@ -30,6 +31,7 @@ app.include_router(productrouter)
 app.include_router(testrouter)
 app.include_router(productorderrouter)
 app.include_router(appointmentsrouter)
+app.include_router(supplyorderrouter)
 # app.include_router(deadlinerouter)
 
 allow_all = ['*']
