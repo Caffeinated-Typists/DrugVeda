@@ -15,7 +15,6 @@ begin
     declare continue handler for not found set done = TRUE;
     open cur;
     read_loop: loop
-        leave read_loop;
         fetch next from cur into BID, QTYR;
         if done then
             leave read_loop;
@@ -115,6 +114,7 @@ begin
     if (new.Status = "Delivered") then
         open cur;
         read_loop: loop
+            leave read_loop;
             fetch cur into RID, PID, QTY;
             if done then
                 leave read_loop;
