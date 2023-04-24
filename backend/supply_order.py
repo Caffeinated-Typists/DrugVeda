@@ -55,3 +55,30 @@ async def create_supply_order(request: Request, token: str = Depends(token_auth_
     finally:
         db.close()
     return JSONResponse(status_code=status.HTTP_200_OK, content={"msg": "Order placed successfully", "order_id": order_id})
+
+@supplyorderrouter.get("/view_pending/{supplier_id}")
+async def view_pending(supplier_id: str, token: str = Depends(token_auth_scheme)):
+    user_token = token.credentials
+    uid = get_uid_using_token(user_token)
+    if uid != supplier_id:
+        return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED, content={"msg": "Unauthorized access"})
+    role = get_role_from_firestore(uid)
+    if role != "supplier":
+        return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED, content={"msg": "Unauthorized access"})
+    try:
+        db = mysql.connect(
+            host = "lin-16287-9495-mysql-primary.servers.linodedb.net",
+            user = os.environ['MySQL_USER'],
+            passwd = os.environ['MySQL_PASSWORD'],
+            database = "DrugVeda"
+        )
+        cursor = db.cursor()
+        cursor.execute("""
+            SELECT ProductID, Quantity, RetailerID FROM batches WHERE SupplierID = "{}"
+        """.format(supplier_id))
+        rem_orders = [{"pid": item[0], "quantity": item[1], "retailer_id": item[2]} for item in cursor.fetchall()]
+    except Exception as e:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"msg": str(e)})
+    finally:
+        db.close()
+    return JSONResponse(status_code=status.HTTP_200_OK, content={"msg": "Pending orders fetched successfully", "orders": rem_orders})
