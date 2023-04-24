@@ -150,3 +150,27 @@ async def get_product_order_retailer(orderid:str, token: str = Depends(token_aut
     cursor.execute("ROLLBACK;")
     db.close()
     return JSONResponse(status_code=status.HTTP_200_OK, content={"status" : "success", "msg" : "Product order fetched successfully", "orderid" : orderid, "items" : items})
+
+@productorderrouter.get("/get/history")
+async def get_order_history(token: str = Depends(token_auth_scheme)):
+    """Returns the product order history for the given Customer ID"""
+    user_token = token.credentials
+    customer_id = get_uid_using_token(user_token)
+    role = get_role_from_firestore(customer_id)
+    if role != 'customer':
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Only customers can view product order history"})
+    db = mysql.connect(
+        host = "lin-16287-9495-mysql-primary.servers.linodedb.net",
+        user = os.environ['MySQL_USER'],
+        passwd = os.environ['MySQL_PASSWORD'],
+        database = "DrugVeda"
+    )
+    cursor = db.cursor()
+    cursor.execute("START TRANSACTION;")
+    cursor.execute("""
+        select OrderID, OrderDate, Quantity, Amount, Status, DeliveryMethod, PaymentMethod from product_orders where CustomerID = "{}";
+    """.format(customer_id))
+    orders = [{"orderid": i[0], "orderdate": i[1], "quantity": i[2], "amount": i[3], "status": i[4], "deliverymethod": i[5], "paymentmethod": i[6]} for i in cursor.fetchall()]
+    cursor.execute("ROLLBACK;")
+    db.close()
+    return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "Product order history fetched successfully", "orders": orders})
