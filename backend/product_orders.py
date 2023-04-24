@@ -86,7 +86,7 @@ async def create_product_order(request: Request, token: str = Depends(token_auth
     db.close()
     return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "Product order created successfully", "orderid": orderid})
 
-@productorderrouter.get("/get/{orderid}")
+@productorderrouter.get("/get/customer/{orderid}")
 async def get_product_order(orderid:str, token: str = Depends(token_auth_scheme)):
     """Returns the product order details for the given Order ID (Customer Endpoint)"""
     user_token = token.credentials
@@ -127,3 +127,26 @@ async def get_product_order(orderid:str, token: str = Depends(token_auth_scheme)
         "items": items}
     )
 
+@productorderrouter.get("/get/retailer/{orderid}")
+async def get_product_order_retailer(orderid:str, token: str = Depends(token_auth_scheme)):
+    """Returns the product order details for the given Order ID (Retailer Endpoint)"""
+    user_token = token.credentials
+    retailerid = get_uid_using_token(user_token)
+    role = get_role_from_firestore(retailerid)
+    if role != 'retailer':
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Only retailers can view product orders"})
+    db = mysql.connect(
+        host = "lin-16287-9495-mysql-primary.servers.linodedb.net",
+        user = os.environ['MySQL_USER'],
+        passwd = os.environ['MySQL_PASSWORD'],
+        database = "DrugVeda"
+    )
+    cursor = db.cursor()
+    cursor.execute("START TRANSACTION;")
+    cursor.execute("""
+        select ProductID, Quantity from product_order_items where OrderID = "{}" and RetailerID = "{}";
+    """.format(orderid, retailerid))
+    items = [{"pid" : i[0], "quantity" : i[1]} for i in cursor.fetchall()]
+    cursor.execute("ROLLBACK;")
+    db.close()
+    return JSONResponse(status_code=status.HTTP_200_OK, content={"status" : "success", "msg" : "Product order fetched successfully", "orderid" : orderid, "items" : items})

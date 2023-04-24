@@ -15,6 +15,7 @@ begin
     declare continue handler for not found set done = TRUE;
     open cur;
     read_loop: loop
+        leave read_loop;
         fetch next from cur into BID, QTYR;
         if done then
             leave read_loop;
