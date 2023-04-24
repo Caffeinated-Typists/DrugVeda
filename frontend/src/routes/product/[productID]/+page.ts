@@ -4,14 +4,14 @@ export async function load({ fetch, params, url} ) {
     const id = url.searchParams.get('id');
 
     async function fetchProduct(id: string | null){
-        const res = await fetch(`${PUBLIC_API_URL}/categories/${id}`);
+        const res = await fetch(`${PUBLIC_API_URL}/products/${id}`);
         const data = await res.json();
         return data;
     }
 
     return {
-        category: params.categoryID,
-        product: fetchProduct(id)
+        category: params,
+        product: fetchProduct(id),
         
     }
 

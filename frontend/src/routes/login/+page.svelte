@@ -1,100 +1,150 @@
-<!--
-  This component uses @tailwindcss/forms
+<script lang='ts'>
+	import FullWidthButton from "$lib/shared/buttons/FullWidthButton.svelte";
+	import { PUBLIC_API_URL } from "$env/static/public";
+	import jwtStore from "$lib/jwt";
+	import { onMount } from "svelte";
+	import SuccessAlert from "$lib/shared/alerts/SuccessAlert.svelte";
+	
+	export let data;
+	let jwt: string = '';
+	let display_alert = false;
+	onMount(() => {
+		jwtStore.subscribe((value) => {
+			jwt = value;
+		});
+		if (jwt != '') {
+			window.location.href = '/';
+		}
+	});
 
-  yarn add @tailwindcss/forms
-  npm install @tailwindcss/forms
+	let email:string = '';
+	let password:string = '';
+	let register:boolean = false;
+	let confirmPassword:string = '';
+	let noMatch:boolean = false;
 
-  plugins: [require('@tailwindcss/forms')]
--->
 
-<div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 ">
-    <div class="mx-auto max-w-lg">  
-      <form
-        action=""
-        class="mt-6 mb-0 space-y-4 rounded-lg p-4 shadow-2xl sm:p-6 lg:p-8 bg-gray-900"
-      >
-        <p class="text-center text-lg font-medium">Sign in to your account</p>
-  
-        <div>
-          <label for="email" class="sr-only">Email</label>
-  
-          <div class="relative">
-            <input
-              type="email"
-              class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm bg-gray-700"
-              placeholder="Enter email"
-            />
-  
-            <span
-              class="absolute inset-y-0 right-0 grid place-content-center px-4"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4 w-4 text-gray-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
-                />
-              </svg>
-            </span>
-          </div>
-        </div>
-  
-        <div>
-          <label for="password" class="sr-only">Password</label>
-  
-          <div class="relative">
-            <input
-              type="password"
-              class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm bg-gray-700"
-              placeholder="Enter password"
-            />
-  
-            <span
-              class="absolute inset-y-0 right-0 grid place-content-center px-4"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4 w-4 text-gray-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                />
-              </svg>
-            </span>
-          </div>
-        </div>
-  
-        <button
-          type="submit"
-          class="block w-full rounded-lg bg-teal-500 px-5 py-3 text-sm font-medium text-white hover:bg-teal-600 transition"
-        >
-          Sign in
-        </button>
-  
-        <p class="text-center text-sm text-gray-500">
-          No account?
-          <a class="underline" href="#">Sign up</a>
-        </p>
-      </form>
-    </div>
-  </div>
-  
+	async function login(email: string, password: string) {
+		let role = 'customer';
+		let res = await fetch(`${PUBLIC_API_URL}/login`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				email,
+				password
+			})
+		});
+		let res_data = await res.json();
+		console.log(res_data.token);
+		if (res_data.status === 'success' && res_data.token != null) {
+			jwt = res_data.token;
+			jwtStore.set(jwt);
+		} else {
+			alert('Invalid credentials');
+		}
+
+		if (jwt != '') {
+			setTimeout(() => {
+				display_alert = true;
+			}, 1000);
+		}
+	}
+
+</script>
+
+<section class="bg-gray-800 mt-20">
+	<div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
+		<div
+			class="w-full rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-gray-800 border-gray-700"
+		>
+			<div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+				<h1
+					class="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white"
+				>
+					Sign in to your account
+				</h1>
+
+				<form class="space-y-4 md:space-y-6" on:submit={() => login(email, password)}>
+					<div>
+						<label for="email" class="block mb-2 text-sm font-medium text-white"
+							>Your email</label
+						>
+						<input
+							bind:value={email}
+							type="email"	
+							name="email"
+							id="email"
+							class=" sm:text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white "
+							placeholder="name@company.com"
+							required
+							autocomplete="off"
+						/>
+					</div>
+					<div>
+						<label
+							for="password"
+							class="block mb-2 text-sm font-medium text-white">Password</label
+						>
+						<input
+							bind:value={password}
+							type="password"
+							name="password"
+							id="password"
+							placeholder="••••••••"
+							class=" sm:text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
+							required
+						/>
+					</div>
+
+					
+					<div class="flex items-center justify-between">
+						<div class="flex items-start">
+							<div class="flex items-center h-5">
+								<input
+									id="remember"
+									aria-describedby="remember"
+									type="checkbox"
+									class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-teal-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-teal-600 dark:ring-offset-gray-800"
+								/>
+							</div>
+							<div class="ml-3 text-sm">
+								<label for="remember" class="text-gray-500 dark:text-gray-300">Remember me</label>
+							</div>
+						</div>
+						<a
+							href="#"
+							class="font-medium  hover:underline text-teal-500 hover:text-teal-500"
+							>Forgot password?</a
+						>
+					</div>
+
+
+					<button
+						type="submit"
+						class="w-full flex text-sm items-center justify-center rounded-lg border border-transparent bg-teal-500 px-6 py-3 font-medium text-white shadow-sm hover:bg-teal-600 hover:text-gray-200 "
+						>Sign up</button
+					>
+
+						<p class="text-sm font-light text-gray-500 dark:text-gray-400">
+							Don't have an account yet? <a
+								class="font-medium text-teal-500 hover:underline"
+								href="/signup"
+								>Sign up</a
+							>
+						</p>
+
+				</form>
+			</div>
+			{#if display_alert}
+		<SuccessAlert>
+			Login Sucessful!!!
+		</SuccessAlert>
+	{/if}
+		</div>
+		
+	</div>
+
+</section>
+
