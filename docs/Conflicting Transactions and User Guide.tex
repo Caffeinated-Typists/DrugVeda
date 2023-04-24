@@ -1,0 +1,180 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{paralist}
+\usepackage{blindtext}
+\usepackage{hyperref}
+\usepackage{chngcntr}
+\usepackage{amsfonts,latexsym,amsthm,amssymb,amsmath,amscd,euscript}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+
+
+    \hypersetup{colorlinks=true,citecolor=blue,urlcolor =black,linkbordercolor={1 0 0}}
+
+\usetikzlibrary{calc}
+
+\renewcommand\thesubsubsection{\arabic{subsubsection}}
+
+\newenvironment{statement}{\color[rgb]{1.00,0.00,0.50} {}}{}
+
+
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{N}{@{}m{0pt}@{}}
+\algnewcommand{\algorithmicand}{\textbf{ and }}
+
+
+\algnewcommand\algorithmicforeach{\textbf{for each}}
+\algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
+
+
+\newlist{enums}{enumerate}{3}
+
+\setlist[enums, 1]{label={(\arabic*)}, noitemsep}
+\setlist[enums, 2]{label={-}, noitemsep}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=black
+    }
+
+\title{Conflicting Transactions and User Guide}
+% \author{Anirudh S. Kumar (2021517), Aakarsh Jain (2021507)}
+\author{
+    \\\vspace{0em} Anirudh S. Kumar \\\vspace{-0.5em}
+    \footnotesize{Roll Number - 2021517}\\\vspace{-0.5em}
+    \footnotesize{IIIT - Delhi}\\\vspace{-0.5em}
+    \footnotesize{\href{mailto:anirudh21517@iiitd.ac.in}{\texttt{anirudh21517@iiitd.ac.in}}}
+  \and
+    \\\vspace{0em} Aakarsh Jain\\\vspace{-0.5em}
+    \footnotesize{Roll Number - 2021507}\\\vspace{-0.5em}
+    \footnotesize{IIIT - Delhi}\\\vspace{-0.5em}
+    \footnotesize{\href{mailto:aakarsh21507@iiitd.ac.in}{\texttt{aakarsh21507@iiitd.ac.in}}} 
+    \vspace{1em}
+}
+
+\renewcommand{\footrulewidth}{0.4pt}% Default \footrulewidth is 0pt
+\renewcommand{\headrulewidth}{0pt}% Default \headrulewidth is 0.4pt
+
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{Anirudh S. Kumar}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{Aakarsh Jain}
+
+
+
+\section{Selling a Product from a Retailer}
+
+Consider the transaction $T$ with two steps $S_1$ and $S_2$ as follows
+\begin{itemize}[noitemsep]
+    \item $S_1$: Reading the remaining product quantity from the retailer
+    \item $S_2$: Changing the value of the remaining product quantity after order delivery.
+\end{itemize}
+
+\subsection{Conflict Serializable Schedule}
+
+Now consider two such transactions, $T_1$ and $T_2$, in the following schedule.
+
+\begin{enumerate}
+    \item $S_1^{T_1}$ - $T_1$ reads from the database
+    \item $S_2^{T_1}$ - $T_1$ writes to the database
+    \item $S_1^{T_2}$ - $T_2$ reads from the database
+    \item $S_2^{T_2}$ - $T_2$ writes to the database
+\end{enumerate}
+
+We can see that in this schedule, changing the ordering between the transactions does not affect the final value in the database. Therefore, this is an example of a conflict serializable schedule.
+
+
+\subsection{Non-Conflict-Serializable Schedule}
+
+Now consider the same two transactions, $T_1$ and $T_2$, in the following schedule.
+
+
+\begin{enumerate}
+    \item $S_1^{T_1}$ - $T_1$ reads from the database
+    \item $S_1^{T_2}$ - $T_2$ reads from the database
+    \item $S_2^{T_2}$ - $T_2$ writes to the database
+    \item $S_2^{T_1}$ - $T_1$ writes to the database
+\end{enumerate}
+
+This is an example of a non-conflict serializable schedule. Consider the scenario where the initial quantity in the database was 20
+
+\begin{enumerate}
+    \item $S_1^{T_1}$ - $T_1$ reads from the database $\rightarrow$ \textbf{$T_1$ reads 20 }
+    \item $S_1^{T_2}$ - $T_2$ reads from the database $\rightarrow$ \textbf{$T_2$ reads 20}
+    \item $S_2^{T_2}$ - $T_2$ writes to the database $\rightarrow$  \textbf{$T_2$ buys 5 and updates the value to 15 in the database}
+    \item $S_2^{T_1}$ - $T_1$ writes to the database $\rightarrow$  \textbf{$T_1$ buys 2 and updates the value to 18 in the database}
+\end{enumerate}
+
+If we were to reverse the order of operations, we would see that the final value in the database would be 15 instead. Therefore, this is a non-conflict serializable schedule.
+
+
+\section{Buying a deleted product}
+
+Consider two such transactions $T_1$ and $T_2$ each of them with two steps as follows :-
+\begin{itemize}[noitemsep]
+    \item $T_1$
+    \begin{itemize}[noitemsep]
+        \item $S_1$ - Reading the remaining product quantity of product $P$ from the retailer
+        \item $S_2$ - Changing the value of the remaining product quantity $P$ after order delivery.
+    \end{itemize}
+    \item $T_2$
+    \begin{itemize}[noitemsep]
+        \item $S_1$ - Fetching the details of the product $P$
+        \item $S_2$ - Removing it from the inventory list. 
+    \end{itemize}
+\end{itemize}
+
+\subsection{Conflict Serializable Schedule}
+
+Now consider two such transactions, $T_1$ and $T_2$, in the following schedule.
+
+\begin{enumerate}
+    \item $S_1^{T_1}$ - $T_1$ checks for availability of product $P$ in the databse
+    \item $S_2^{T_1}$ - $T_1$ order the product $P$ if available 
+    \item $S_1^{T_2}$ - $T_2$ fetches the product $P$ from the database
+    \item $S_2^{T_2}$ - $T_2$ deletes the product $P$ from the database. 
+\end{enumerate}
+
+If we reverse the ordering of execution of $T_1$ and $T_2$, then $T_1$ will abort before it orders the product, so data integrity remains. 
+
+\subsection{Non-Conflict-Serializable Schedule}
+
+
+Now consider the same two transactions, $T_1$ and $T_2$, in the following schedule.
+
+\begin{enumerate}
+    \item $S_1^{T_1}$ - $T_1$ checks for availability of product $P$ in the databse
+    \item $S_1^{T_2}$ - $T_2$ fetches the product $P$ from the database
+    \item $S_2^{T_2}$ - $T_2$ deletes the product $P$ from the database. 
+    \item $S_2^{T_1}$ - $T_1$ order the product $P$ if available 
+\end{enumerate}
+
+This is a case of a non-conflict-serializable schedule. In the first step, $T_1$ thinks that the product exists in the database and is available for ordering, but then $T_2$ fetches and deletes the product, causing the second step of $T_1$ to cause inconsistencies.
+
+\section{User Guide}
+
+\begin{itemize}
+    \item \underline{Login/Signup} - Click Signup and enter the relevant details. After signup, click the Login button to log in to the site.
+    \item \underline{Booking Product} - First Login/Signup. After that Go to Products $\rightarrow$ Pick a Category $\rightarrow$ Pick a Product $\rightarrow$ Add to cart $\rightarrow$ Cart $\rightarrow$ Checkout $\rightarrow$ Add Details $\rightarrow$ Place Order.
+    \item \underline{Booking Lab Tests} - First Login/Signup. Afterwards, Go to Labs $\rightarrow$ Pick a test $\rightarrow$ Buy Now $\rightarrow$ Add Details $\rightarrow$ Place Order.
+    
+\end{itemize}
+
+\end{document}
