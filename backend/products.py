@@ -5,6 +5,7 @@ from fastapi.responses import JSONResponse
 import sqlalchemy
 import sqlalchemy.orm as orm
 import data.entities as entities
+import mysql.connector as mysql
 from backend.connect import connect_to_db
 import backend.users as users
 
@@ -78,3 +79,36 @@ async def create_product(request:Request, token:str = Depends(token_auth_scheme)
         session.commit()
         session.refresh(product)
     return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "Product created successfully", "data": {"id": product.ProductID}})
+
+@productrouter.post("/delete")
+async def delete_product(request:Request, token:str = Depends(token_auth_scheme)):
+    user_token:str = token.credentials
+    if user_token is None:
+        return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED, content={"status": "error", "msg": "Token is missing"})
+    brand_id:str = users.get_uid_using_token(user_token)
+    if brand_id is None:
+        return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED, content={"status": "error", "msg": "Invalid token"})
+    role:str = user.get_role_from_firestore(brand_id)
+    if role != "brand":
+        return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED, content={"status": "error", "msg": "You are not authorized to perform this action"})
+    req = await request.json()
+    product_id:str = req.get("product_id")
+    if product_id is None:
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"status": "error", "msg": "Product id is missing"})
+    try:
+        db = mysql.connec(
+            host = "lin-16287-9495-mysql-primary.servers.linodedb.net",
+            user = os.environ['MySQL_USER'],
+            passwd = os.environ['MySQL_PASSWORD'],
+            database = "DrugVeda"
+        )
+        cursor = db.cursor()
+        cursor.execute("START TRANSACTION;")
+        cursor.execute("DELETE FROM Products WHERE ProductID = '{}'';".format(product_id))
+        cursor.execute("COMMIT;")
+        cursor.close()
+    except Exception as e:
+        return JSONResponse(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, content={"status": "error", "msg": "Error while deleting product"})
+    finally:
+        db.close()
+    return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "Product deleted successfully"})
