@@ -50,7 +50,9 @@ async def create_supply_order(request: Request, token: str = Depends(token_auth_
             cursor.execute("""
                 INSERT INTO batches (BatchID, ProductID, Quantity, RetailerID, SupplierID) values ("{}","{}","{}","{}","{}")
             """.format(batch_id, item.get('pid'), item.get('quantity'), uid, item.get('supplierid')))
+        cursor.execute("COMMIT")
     except Exception as e:
+        cursor.execute("ROLLBACK")
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"msg": str(e)})
     finally:
         db.close()
@@ -82,3 +84,32 @@ async def view_pending(supplier_id: str, token: str = Depends(token_auth_scheme)
     finally:
         db.close()
     return JSONResponse(status_code=status.HTTP_200_OK, content={"msg": "Pending orders fetched successfully", "orders": rem_orders})
+
+@supplyorderrouter.post("/complete")
+async def complete_supply_order(request: Request, token: str = Depends(token_auth_scheme)):
+    user_token = token.credentials
+    uid = get_uid_using_token(user_token)
+    if uid is None:
+        return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED, content={"msg": "Unauthorized access"})
+    role = get_role_from_firestore(uid)
+    if role != "supplier":
+        return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED, content={"msg": "Unauthorized access"})
+    req = await request.json()
+    order_id = req.get("order_id")
+    try:
+        cursor.execute("START TRANSACTION")
+        cursor.execute("""
+            SELECT BatchID FROM order_batches WHERE OrderID = "{}"
+        """.format(order_id))
+        batch_ids = [item[0] for item in cursor.fetchall()]
+        for batch_id in batch_ids:
+            cursor.execute("""
+                UPDATE batches SET ManufactureDate = "{}" WHERE BatchID = "{}"
+            """.format(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), batch_id))
+        cursor.execute("COMMIT")
+    except Exception as e:
+        cursor.execute("ROLLBACK")
+        return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={"msg": str(e)})
+    finally:
+        db.close()
+    return JSONResponse(status_code=status.HTTP_200_OK, content={"msg": "Order completed successfully"})
