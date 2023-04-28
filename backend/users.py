@@ -78,8 +78,8 @@ def add_user_brands(name:str, email:str, phone:str, lat:float, lon:float):
     cursor = db.cursor()
     try:
         BrandID = uuid.uuid1().hex
-        cursor.execute("""insert into brands (BrandID, Name, Email, Phone, Lat, Lon) values ('{}', '{}', '{}', '{}', {}, {});"""
-        .format(BrandID, name, email, phone, lat, lon))
+        cursor.execute("""insert into brands (BrandID, Name, Email, Lat, Lon, ProductCnt) values ('{}', '{}', '{}', {}, {}, {});"""
+        .format(BrandID, name, email, phone, lat, lon, 0))
         db.commit()
     except Exception as e:
         BrandID = None
