@@ -107,8 +107,7 @@ async def delete_product(request:Request, token:str = Depends(token_auth_scheme)
         cursor.execute("DELETE FROM Products WHERE ProductID = '{}'';".format(product_id))
         cursor.execute("COMMIT;")
         cursor.close()
-    except Exception as e:
-        return JSONResponse(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, content={"status": "error", "msg": "Error while deleting product"})
-    finally:
         db.close()
+    except Exception as e:  
+        return JSONResponse(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, content={"status": "error", "msg": "Error while deleting product"})
     return JSONResponse(status_code=status.HTTP_200_OK, content={"status": "success", "msg": "Product deleted successfully"})
