@@ -88,7 +88,7 @@ async def delete_product(request:Request, token:str = Depends(token_auth_scheme)
     brand_id:str = users.get_uid_using_token(user_token)
     if brand_id is None:
         return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED, content={"status": "error", "msg": "Invalid token"})
-    role:str = user.get_role_from_firestore(brand_id)
+    role:str = users.get_role_from_firestore(brand_id)
     if role != "brand":
         return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED, content={"status": "error", "msg": "You are not authorized to perform this action"})
     req = await request.json()
