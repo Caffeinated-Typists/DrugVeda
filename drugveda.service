@@ -1,0 +1,15 @@
+# Add this file to systemd (/etc/systemd/system/drugveda.service) and run using ```sudo systemctl status drugveda.service```
+
+[Unit]
+Description=Gunicorn instance to serve DrugVeda
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/root/DrugVeda
+ExecStart=/root/DrugVeda/.venv/bin/gunicorn -w 1 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000 backend.main:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
